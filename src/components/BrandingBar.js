@@ -6,6 +6,6 @@ function BrandingBar() {
         
       </div>
     );
-  }
+}
   
-  export default BrandingBar;
+export default BrandingBar;
