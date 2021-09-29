@@ -10,9 +10,11 @@ function ListingCard() {
       <div className="list-card">
         <BrandingBar />
         <Carousel />
-        <Price />
-        <Address />
-        <GeneralFeatures />
+        <div className="listing-summary">
+          <Price />
+          <Address />
+          <GeneralFeatures />
+        </div>
       </div>
     );
   }
