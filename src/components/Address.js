@@ -1,11 +1,12 @@
 import './Address.css';
 
-function Address() {
-    return (
-      <div className="address">
-        12 Civil Ave, Croydon VIC 
-      </div>
-    );
+function Address(props) {
+  const addressDisplay = `${props.address.display.shortAddress}, ${props.address.suburb}`;
+  return (
+    <div className="address">
+      {addressDisplay} 
+    </div>
+  );
 }
   
 export default Address;

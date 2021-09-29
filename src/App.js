@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <div>
         {listings.map((item) => {
-          return <ListingCard listing={item} />
+          return <ListingCard listing={item} key={item.listing.id} />
         })}
       </div>
     </div>

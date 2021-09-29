@@ -1,4 +1,4 @@
-export default [
+const data = [
     {
        "listing":{
           "id":"137251906",
@@ -1587,11 +1587,6 @@ export default [
     },
     {
        "listing":{
-          
-       }
-    },
-    {
-       "listing":{
           "id":"137019922",
           "address":{
              "display":{
@@ -2011,3 +2006,5 @@ export default [
        }
     }
  ];
+
+ export default data;

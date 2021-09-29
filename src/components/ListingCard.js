@@ -12,7 +12,7 @@ function ListingCard(props) {
       <Carousel />
       <div className="listing-summary">
         <Price price={props.listing.listing.price} />
-        <Address />
+        <Address address={props.listing.listing.address} />
         <GeneralFeatures />
       </div>
     </div>
