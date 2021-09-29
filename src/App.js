@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import ListingCard from './components/ListingCard';
 
 function App() {
   return (
     <div className="App">
-      <ListingCard />
+      <div>
+        <ListingCard />
+        <ListingCard />
+        <ListingCard />
+      </div>
     </div>
   );
 }
