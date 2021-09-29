@@ -1,13 +1,23 @@
+import { useState, useEffect } from 'react';
+
 import './App.css';
 import ListingCard from './components/ListingCard';
+import { get } from './mockBackend/fetch';
 
 function App() {
+  const [listings, setListings] = useState([]);
+  useEffect(() => {
+    get().then((response) => {
+      setListings(response.data);
+    });
+  }, []);
+
   return (
     <div className="App">
       <div>
-        <ListingCard />
-        <ListingCard />
-        <ListingCard />
+        {listings.map((item) => {
+          return <ListingCard listing={item} />
+        })}
       </div>
     </div>
   );
