@@ -12,6 +12,7 @@ function App() {
     });
   }, []);
 
+  console.log(listings);
   return (
     <div className="App">
       <div>

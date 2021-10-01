@@ -5,8 +5,8 @@ import Price from './Price';
 import Address from './Address';
 import GeneralFeatures from './GeneralFeatures';
 
-function ListingCard(props) {
-  console.log(props.listing.listing.generalFeatures);
+const ListingCard = (props) => {
+  // console.log(props.listing);
   return (
     <div className="list-card">
       <BrandingBar />
@@ -18,6 +18,6 @@ function ListingCard(props) {
       </div>
     </div>
   );
-}
+};
   
 export default ListingCard;
