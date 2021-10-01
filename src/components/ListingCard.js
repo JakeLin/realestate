@@ -6,6 +6,7 @@ import Address from './Address';
 import GeneralFeatures from './GeneralFeatures';
 
 function ListingCard(props) {
+  console.log(props.listing.listing.generalFeatures);
   return (
     <div className="list-card">
       <BrandingBar />
@@ -13,7 +14,7 @@ function ListingCard(props) {
       <div className="listing-summary">
         <Price price={props.listing.listing.price} />
         <Address address={props.listing.listing.address} />
-        <GeneralFeatures />
+        <GeneralFeatures generalFeatures={props.listing.listing.generalFeatures} />
       </div>
     </div>
   );
