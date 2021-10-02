@@ -3,4 +3,10 @@
     width: 100%;
     background-color: #00A4C7;
     border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    margin-left: 12px;
 }

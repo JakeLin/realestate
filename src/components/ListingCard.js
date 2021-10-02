@@ -6,10 +6,9 @@ import Address from './Address';
 import GeneralFeatures from './GeneralFeatures';
 
 const ListingCard = (props) => {
-  // console.log(props.listing);
   return (
     <div className="list-card">
-      <BrandingBar />
+      <BrandingBar listingCompany={props.listing.listing.listingCompany} />
       <Carousel />
       <div className="listing-summary">
         <Price price={props.listing.listing.price} />
