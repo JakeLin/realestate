@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faBath, faCar } from '@fortawesome/free-solid-svg-icons'
+import { Bed, Car, Bath } from '@styled-icons/boxicons-regular';
 
-
-const FeaturesSpan = styled.span`
+const FeatureSpan = styled.span`
   margin-right: 12px;
+`;
+
+const NumberSpan = styled.span`
+  margin-left: 6px;
+  vertical-align: bottom;
 `;
 
 const FeaturesContainer = styled.div`
   color: #333f48;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 20px;
   font-family: "PangeaRegular";
   font-weight: 400;
+  margin-top: 6px;
 `;
 
 const Feature = (props) => {
@@ -22,19 +26,25 @@ const Feature = (props) => {
   }
 
   return (
-    <FeaturesSpan>
-      <FontAwesomeIcon icon={props.icon} className="feature-icon" />
-      {props.number}
-    </FeaturesSpan>
+    <FeatureSpan>
+      {props.children}
+      <NumberSpan>{props.number}</NumberSpan>
+    </FeatureSpan>
   );
 };
 
 const GeneralFeatures = (props) => {
     return (
       <FeaturesContainer>
-        <Feature number={props.generalFeatures.bedrooms.value} icon={faBed} />
-        <Feature number={props.generalFeatures.bathrooms.value} icon={faBath} />
-        <Feature number={props.generalFeatures.parkingSpaces.value} icon={faCar} />
+        <Feature number={props.generalFeatures.bedrooms.value} >
+          <Bed size="18" />
+        </Feature>
+        <Feature number={props.generalFeatures.bathrooms.value} >
+          <Bath size="18" />
+        </Feature>
+        <Feature number={props.generalFeatures.parkingSpaces.value} >
+          <Car size="18" />
+        </Feature>
       </FeaturesContainer>
     );
 };
