@@ -9,7 +9,7 @@ const ListingCard = (props) => {
   return (
     <div className="list-card">
       <BrandingBar listingCompany={props.listing.listing.listingCompany} />
-      <Carousel />
+      <Carousel images={props.listing.listing.media.images} />
       <div className="listing-summary">
         <Price price={props.listing.listing.price} />
         <Address address={props.listing.listing.address} />
