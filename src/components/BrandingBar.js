@@ -14,7 +14,6 @@ const LogoImage = styled.img`
 `;
 
 const BrandingBar = (props) => {
-  console.log(props);
   const logoUrl = props.listingCompany.media.logo.templatedUrl.replace('{size}', '170x32');
 
   return (
