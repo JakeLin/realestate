@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/realestate/static/css/main.ea52a150.chunk.css",
-    "main.js": "/realestate/static/js/main.97ff5723.chunk.js",
-    "main.js.map": "/realestate/static/js/main.97ff5723.chunk.js.map",
-    "runtime-main.js": "/realestate/static/js/runtime-main.7f5684f9.js",
-    "runtime-main.js.map": "/realestate/static/js/runtime-main.7f5684f9.js.map",
-    "static/js/2.1aa94ab5.chunk.js": "/realestate/static/js/2.1aa94ab5.chunk.js",
-    "static/js/2.1aa94ab5.chunk.js.map": "/realestate/static/js/2.1aa94ab5.chunk.js.map",
-    "static/js/3.aa3fa855.chunk.js": "/realestate/static/js/3.aa3fa855.chunk.js",
-    "static/js/3.aa3fa855.chunk.js.map": "/realestate/static/js/3.aa3fa855.chunk.js.map",
+    "main.css": "/realestate/static/css/main.84b5a64f.chunk.css",
+    "main.js": "/realestate/static/js/main.8bcfc7ec.chunk.js",
+    "main.js.map": "/realestate/static/js/main.8bcfc7ec.chunk.js.map",
+    "runtime-main.js": "/realestate/static/js/runtime-main.554a4552.js",
+    "runtime-main.js.map": "/realestate/static/js/runtime-main.554a4552.js.map",
+    "static/js/2.5cdcff48.chunk.js": "/realestate/static/js/2.5cdcff48.chunk.js",
+    "static/js/2.5cdcff48.chunk.js.map": "/realestate/static/js/2.5cdcff48.chunk.js.map",
+    "static/js/3.7e19d3ab.chunk.js": "/realestate/static/js/3.7e19d3ab.chunk.js",
+    "static/js/3.7e19d3ab.chunk.js.map": "/realestate/static/js/3.7e19d3ab.chunk.js.map",
     "index.html": "/realestate/index.html",
-    "static/css/main.ea52a150.chunk.css.map": "/realestate/static/css/main.ea52a150.chunk.css.map",
-    "static/js/2.1aa94ab5.chunk.js.LICENSE.txt": "/realestate/static/js/2.1aa94ab5.chunk.js.LICENSE.txt",
+    "static/css/main.84b5a64f.chunk.css.map": "/realestate/static/css/main.84b5a64f.chunk.css.map",
+    "static/js/2.5cdcff48.chunk.js.LICENSE.txt": "/realestate/static/js/2.5cdcff48.chunk.js.LICENSE.txt",
     "static/media/index.css": "/realestate/static/media/PangeaTrial-Regular.4edd8627.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.7f5684f9.js",
-    "static/js/2.1aa94ab5.chunk.js",
-    "static/css/main.ea52a150.chunk.css",
-    "static/js/main.97ff5723.chunk.js"
+    "static/js/runtime-main.554a4552.js",
+    "static/js/2.5cdcff48.chunk.js",
+    "static/css/main.84b5a64f.chunk.css",
+    "static/js/main.8bcfc7ec.chunk.js"
   ]
 }
