@@ -40,8 +40,9 @@ const Carousel = (props) => {
     setImageIndex((originalIndex) => {
       if (originalIndex === 0) {
         return imageUrls.length - 1;
+      } else {
+        return originalIndex - 1;
       }
-      return originalIndex - 1;
     });
   };
 
@@ -49,8 +50,9 @@ const Carousel = (props) => {
     setImageIndex ((originalIndex) =>{
       if (originalIndex === imageUrls.length - 1) {
         return 0;
+      } else {
+        return originalIndex + 1;
       }
-      return originalIndex + 1;
     });
   };
 
