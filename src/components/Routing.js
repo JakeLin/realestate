@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults";
 import PropertyDetail from "./PropertyDetail";
 
 const Routing = () => {
-  return(
+  return (
     <Router>
       <Switch>
         <Route path="/property/:propertyId">
