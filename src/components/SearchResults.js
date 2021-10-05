@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import ListingCard from './components/ListingCard';
-import { get } from './mockBackend/fetch';
+import ListingCard from './ListingCard';
+import { get } from '../mockBackend/fetch';
 
 const Container = styled.div`
   background-color: #E5E5E5;
