@@ -1,10 +1,20 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import SearchResults from "./SearchResults";
 
 const Routing = () => {
   return(
-    <div>
-      <SearchResults />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <SearchResults />
+        </Route>
+      </Switch>
+    </Router>
   )
 };
 
