@@ -5,12 +5,16 @@ import {
 } from "react-router-dom";
 
 import SearchResults from "./SearchResults";
+import PropertyDetail from "./PropertyDetail";
 
 const Routing = () => {
   return(
     <Router>
       <Switch>
-        <Route path="/">
+        <Route path="/property">
+          <PropertyDetail />
+        </Route>
+        <Route>
           <SearchResults />
         </Route>
       </Switch>
