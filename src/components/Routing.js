@@ -11,7 +11,7 @@ const Routing = () => {
   return(
     <Router>
       <Switch>
-        <Route path="/property">
+        <Route path="/property/:propertyId">
           <PropertyDetail />
         </Route>
         <Route>
