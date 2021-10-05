@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import './fonts/Pangea/PangeaTrial-Regular.woff';
 
 import './index.css';
-import App from './App';
+import SearchResults from './SearchResults';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SearchResults />
   </React.StrictMode>,
   document.getElementById('root')
 );

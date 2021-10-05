@@ -11,7 +11,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const App = () => {
+const SearchResults = () => {
   const [listings, setListings] = useState([]);
   useEffect(() => {
     get().then((response) => {
@@ -30,4 +30,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default SearchResults;
