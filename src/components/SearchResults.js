@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import './App.css';
-import ListingCard from './components/ListingCard';
-import { get } from './mockBackend/fetch';
+import ListingCard from './ListingCard';
+import { get } from '../mockBackend/fetch';
 
-function App() {
+const Container = styled.div`
+  background-color: #E5E5E5;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const SearchResults = () => {
   const [listings, setListings] = useState([]);
   useEffect(() => {
     get().then((response) => {
@@ -13,14 +20,14 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <Container>
       <div>
         {listings.map((item) => {
           return <ListingCard listing={item} key={item.listing.id} />
         })}
       </div>
-    </div>
+    </Container>
   );
 }
 
-export default App;
+export default SearchResults;

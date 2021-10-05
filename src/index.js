@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import './fonts/Pangea/PangeaTrial-Regular.woff';
 
 import './index.css';
-import App from './App';
+import Routing from './components/Routing';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routing />
   </React.StrictMode>,
   document.getElementById('root')
 );
