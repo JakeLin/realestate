@@ -7,6 +7,7 @@
 // this module just waits a little bit before responding.
 
 import searchResultsData from "./searchResultsData";
+import propertyDetailData from "./propertyDetailData";
 
 const getSearchResults = () => {
   const delay = Math.floor(Math.random() * 1000);
@@ -18,4 +19,14 @@ const getSearchResults = () => {
   });
 };
 
-export { getSearchResults };
+const getPropertyDetail = () => {
+  const delay = Math.floor(Math.random() * 1000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const response = { status: 200, data: propertyDetailData };
+      resolve(response);
+    }, delay);
+  });
+};
+
+export { getSearchResults, getPropertyDetail };
