@@ -20,11 +20,19 @@ const ButtonsContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Button = styled.button`
   border: 0px;
   background-color: transparent;
+  height: 100px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #00000073;
+
+  }
 `;
 
 const Carousel = (props) => {
@@ -57,7 +65,6 @@ const Carousel = (props) => {
       }
     });
   };
-
   
   return (
     <Container>
