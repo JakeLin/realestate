@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import PropertyCard from './PropertyCard';
-import { getSearchResults as get } from '../mockBackend/fetch';
+import { getSearchResults as get } from '../../mockBackend/fetch';
 
 const Container = styled.div`
   background-color: #E5E5E5;

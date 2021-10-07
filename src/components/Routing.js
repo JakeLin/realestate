@@ -4,8 +4,8 @@ import {
   Route
 } from "react-router-dom";
 
-import SearchResults from "./SearchResults";
-import PropertyDetail from "./PropertyDetail";
+import SearchResults from "./search-results/SearchResults";
+import PropertyDetail from "./property-detail/PropertyDetail";
 
 const Routing = () => {
   return (

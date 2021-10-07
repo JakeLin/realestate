@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { getPropertyDetail as get } from '../mockBackend/fetch';
+import { getPropertyDetail as get } from '../../mockBackend/fetch';
 
 
 const PropertyDetail = () => {
@@ -12,7 +12,7 @@ const PropertyDetail = () => {
       setListing(response.data);
     });
   }, []);
-  console.log(listing);
+
   return (
     <div>
       this is property detail page and the id is {propertyId}
