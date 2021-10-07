@@ -19,11 +19,15 @@ const PropertyContainer = styled.div`
   padding: 16px 24px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const PropertyCard = (props) => {
   const propertyDetailUrlPath = `/property/${props.listing.listing.id}`;
   return (
     <Container>
-      <Link to={propertyDetailUrlPath}>
+      <StyledLink to={propertyDetailUrlPath}>
         <BrandingBar listingCompany={props.listing.listing.listingCompany} />
         <Carousel images={props.listing.listing.media.images} />
         <PropertyContainer>
@@ -31,7 +35,7 @@ const PropertyCard = (props) => {
           <Address address={props.listing.listing.address} />
           <GeneralFeatures generalFeatures={props.listing.listing.generalFeatures} />
         </PropertyContainer>
-      </Link>
+      </StyledLink>
     </Container>
   );
 };
