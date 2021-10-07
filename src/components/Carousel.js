@@ -36,7 +36,8 @@ const Carousel = (props) => {
 
   const [imageIndex, setImageIndex] = useState(0);
 
-  const previousButtonClicked = () => {
+  const previousButtonClicked = (event) => {
+    event.preventDefault();
     setImageIndex((originalIndex) => {
       if (originalIndex === 0) {
         return imageUrls.length - 1;
@@ -46,7 +47,8 @@ const Carousel = (props) => {
     });
   };
 
-  const nextButtonClicked = () => {
+  const nextButtonClicked = (event) => {
+    event.preventDefault();
     setImageIndex ((originalIndex) =>{
       if (originalIndex === imageUrls.length - 1) {
         return 0;
