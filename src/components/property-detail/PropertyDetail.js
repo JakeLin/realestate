@@ -1,7 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { getPropertyDetail as get } from '../../mockBackend/fetch';
 
+import styled from "styled-components";
+
+import { getPropertyDetail as get } from '../../mockBackend/fetch';
+import Hero from "./Hero";
+import BrandingBar from "./BrandingBar";
+
+const Container = styled.div`
+  background-color: #FFF;
+  height: 100vh;
+  width: 100%;
+`;
 
 const PropertyDetail = () => {
   const { propertyId } = useParams();
@@ -16,11 +26,13 @@ const PropertyDetail = () => {
   if (listing === null) {
     return null;
   }
-
+  console.log(listing);
   return (
-    <div>
+    <Container>
+      <BrandingBar listingCompany={listing.listing.listingCompany} />
+      <Hero />
       this is property detail page and the id is {listing.listing.id}
-    </div>
+    </Container>
   )
 };
 
