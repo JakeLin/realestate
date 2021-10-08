@@ -8,14 +8,18 @@ const PropertyDetail = () => {
   
   const [listing, setListing] = useState(null);
   useEffect(() => {
-    get().then((response) => {
+    get(propertyId).then((response) => {
       setListing(response.data);
     });
-  }, []);
+  }, [propertyId]);
+
+  if (listing === null) {
+    return null;
+  }
 
   return (
     <div>
-      this is property detail page and the id is {propertyId}
+      this is property detail page and the id is {listing.listing.id}
     </div>
   )
 };

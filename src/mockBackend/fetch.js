@@ -19,7 +19,7 @@ const getSearchResults = () => {
   });
 };
 
-const getPropertyDetail = () => {
+const getPropertyDetail = (propertyId) => {
   const delay = Math.floor(Math.random() * 1000);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
