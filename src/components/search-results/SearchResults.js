@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import ListingCard from './ListingCard';
-import { getSearchResults as get } from '../mockBackend/fetch';
+import PropertyCard from './PropertyCard';
+import { getSearchResults as get } from '../../mockBackend/fetch';
 
 const Container = styled.div`
   background-color: #E5E5E5;
@@ -23,7 +23,7 @@ const SearchResults = () => {
     <Container>
       <div>
         {listings.map((item) => {
-          return <ListingCard listing={item} key={item.listing.id} />
+          return <PropertyCard listing={item} key={item.listing.id} />
         })}
       </div>
     </Container>

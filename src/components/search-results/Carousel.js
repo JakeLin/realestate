@@ -20,11 +20,19 @@ const ButtonsContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Button = styled.button`
   border: 0px;
   background-color: transparent;
+  height: 100px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #00000073;
+
+  }
 `;
 
 const Carousel = (props) => {
@@ -36,7 +44,8 @@ const Carousel = (props) => {
 
   const [imageIndex, setImageIndex] = useState(0);
 
-  const previousButtonClicked = () => {
+  const previousButtonClicked = (event) => {
+    event.preventDefault();
     setImageIndex((originalIndex) => {
       if (originalIndex === 0) {
         return imageUrls.length - 1;
@@ -46,7 +55,8 @@ const Carousel = (props) => {
     });
   };
 
-  const nextButtonClicked = () => {
+  const nextButtonClicked = (event) => {
+    event.preventDefault();
     setImageIndex ((originalIndex) =>{
       if (originalIndex === imageUrls.length - 1) {
         return 0;
@@ -55,7 +65,6 @@ const Carousel = (props) => {
       }
     });
   };
-
   
   return (
     <Container>
