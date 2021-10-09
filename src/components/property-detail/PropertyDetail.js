@@ -26,12 +26,11 @@ const PropertyDetail = () => {
   if (listing === null) {
     return null;
   }
-  console.log(listing);
+  
   return (
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
-      <Hero />
-      this is property detail page and the id is {listing.listing.id}
+      <Hero listing={listing.listing} />
     </Container>
   )
 };
