@@ -11,7 +11,6 @@ const SubImages = styled.div`
 `;
 
 const Gallery = (props) => {
-  console.log(props.images[0])
   const mainImageUrl = props.images[0].templatedUrl.replace('{size}', '800x480');
   const imageUrlLeft = props.images[1].templatedUrl.replace('{size}', '264x128');
   const imageUrlMiddle = props.images[2].templatedUrl.replace('{size}', '264x128');
