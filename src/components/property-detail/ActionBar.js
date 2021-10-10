@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Share, Star } from '@styled-icons/boxicons-regular';
 
 const Container = styled.div`
-  background-color: red;
   display: flex;
   justify-content: flex-end;
   padding-right: 16px;

@@ -2,7 +2,6 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: pink;
   font-family: "PangeaRegular";
   font-size: 34px;
   line-height: 44px;
