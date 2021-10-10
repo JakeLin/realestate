@@ -9,8 +9,6 @@ import BrandingBar from "./BrandingBar";
 
 const Container = styled.div`
   background-color: #FFF;
-  height: 100vh;
-  width: 100%;
 `;
 
 const PropertyDetail = () => {
@@ -31,6 +29,7 @@ const PropertyDetail = () => {
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
       <Hero listing={listing.listing} />
+      footer
     </Container>
   )
 };

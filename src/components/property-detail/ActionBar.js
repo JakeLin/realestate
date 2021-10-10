@@ -1,18 +1,29 @@
 
 import styled from "styled-components";
+import { Share, Star } from '@styled-icons/boxicons-regular';
 
 const Container = styled.div`
   background-color: red;
   display: flex;
   justify-content: flex-end;
-  background-color: red;
+  padding-right: 16px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  border: none;
+  background: none;
 `;
 
 const ActionBar = () => {
   return(
     <Container>
-      <button>A</button>
-      <button>B</button> 
+      <Button>
+        <Share size="24" />
+      </Button>
+      <Button>
+        <Star size="24" />
+      </Button> 
     </Container>
 
   );
