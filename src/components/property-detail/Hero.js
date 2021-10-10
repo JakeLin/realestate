@@ -12,7 +12,7 @@ const Container = styled.div`
 const Hero = (props) => {
   return(
     <Container>
-      <Summary propertySummaryDetails={props.listing}/>
+      <Summary listing={props.listing}/>
       <Gallery images={props.listing.media.images} />
     </Container>
   );
