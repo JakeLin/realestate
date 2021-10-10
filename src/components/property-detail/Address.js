@@ -8,7 +8,7 @@ const Container = styled.div`
   line-height: 44px;
   color: #333F48;
   font-weight: 600;
-  padding: 0 24px 0 24px;
+  padding-right: 24px;
 `;
 
 const Address = (props) => {
