@@ -2,7 +2,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  max-width: 400px;
+  background-color: red;
+  display: flex;
+  justify-content: flex-end;
   background-color: red;
 `;
 
