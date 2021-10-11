@@ -7,20 +7,19 @@ const SubImages = styled.div`
 
 const Gallery = (props) => {
   const mainImageUrl = props.images[0].templatedUrl.replace('{size}', '800x480');
-  const imageUrlLeft = props.images[1].templatedUrl.replace('{size}', '264x128');
-  const imageUrlMiddle = props.images[2].templatedUrl.replace('{size}', '264x128');
-  const imageUrlRight = props.images[3].templatedUrl.replace('{size}', '264x128');
+  const leftImageUrl = props.images[1].templatedUrl.replace('{size}', '264x128');
+  const middleImageUrl = props.images[2].templatedUrl.replace('{size}', '264x128');
+  const rightImageUrl = props.images[3].templatedUrl.replace('{size}', '264x128');
 
   return(
     <div>
       <img src={mainImageUrl} alt="" />
       <SubImages>
-        <img src={imageUrlLeft} alt="" />
-        <img src={imageUrlMiddle} alt="" />
-        <img src={imageUrlRight} alt="" />
+        <img src={leftImageUrl} alt="" />
+        <img src={middleImageUrl} alt="" />
+        <img src={rightImageUrl} alt="" />
       </SubImages>
     </div>
-    
   );
 }
 

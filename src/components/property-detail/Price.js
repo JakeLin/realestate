@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { File } from '@styled-icons/boxicons-regular';
 
-
 const Container = styled.div`
   padding-right: 24px;
   margin-top: 74px;

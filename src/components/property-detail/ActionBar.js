@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { Share, Star } from '@styled-icons/boxicons-regular';
 
