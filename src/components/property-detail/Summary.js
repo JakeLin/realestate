@@ -4,11 +4,11 @@ import ActionBar from "./ActionBar";
 import Address from "./Address";
 import GeneralFeatures from "../common/GeneralFeatures";
 import Price from "./Price";
+import RequestInspection from "./RequestInspection";
 
 const Container = styled.div`
   max-width: 400px;
   min-width: 320px;
-  background-color: lightgray;
   padding: 16px 0 16px 24px;
 `;
 
@@ -25,6 +25,7 @@ const Summary = (props) => {
         <GeneralFeatures generalFeatures={props.listing.generalFeatures} />
       </GeneralFeaturesContainer>
       <Price price={props.listing.price.display} statementUrl={props.listing.media.statementOfInformation.href} />
+      <RequestInspection />
     </Container>
   );
 }
