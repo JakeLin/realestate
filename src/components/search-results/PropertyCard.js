@@ -5,7 +5,7 @@ import BrandingBar from './BrandingBar';
 import Carousel from './Carousel';
 import Price from './Price';
 import Address from './Address';
-import GeneralFeatures from './GeneralFeatures';
+import GeneralFeatures from '../common/GeneralFeatures';
 
 const Container = styled.div`
   background-color: white;
