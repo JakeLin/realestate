@@ -21,7 +21,12 @@ const PropertyInfo = styled.div`
 
 const PropertyInfoStack = styled.div`
   width: 660px;
-  background-color: lightgray;
+`;
+
+const Divider = styled.div`
+  margin: 24px 0;
+  height: 1px;
+  background-color: #D2D5DA;
 `;
 
 const PropertyDetail = () => {
@@ -45,6 +50,7 @@ const PropertyDetail = () => {
       <PropertyInfo>
         <PropertyInfoStack>
           <HomeLoanCalculator />
+          <Divider />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
