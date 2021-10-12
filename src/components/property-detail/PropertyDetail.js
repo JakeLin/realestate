@@ -6,9 +6,22 @@ import styled from "styled-components";
 import { getPropertyDetail as get } from '../../mockBackend/fetch';
 import Hero from "./Hero";
 import BrandingBar from "./BrandingBar";
+import HomeLoanCalculator from "./HomeLoanCalculator";
+import AgentFloatingWidget from "./AgentFloatingWidget";
 
 const Container = styled.div`
   background-color: #FFF;
+`;
+
+const PropertyInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+`;
+
+const PropertyInfoStack = styled.div`
+  width: 660px;
+  background-color: lightgray;
 `;
 
 const PropertyDetail = () => {
@@ -29,6 +42,13 @@ const PropertyDetail = () => {
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
       <Hero listing={listing.listing} />
+      <PropertyInfo>
+        <PropertyInfoStack>
+          <HomeLoanCalculator />
+        </PropertyInfoStack>
+        <AgentFloatingWidget />
+      </PropertyInfo>
+      
       footer
     </Container>
   )
