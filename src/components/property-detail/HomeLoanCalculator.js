@@ -1,15 +1,10 @@
 import styled from "styled-components";
 
+import { LinkExternal } from "@styled-icons/boxicons-regular";
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 660px;
-`;
-
-const CalculatorContainer = styled.div`
-  /* padding-top: 24px;
-  padding-bottom: 24px; */
-  background-color: pink;
 `;
 
 const Title = styled.div`
@@ -40,10 +35,21 @@ const Remarks = styled.div`
   margin-top: 4px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const Button = styled.button`
-  width: 94px;
-  height: 32px;
   padding: 6px 16px;
+  font-family: "PangeaRegular";
+  font-weight: 400;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #697684;
+  background-color: white;
 `;
 
 const HomeLoanContainer = styled.div`
@@ -53,23 +59,42 @@ const HomeLoanContainer = styled.div`
 `;
 
 const HomeLoanScheme = styled.div`
-  background-color: green;
   width: 50%;
+  text-align: right;
 `;
 
+const HomeLoanSchemeLink = styled.a`
+  text-decoration: none;
+  font-family: "PangeaRegular";
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #697684;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 const HomeLoanCalculator = () => {
   return(
     <Container>
       <HomeLoanContainer>
-        <CalculatorContainer>
+        <div>
           <Title>HOME LOAN CALCULATOR</Title>
           <RepaymentAmount>$2,303/month</RepaymentAmount>
           <Remarks>estimated repayment</Remarks>
-        </CalculatorContainer>
-        <Button>Calculate</Button>
+        </div>
+        <ButtonContainer>
+          <Button>Calculate</Button>
+        </ButtonContainer>
       </HomeLoanContainer>
-      <HomeLoanScheme>First Home Loan Deposit Scheme</HomeLoanScheme>
+      <HomeLoanScheme>
+        <HomeLoanSchemeLink target="_blank" href="https://www.realestate.com.au/home-loans/guides/all-about-the-first-home-loan-deposit-scheme">
+          First Home Loan Deposit Scheme<br />
+          Are you eligible for the scheme? <LinkExternal size="16"/>
+        </HomeLoanSchemeLink>
+      </HomeLoanScheme>
     </Container>
   );
 }

@@ -21,6 +21,7 @@ const PropertyInfo = styled.div`
 
 const PropertyInfoStack = styled.div`
   width: 660px;
+  background-color: lightgray;
 `;
 
 const PropertyDetail = () => {
