@@ -38,6 +38,7 @@ const Remarks = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  padding-right: 36px;
 `;
 
 const Button = styled.button`
@@ -92,7 +93,7 @@ const HomeLoanCalculator = () => {
       <HomeLoanScheme>
         <HomeLoanSchemeLink target="_blank" href="https://www.realestate.com.au/home-loans/guides/all-about-the-first-home-loan-deposit-scheme">
           First Home Loan Deposit Scheme<br />
-          Are you eligible for the scheme? <LinkExternal size="16"/>
+          Are you eligible for the scheme? <LinkExternal size="14"/>
         </HomeLoanSchemeLink>
       </HomeLoanScheme>
     </Container>
