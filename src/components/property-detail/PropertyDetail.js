@@ -8,6 +8,7 @@ import Hero from "./Hero";
 import BrandingBar from "./BrandingBar";
 import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
+import Map from "./Map";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -20,7 +21,7 @@ const PropertyInfo = styled.div`
 `;
 
 const PropertyInfoStack = styled.div`
-  width: 660px;
+  width: 640px;
 `;
 
 const Divider = styled.div`
@@ -51,10 +52,10 @@ const PropertyDetail = () => {
         <PropertyInfoStack>
           <HomeLoanCalculator />
           <Divider />
+          <Map />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
-      
       footer
     </Container>
   )
