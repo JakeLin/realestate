@@ -5,20 +5,23 @@ const StyledMapContainer = styled(MapContainer)`
   height: 230px;
 `;
 
-const Map = () => {
+const Map = (props) => {
+  console.log(props.map)
+  const latlon = [props.map.geocode.latitude, props.map.geocode.longitude];
+
   return(
-    <StyledMapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    <StyledMapContainer center={latlon} zoom={14} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[51.505, -0.09]}>
+      <Marker position={latlon}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          {props.map.fullAddress}
         </Popup>
       </Marker>
     </StyledMapContainer>
   ); 
-}
+};
 
 export default Map;

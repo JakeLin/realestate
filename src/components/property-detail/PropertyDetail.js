@@ -52,7 +52,7 @@ const PropertyDetail = () => {
         <PropertyInfoStack>
           <HomeLoanCalculator />
           <Divider />
-          <Map />
+          <Map map={listing.listing.address.display}/>
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
