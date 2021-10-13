@@ -30,7 +30,6 @@ const StyledFile = styled(File)`
 `;
 
 const Price = (props) => {
-  console.log(props)
   return(
     <Container>
       <PriceContainer>

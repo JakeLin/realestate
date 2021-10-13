@@ -8,6 +8,7 @@ import Hero from "./Hero";
 import BrandingBar from "./BrandingBar";
 import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
+import Map from "./Map";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -20,8 +21,13 @@ const PropertyInfo = styled.div`
 `;
 
 const PropertyInfoStack = styled.div`
-  width: 660px;
-  background-color: lightgray;
+  width: 640px;
+`;
+
+const Divider = styled.div`
+  margin: 24px 0;
+  height: 1px;
+  background-color: #D2D5DA;
 `;
 
 const PropertyDetail = () => {
@@ -45,10 +51,11 @@ const PropertyDetail = () => {
       <PropertyInfo>
         <PropertyInfoStack>
           <HomeLoanCalculator />
+          <Divider />
+          <Map map={listing.listing.address.display}/>
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
-      
       footer
     </Container>
   )
