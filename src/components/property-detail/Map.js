@@ -6,7 +6,6 @@ const StyledMapContainer = styled(MapContainer)`
 `;
 
 const Map = (props) => {
-  console.log(props.map)
   const latlon = [props.map.geocode.latitude, props.map.geocode.longitude];
 
   return(
