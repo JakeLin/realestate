@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { SearchAlt2 } from "@styled-icons/boxicons-regular";
 
 const Container = styled.div`
   font-family: "PangeaRegular";
