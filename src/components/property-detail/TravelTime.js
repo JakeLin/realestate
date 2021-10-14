@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   font-family: "PangeaRegular";
-  margin: 24px 0 24px 0;
+  margin: 24px 0;
 `;
 
 const Title = styled.div`
@@ -16,7 +16,7 @@ const FromAddress = styled.div`
   font-weight: 300;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
+  color: #000;
   margin-top: 16px;
   font-family: "PangeaLight";
 `;
@@ -24,7 +24,6 @@ const FromAddress = styled.div`
 const DestinationContainer = styled.div`
   margin-top: 24px;
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 `;
@@ -59,7 +58,6 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  
 `;
 
 const Button = styled.button`

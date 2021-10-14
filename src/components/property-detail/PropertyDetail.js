@@ -44,7 +44,7 @@ const PropertyDetail = () => {
   if (listing === null) {
     return null;
   }
-  console.log(listing)
+
   return (
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
@@ -53,9 +53,9 @@ const PropertyDetail = () => {
         <PropertyInfoStack>
           <HomeLoanCalculator />
           <Divider />
-          <Map mapAddress={listing.listing.address.display}/>
+          <Map mapAddress={listing.listing.address.display} />
           <Divider />
-          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress}/>
+          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress} />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
