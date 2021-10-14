@@ -6,7 +6,7 @@ const StyledMapContainer = styled(MapContainer)`
 `;
 
 const Map = (props) => {
-  const latlon = [props.map.geocode.latitude, props.map.geocode.longitude];
+  const latlon = [props.mapAddress.geocode.latitude, props.mapAddress.geocode.longitude];
 
   return(
     <StyledMapContainer center={latlon} zoom={14} scrollWheelZoom={true}>
@@ -16,7 +16,7 @@ const Map = (props) => {
       />
       <Marker position={latlon}>
         <Popup>
-          {props.map.fullAddress}
+          {props.mapAddress.fullAddress}
         </Popup>
       </Marker>
     </StyledMapContainer>

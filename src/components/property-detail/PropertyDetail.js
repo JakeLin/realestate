@@ -9,6 +9,7 @@ import BrandingBar from "./BrandingBar";
 import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
 import Map from "./Map";
+import TravelTime from "./TravelTime";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -43,7 +44,7 @@ const PropertyDetail = () => {
   if (listing === null) {
     return null;
   }
-  
+
   return (
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
@@ -52,7 +53,9 @@ const PropertyDetail = () => {
         <PropertyInfoStack>
           <HomeLoanCalculator />
           <Divider />
-          <Map map={listing.listing.address.display}/>
+          <Map mapAddress={listing.listing.address.display} />
+          <Divider />
+          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress} />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
