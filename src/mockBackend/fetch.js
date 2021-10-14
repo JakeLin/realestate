@@ -8,6 +8,7 @@
 
 import searchResultsData from "./searchResultsData";
 import propertyDetailData from "./propertyDetailData";
+import travelTimeData from "./travelTimeData";
 
 const getSearchResults = () => {
   const delay = Math.floor(Math.random() * 1000);
@@ -29,4 +30,14 @@ const getPropertyDetail = (propertyId) => {
   });
 };
 
-export { getSearchResults, getPropertyDetail };
+const getTrevalTime = (from, to) => {
+  const delay = Math.floor(Math.random() * 1000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const response = { status: 200, data: travelTimeData };
+      resolve(response);
+    }, delay);
+  });
+};
+
+export { getSearchResults, getPropertyDetail, getTrevalTime };
