@@ -4,6 +4,12 @@
     url("./fonts/Pangea/PangeaTrial-Regular.woff") format("truetype");
 }
 
+@font-face {
+  font-family: "PangeaLight";
+    src: local("PangeaLight"),
+      url("./fonts/Pangea/PangeaTrial-Light.woff") format("truetype");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
