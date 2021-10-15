@@ -52,6 +52,9 @@ const InputBox = styled.input`
   padding: 12px 16px;
   box-sizing: border-box;
   margin-top: 4px;
+  &:focus {
+    outline-color: #000;
+  };
 `;
 
 const ButtonContainer = styled.div`
