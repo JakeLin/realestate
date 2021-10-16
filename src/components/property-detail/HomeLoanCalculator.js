@@ -51,6 +51,13 @@ const Button = styled.button`
   border-radius: 3px;
   border-color: #697684;
   background-color: white;
+  color: #333F48;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(247, 248, 249);
+    border: 0.0625rem solid rgb(51, 63, 72);
+  }
 `;
 
 const HomeLoanContainer = styled.div`

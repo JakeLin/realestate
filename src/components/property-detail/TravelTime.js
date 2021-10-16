@@ -66,16 +66,29 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.button`
-  border: 1px;
-  border-style: solid;
-  border-color:  #E9EBED;
-  border-radius: 3px;
-  background-color: white;
   padding: 12px 24px;
   margin-top: 16px;
   font-size: 16px;
   line-height: 24px;
-  color: #A5ADB5;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #697684;
+  background-color: white;
+  color: #333F48;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(247, 248, 249);
+    border: 0.0625rem solid rgb(51, 63, 72);
+  }
+
+  &:disabled {
+    border-color:  #E9EBED;
+    color: #A5ADB5;
+    cursor: not-allowed;
+    background-color: white;
+  }
 `;
 
 const TravelTime = (props) => {
@@ -88,6 +101,10 @@ const TravelTime = (props) => {
 
   const handleNameChange = (event) => {
     setName(event.target.value);
+  };
+
+  const isAddLocationButtonDisabled = () => {
+    return to.trim().length === 0;
   };
 
   return(
@@ -107,7 +124,7 @@ const TravelTime = (props) => {
         </InputBoxContainer>
       </DestinationContainer>
       <ButtonContainer>
-        <Button>Add location</Button>
+        <Button disabled={isAddLocationButtonDisabled()}>Add location</Button>
       </ButtonContainer>
       <div>
         {to}
