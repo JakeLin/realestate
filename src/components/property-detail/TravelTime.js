@@ -80,9 +80,14 @@ const Button = styled.button`
 
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
+  const [name, setName] = useState('');
 
-  const handleToChange = (e) => {
-    setTo(e.target.value);
+  const handleToChange = (event) => {
+    setTo(event.target.value);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   return(
@@ -97,7 +102,7 @@ const TravelTime = (props) => {
         </InputBoxContainer>
         <InputBoxContainer>
           <InputBoxName>Name
-            <InputBox type="text" placeholder="Name your destination(optional)" />
+            <InputBox type="text" placeholder="Name your destination(optional)" value={name} onChange={handleNameChange} />
           </InputBoxName>
         </InputBoxContainer>
       </DestinationContainer>
@@ -106,6 +111,7 @@ const TravelTime = (props) => {
       </ButtonContainer>
       <div>
         {to}
+        {name}
       </div>
     </Container>
   )
