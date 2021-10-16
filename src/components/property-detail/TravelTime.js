@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { useState } from 'react';
+
 const Container = styled.div`
   font-family: "PangeaRegular";
   margin: 24px 0;
@@ -77,6 +79,12 @@ const Button = styled.button`
 `;
 
 const TravelTime = (props) => {
+  const [to, setTo] = useState('');
+
+  const handleToChange = (e) => {
+    setTo(e.target.value);
+  };
+
   return(
     <Container>
       <Title>Your travel time</Title>
@@ -84,7 +92,7 @@ const TravelTime = (props) => {
       <DestinationContainer>
         <InputBoxContainer>
           <InputBoxName>To
-            <InputBox type="text" placeholder="Location address" />
+            <InputBox type="text" placeholder="Location address" value={to} onChange={handleToChange} />
           </InputBoxName>
         </InputBoxContainer>
         <InputBoxContainer>
@@ -96,8 +104,11 @@ const TravelTime = (props) => {
       <ButtonContainer>
         <Button>Add location</Button>
       </ButtonContainer>
+      <div>
+        {to}
+      </div>
     </Container>
   )
-}
+};
 
 export default TravelTime;
