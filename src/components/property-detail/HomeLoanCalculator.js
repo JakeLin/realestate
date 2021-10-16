@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-family: "PangeaRegular";
   font-weight: 600;
   font-size: 12px;

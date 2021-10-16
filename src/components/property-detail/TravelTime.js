@@ -5,7 +5,7 @@ const Container = styled.div`
   margin: 24px 0;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-weight: 600;
   font-size: 20px;
   line-height: 26px;
@@ -32,7 +32,7 @@ const InputBoxContainer = styled.div`
   width: 49.5%;
 `;
 
-const InputBoxName = styled.div`
+const InputBoxName = styled.label`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -83,12 +83,14 @@ const TravelTime = (props) => {
       <FromAddress>From {props.travelFromAddress}</FromAddress>
       <DestinationContainer>
         <InputBoxContainer>
-          <InputBoxName>To</InputBoxName>
-          <InputBox type="text" placeholder="Location address" />
+          <InputBoxName>To
+            <InputBox type="text" placeholder="Location address" />
+          </InputBoxName>
         </InputBoxContainer>
         <InputBoxContainer>
-          <InputBoxName>Name</InputBoxName>
-          <InputBox type="text" placeholder="Name your destination(optional)" />
+          <InputBoxName>Name
+            <InputBox type="text" placeholder="Name your destination(optional)" />
+          </InputBoxName>
         </InputBoxContainer>
       </DestinationContainer>
       <ButtonContainer>
