@@ -94,6 +94,7 @@ const Button = styled.button`
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
+  const [addresses, setAddresses] = useState([]);
 
   const handleToChange = (event) => {
     setTo(event.target.value);
@@ -107,10 +108,19 @@ const TravelTime = (props) => {
     return to.trim().length === 0;
   };
 
+  const handleButtonClick = () => {
+    setAddresses((previousAddresses) => {
+      return [...previousAddresses, to];
+    }); 
+  };
+
   return(
     <Container>
       <Title>Your travel time</Title>
       <FromAddress>From {props.travelFromAddress}</FromAddress>
+      <div>
+        {addresses}
+      </div>
       <DestinationContainer>
         <InputBoxContainer>
           <InputBoxName>To
@@ -124,7 +134,7 @@ const TravelTime = (props) => {
         </InputBoxContainer>
       </DestinationContainer>
       <ButtonContainer>
-        <Button disabled={isAddLocationButtonDisabled()}>Add location</Button>
+        <Button disabled={isAddLocationButtonDisabled()} onClick={handleButtonClick}>Add location</Button>
       </ButtonContainer>
       <div>
         {to}
