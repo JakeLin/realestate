@@ -91,6 +91,20 @@ const Button = styled.button`
   }
 `;
 
+const Divider = styled.div`
+  margin: 24px 0;
+  height: 1px;
+  background-color: rgb(233, 235, 237);
+`;
+
+const Address = styled.span`
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(51, 63, 72);
+  font-family: "PangeaLight";
+`;
+
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
@@ -118,13 +132,16 @@ const TravelTime = (props) => {
     <Container>
       <Title>Your travel time</Title>
       <FromAddress>From {props.travelFromAddress}</FromAddress>
-      <ul>
+      <div>
         {
           addresses.map((address) =>
-            <li>{address}</li>
+            <div>
+              <Address>{address}</Address>
+              <Divider />
+            </div>
           )
         }
-      </ul>
+      </div>
       <DestinationContainer>
         <InputBoxContainer>
           <InputBoxName>To
