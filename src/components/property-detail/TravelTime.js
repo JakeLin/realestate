@@ -113,6 +113,29 @@ const Address = styled.div`
   font-family: "PangeaLight";
 `;
 
+const TravelTimeItemContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const RemoveButton = styled.button`
+  padding: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #697684;
+  background-color: white;
+  color: #333F48;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(247, 248, 249);
+    border: 0.0625rem solid rgb(51, 63, 72);
+  }
+`;
+
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
@@ -133,7 +156,15 @@ const TravelTime = (props) => {
   const handleButtonClick = () => {
     setTravelItems((previousTravelItems) => {
       return [...previousTravelItems, {address: to, name: name}];
-    }); 
+    });
+  };
+
+  const handleRemoveClick = (indexToRemove) => {
+    setTravelItems((previousTravelItems) => {
+      return previousTravelItems.filter((item, index) => {
+        return index !== indexToRemove;
+      });
+    });
   };
 
   return(
@@ -142,10 +173,15 @@ const TravelTime = (props) => {
       <FromAddress>From {props.travelFromAddress}</FromAddress>
       <div>
         {
-          travelItems.map((item) =>
+          travelItems.map((item, index) =>
             <div>
-              <Name>{item.name}</Name>
-              <Address>{item.address}</Address>
+              <TravelTimeItemContainer>
+                <div>
+                  <Name>{item.name}</Name>
+                  <Address>{item.address}</Address>
+                </div>
+                <RemoveButton onClick={() => handleRemoveClick(index)}>Remove</RemoveButton>
+              </TravelTimeItemContainer>
               <Divider />
             </div>
           )
