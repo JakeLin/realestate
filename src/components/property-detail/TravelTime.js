@@ -118,9 +118,13 @@ const TravelTime = (props) => {
     <Container>
       <Title>Your travel time</Title>
       <FromAddress>From {props.travelFromAddress}</FromAddress>
-      <div>
-        {addresses}
-      </div>
+      <ul>
+        {
+          addresses.map((address) =>
+            <li>{address}</li>
+          )
+        }
+      </ul>
       <DestinationContainer>
         <InputBoxContainer>
           <InputBoxName>To
