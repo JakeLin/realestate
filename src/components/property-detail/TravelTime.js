@@ -136,6 +136,88 @@ const RemoveButton = styled.button`
   }
 `;
 
+const TravelTypes = styled.div`
+  display: flex;
+  border-bottom: 1px solid rgb(233, 235, 237);
+  margin-bottom: 24px;
+`;
+
+const TravelTypeButton = styled.button`
+  padding: 8px 12px;
+  color: rgb(51, 63, 72);
+  font-family: "PangeaRegular";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const SelectedIndicator = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: rgb(228, 0, 43);
+`;
+
+const TravelItems = (props) => {
+  
+  const [selectedTravelType, setSelectedTravelType] = useState('Driving');
+
+  const shouldDisplaySelectedIndicator = (travelType) => {
+    return selectedTravelType === travelType;
+  };
+
+  const handleTravelTypeButtonClick = (travelType) => {
+    setSelectedTravelType(travelType);
+  };
+
+  if (props.travelItems.length === 0) {
+    return null;
+  }
+
+  return(
+    <div>
+      <TravelTypes>
+        <div>
+          <TravelTypeButton onClick={() => handleTravelTypeButtonClick('Driving')}>Driving</TravelTypeButton>
+          { shouldDisplaySelectedIndicator('Driving') && <SelectedIndicator/> }
+        </div>
+        <div>
+          <TravelTypeButton onClick={() => handleTravelTypeButtonClick('Transit')}>Transit</TravelTypeButton>
+          { shouldDisplaySelectedIndicator('Transit') && <SelectedIndicator/> }
+        </div>
+        <div>
+          <TravelTypeButton onClick={() => handleTravelTypeButtonClick('Walking')}>Walking</TravelTypeButton>
+          { shouldDisplaySelectedIndicator('Walking') && <SelectedIndicator/> }
+        </div>
+        <div>
+          <TravelTypeButton onClick={() => handleTravelTypeButtonClick('Cycling')}>Cycling</TravelTypeButton>
+          { shouldDisplaySelectedIndicator('Cycling') && <SelectedIndicator/> }
+        </div>
+      </TravelTypes>
+      {
+        props.travelItems.map((item, index) =>
+          <div>
+            <TravelTimeItemContainer>
+              <div>
+                <Name>{item.name}</Name>
+                <Address>{item.address}</Address>
+              </div>
+              <RemoveButton onClick={() => props.handleRemoveClick(index)}>Remove</RemoveButton>
+            </TravelTimeItemContainer>
+            <Divider />
+          </div>
+        )
+      }
+    </div>
+  );
+};
+
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
@@ -172,20 +254,7 @@ const TravelTime = (props) => {
       <Title>Your travel time</Title>
       <FromAddress>From {props.travelFromAddress}</FromAddress>
       <div>
-        {
-          travelItems.map((item, index) =>
-            <div>
-              <TravelTimeItemContainer>
-                <div>
-                  <Name>{item.name}</Name>
-                  <Address>{item.address}</Address>
-                </div>
-                <RemoveButton onClick={() => handleRemoveClick(index)}>Remove</RemoveButton>
-              </TravelTimeItemContainer>
-              <Divider />
-            </div>
-          )
-        }
+        <TravelItems travelItems={travelItems} handleRemoveClick={handleRemoveClick} />
       </div>
       <DestinationContainer>
         <InputBoxContainer>
