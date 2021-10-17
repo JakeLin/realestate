@@ -97,7 +97,15 @@ const Divider = styled.div`
   background-color: rgb(233, 235, 237);
 `;
 
-const Address = styled.span`
+const Name = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(51, 63, 72);
+  font-family: "PangeaRegular";
+`;
+
+const Address = styled.div`
   font-weight: 300;
   font-size: 14px;
   line-height: 20px;
@@ -108,7 +116,7 @@ const Address = styled.span`
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
-  const [addresses, setAddresses] = useState([]);
+  const [travelItems, setTravelItems] = useState([]);
 
   const handleToChange = (event) => {
     setTo(event.target.value);
@@ -123,8 +131,8 @@ const TravelTime = (props) => {
   };
 
   const handleButtonClick = () => {
-    setAddresses((previousAddresses) => {
-      return [...previousAddresses, to];
+    setTravelItems((previousTravelItems) => {
+      return [...previousTravelItems, {address: to, name: name}];
     }); 
   };
 
@@ -134,9 +142,10 @@ const TravelTime = (props) => {
       <FromAddress>From {props.travelFromAddress}</FromAddress>
       <div>
         {
-          addresses.map((address) =>
+          travelItems.map((item) =>
             <div>
-              <Address>{address}</Address>
+              <Name>{item.name}</Name>
+              <Address>{item.address}</Address>
               <Divider />
             </div>
           )
@@ -158,8 +167,10 @@ const TravelTime = (props) => {
         <Button disabled={isAddLocationButtonDisabled()} onClick={handleButtonClick}>Add location</Button>
       </ButtonContainer>
       <div>
-        {to}
-        {name}
+        to: {to}
+      </div>
+      <div>
+        name: {name}
       </div>
     </Container>
   )
