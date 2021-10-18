@@ -30,7 +30,7 @@ const getPropertyDetail = (propertyId) => {
   });
 };
 
-const getTrevalTime = (from, to) => {
+const getTrevalTime = (from, to, travelType) => {
   const delay = Math.floor(Math.random() * 1000);
   return new Promise((resolve, reject) => {
     setTimeout(() => {

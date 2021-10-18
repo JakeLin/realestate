@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react';
 import styled from "styled-components";
 
-import { useState } from 'react';
+import { getTrevalTime as get } from '../../mockBackend/fetch'
 
 const Container = styled.div`
   font-family: "PangeaRegular";
@@ -164,9 +165,30 @@ const SelectedIndicator = styled.div`
   background-color: rgb(228, 0, 43);
 `;
 
+const TravelTimeDuration = styled.div`
+  color: rgb(51, 63, 72);
+  font-family: "PangeaRegular";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+`;
+
+const TravelDistance = styled.div`
+  color: rgb(51, 63, 72);
+  font-family: "PangeaLight";
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+`;
+
 const TravelItems = (props) => {
-  
   const [selectedTravelType, setSelectedTravelType] = useState('Driving');
+
+  // useEffect(() => {
+  //   get(propertyId).then((response) => {
+  //     setListing(response.data);
+  //   });
+  // }, [selectedTravelType]);
 
   const shouldDisplaySelectedIndicator = (travelType) => {
     return selectedTravelType === travelType;
@@ -208,6 +230,10 @@ const TravelItems = (props) => {
                 <Name>{item.name}</Name>
                 <Address>{item.address}</Address>
               </div>
+              <div>
+                <TravelTimeDuration>3 Hours 20 Minutes</TravelTimeDuration>
+                <TravelDistance>200 km</TravelDistance>
+              </div>
               <RemoveButton onClick={() => props.handleRemoveClick(index)}>Remove</RemoveButton>
             </TravelTimeItemContainer>
             <Divider />
@@ -243,7 +269,7 @@ const TravelTime = (props) => {
 
   const handleRemoveClick = (indexToRemove) => {
     setTravelItems((previousTravelItems) => {
-      return previousTravelItems.filter((item, index) => {
+      return previousTravelItems.filter((unusedItem, index) => {
         return index !== indexToRemove;
       });
     });
