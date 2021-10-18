@@ -9,7 +9,7 @@ import BrandingBar from "./BrandingBar";
 import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
 import Map from "./Map";
-import TravelTime from "./TravelTime";
+import TravelTimeBackup from "./TravelTimeBackup";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -55,7 +55,7 @@ const PropertyDetail = () => {
           <Divider />
           <Map mapAddress={listing.listing.address.display} />
           <Divider />
-          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress} />
+          <TravelTimeBackup travelFromAddress={listing.listing.address.display.fullAddress} />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>

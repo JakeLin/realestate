@@ -6,6 +6,7 @@ import { getTrevalTime as get } from '../../mockBackend/fetch'
 const Container = styled.div`
   font-family: "PangeaRegular";
   margin: 24px 0;
+  background-color: lightsalmon;
 `;
 
 const Title = styled.h2`
@@ -244,7 +245,7 @@ const TravelItems = (props) => {
   );
 };
 
-const TravelTime = (props) => {
+const TravelTimeBackup = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
   const [travelItems, setTravelItems] = useState([]);
@@ -307,4 +308,4 @@ const TravelTime = (props) => {
   )
 };
 
-export default TravelTime;
+export default TravelTimeBackup;
