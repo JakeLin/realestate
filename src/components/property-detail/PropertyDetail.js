@@ -10,6 +10,7 @@ import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
 import Map from "./Map";
 import TravelTimeBackup from "./TravelTimeBackup";
+import TravelTime from "./TravelTime";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -42,7 +43,7 @@ const PropertyDetail = () => {
   }, [propertyId]);
 
   if (listing === null) {
-    return null;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -56,6 +57,8 @@ const PropertyDetail = () => {
           <Map mapAddress={listing.listing.address.display} />
           <Divider />
           <TravelTimeBackup travelFromAddress={listing.listing.address.display.fullAddress} />
+          <Divider />
+          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress}/>
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
