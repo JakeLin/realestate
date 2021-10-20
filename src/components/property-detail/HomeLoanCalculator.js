@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Title = styled.div`
+const Title = styled.h2`
   font-family: "PangeaRegular";
   font-weight: 600;
   font-size: 12px;
@@ -51,6 +51,13 @@ const Button = styled.button`
   border-radius: 3px;
   border-color: #697684;
   background-color: white;
+  color: #333F48;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(247, 248, 249);
+    border: 0.0625rem solid rgb(51, 63, 72);
+  }
 `;
 
 const HomeLoanContainer = styled.div`
