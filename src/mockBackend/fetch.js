@@ -34,7 +34,7 @@ const getTrevalTime = (from, to, travelType) => {
   const delay = Math.floor(Math.random() * 1000);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const response = { status: 200, data: travelTimeData };
+      const response = { status: 200, data: travelTimeData() };
       resolve(response);
     }, delay);
   });

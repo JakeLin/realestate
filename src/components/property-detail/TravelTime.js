@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
+import { getTrevalTime as get } from '../../mockBackend/fetch';
 
 const Container = styled.div`
   font-family: "PangeaRegular";
@@ -186,6 +188,18 @@ const SelectedIndicator = styled.div`
 
 
 const TravelItem = (props) => {
+  const [travelTimeDuration, setTravelTimeDuration] = useState('Loading...');
+  const [travelDistance, setTravelDistance] = useState('');
+
+  useEffect(() => {
+    setTravelTimeDuration('Loading...');
+    setTravelDistance('');
+    get(props.from, props.item.address, props.travelType).then((response) => {
+      setTravelTimeDuration(response.data.time);
+      setTravelDistance(response.data.distance);
+    });
+  }, [props.from, props.item.address, props.travelType]);
+
   const handleRemoveClick = () => {
     props.setTravelItems((previousTravelItems) => {
       return previousTravelItems.filter((unusedItem, index) => {
@@ -203,8 +217,8 @@ const TravelItem = (props) => {
         </div>
         <TravelDetailsAndButton>
           <div>
-            <TravelTimeDuration>3 hours 5 mins</TravelTimeDuration>
-            <TravelDistance>20km</TravelDistance>
+            <TravelTimeDuration>{travelTimeDuration}</TravelTimeDuration>
+            <TravelDistance>{travelDistance}</TravelDistance>
           </div>
           <RemoveButton onClick={handleRemoveClick}>Remove</RemoveButton>
         </TravelDetailsAndButton>
@@ -218,7 +232,7 @@ const TravelItemContainer = (props) => {
   return(
     props.travelItems.map((item, index) => {
       return(
-        <TravelItem item={item} index={index} setTravelItems={props.setTravelItems} />
+        <TravelItem item={item} index={index} setTravelItems={props.setTravelItems} from={props.from} travelType={props.travelType} />
       )
     })
   );
@@ -228,6 +242,7 @@ const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
   const [travelItems, setTravelItems] = useState([]);
+  const [selectedIndicatorIndex, setSelectedIndicatorIndex] = useState(0);
 
   const handleToChange = (event) => {
     setTo(event.target.value);
@@ -243,43 +258,58 @@ const TravelTime = (props) => {
 
   const handleButtonClick = () => {
     setTravelItems(updateTravalItems);
+    setTo('');
+    setName('');
   };
 
   const isAddLocationButtonDisabled = () => {
     return to.length === 0;
   };
 
-  const TravelTypes = () => {
-    const [selectedIndicatorIndex, setSelectedIndicatorIndex] = useState(0);
-  
+  const TravelTypes = (props) => {
     return(
       <TravelTypeItems>
         <div>
-          <TravelTypeButton onClick={() => setSelectedIndicatorIndex(0)}>Driving</TravelTypeButton>
-          { selectedIndicatorIndex === 0 && <SelectedIndicator /> }
+          <TravelTypeButton onClick={() => props.setSelectedIndicatorIndex(0)}>Driving</TravelTypeButton>
+          { props.selectedIndicatorIndex === 0 && <SelectedIndicator /> }
         </div>
         <div>
-          <TravelTypeButton onClick={() => setSelectedIndicatorIndex(1)}>Transit</TravelTypeButton>
-          { selectedIndicatorIndex === 1 && <SelectedIndicator /> }
+          <TravelTypeButton onClick={() => props.setSelectedIndicatorIndex(1)}>Transit</TravelTypeButton>
+          { props.selectedIndicatorIndex === 1 && <SelectedIndicator /> }
         </div>
         <div>
-          <TravelTypeButton onClick={() => setSelectedIndicatorIndex(2)}>Walking</TravelTypeButton>
-          { selectedIndicatorIndex === 2 && <SelectedIndicator /> }
+          <TravelTypeButton onClick={() => props.setSelectedIndicatorIndex(2)}>Walking</TravelTypeButton>
+          { props.selectedIndicatorIndex === 2 && <SelectedIndicator /> }
         </div>
         <div>
-          <TravelTypeButton onClick={() => setSelectedIndicatorIndex(3)}>Cycling</TravelTypeButton>
-          { selectedIndicatorIndex === 3 && <SelectedIndicator /> }
+          <TravelTypeButton onClick={() => props.setSelectedIndicatorIndex(3)}>Cycling</TravelTypeButton>
+          { props.selectedIndicatorIndex === 3 && <SelectedIndicator /> }
         </div>
       </TravelTypeItems>
     )
+  };
+
+  const getTravelType = () => {
+    switch (selectedIndicatorIndex) {
+      case 0:
+        return 'driving';
+      case 1:
+        return 'transit';
+      case 2:
+        return 'walking';
+      case 3:
+        return 'cycling';
+      default:
+        return 'unknown';
+    } 
   };
 
   return(
     <Container>
       <Title>Your travel time</Title>
       <FromAddress>From {props.travelFromAddress}</FromAddress>
-      { travelItems.length > 0 && <TravelTypes /> }
-      <TravelItemContainer travelItems={travelItems} setTravelItems={setTravelItems} />
+      { travelItems.length > 0 && <TravelTypes selectedIndicatorIndex={selectedIndicatorIndex} setSelectedIndicatorIndex={setSelectedIndicatorIndex} /> }
+      <TravelItemContainer travelItems={travelItems} setTravelItems={setTravelItems} from={props.travelFromAddress} travelType={getTravelType()} />
       <DestinationContainer>
         <InputBoxContainer>
           <InputBoxName>To
