@@ -241,7 +241,7 @@ const TravelItemContainer = (props) => {
 const TravelTime = (props) => {
   const [to, setTo] = useState('');
   const [name, setName] = useState('');
-  const [travelItems, setTravelItems] = useState([]);
+  const [travelItems, setTravelItems] = useState([{address: '511 Church St, Richmond, Vic 3121', name: 'REA'}]);
   const [selectedIndicatorIndex, setSelectedIndicatorIndex] = useState(0);
 
   const handleToChange = (event) => {
@@ -323,7 +323,7 @@ const TravelTime = (props) => {
         </InputBoxContainer>
       </DestinationContainer>
       <ButtonContainer>
-          <AddLocationButton disabled={isAddLocationButtonDisabled()} onClick={handleButtonClick}>Add location</AddLocationButton>
+          { travelItems.length < 4 && <AddLocationButton disabled={isAddLocationButtonDisabled()} onClick={handleButtonClick}>Add location</AddLocationButton>}
       </ButtonContainer>
     </Container>
   );
