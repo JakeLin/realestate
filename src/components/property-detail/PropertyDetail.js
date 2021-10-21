@@ -10,7 +10,7 @@ import HomeLoanCalculator from "./HomeLoanCalculator";
 import AgentFloatingWidget from "./AgentFloatingWidget";
 import Map from "./Map";
 import TravelTime from "./TravelTime";
-// import PropertyDiscription from "./PropertyDiscription";
+import PropertyDiscription from "./PropertyDiscription";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -46,7 +46,8 @@ const PropertyDetail = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(listing)
+  const address = listing.listing.address.display.fullAddress;
+
   return (
     <Container>
       <BrandingBar listingCompany={listing.listing.listingCompany} />
@@ -57,8 +58,8 @@ const PropertyDetail = () => {
           <Divider />
           <Map mapAddress={listing.listing.address.display} />
           <Divider />
-          <TravelTime travelFromAddress={listing.listing.address.display.fullAddress}/>
-          {/* <PropertyDiscription /> */}
+          <TravelTime travelFromAddress={address}/>
+          <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>
