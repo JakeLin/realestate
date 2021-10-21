@@ -18,7 +18,7 @@ const Title = styled.h2`
   margin-top: 24px;
 `;
 
-const Address = styled.address`
+const Address = styled.div`
   font-family: "PangeaLight";
   font-weight: 600;
   font-size: 12px;
