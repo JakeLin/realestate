@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { ChevronDown, ChevronUp } from "@styled-icons/boxicons-regular";
 
 const Divider = styled.div`
   margin: 24px 0;
@@ -38,14 +39,30 @@ const DiscriptionText = styled.p`
   margin-top: 16px;
 `;
 
+const ReadMoreAndLessButton = styled.button`
+  font-family: "PangeaRegular";
+  font-size: 16px;
+  line-height: 24px;
+  color: #2B6ED2;
+  background: none;
+  border: none;
+  padding: 0;
+
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
+
 const PropertyDiscription = (props) => {
   const [shouldDisplayReadMore, setShouldDisplayReadMoreReadMore] = useState(true);
 
   const fullDescription = props.propertyDiscription.replace(/<br\/>/g, '\n');
   const shortDescription = fullDescription.substring(0, 300) + '...';
 
-  const readMoreLinkText = shouldDisplayReadMore ? 'Read More >>' : 'Read Less <<';
   const description = shouldDisplayReadMore ? shortDescription : fullDescription;
+  const readMoreLinkText = shouldDisplayReadMore ? 'Read more' : 'Read less';
+  const readMoreIcon = shouldDisplayReadMore ? <ChevronDown size="24" /> : <ChevronUp size="24" />
 
   const handleReadMoreClick = () => setShouldDisplayReadMoreReadMore(!shouldDisplayReadMore);
   
@@ -57,7 +74,7 @@ const PropertyDiscription = (props) => {
       <DiscriptionText>
         {description}
       </DiscriptionText>
-      <a onClick={handleReadMoreClick}>{readMoreLinkText}</a>
+      <ReadMoreAndLessButton onClick={handleReadMoreClick}>{readMoreLinkText} {readMoreIcon}</ReadMoreAndLessButton>
     </div>
   )
 };
