@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Wind, Bell, Arch, DoorOpen, Water, Dumbbell, PhoneCall, Group } from "@styled-icons/boxicons-regular";
 import styled from "styled-components";
 
@@ -30,6 +31,21 @@ const FeatureName=styled.span`
 `;
 
 const PropertyFeatures = (props) => {
+  const [shouldShowMoreFeatures, setShouldDisplayReadMoreReadMore] = useState(true);
+  
+  const getFeatureSubset = () => {
+    const propertyFeatures = props.propertyFeatures.slice(0, 4);
+    return propertyFeatures.map((item) => {
+      return <Feature>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
+    });
+  };
+
+  const getFeatureFullSet = () => {
+    return props.propertyFeatures.map((item) => {
+      return <Feature>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
+    });
+  };
+
   const getIcon = (id) => {
     switch (id) {
       case 'airConditioning':
@@ -55,11 +71,7 @@ const PropertyFeatures = (props) => {
     <div>
       <Title>Property features</Title>
       <FeaturesContainer>
-        {
-          props.propertyFeatures.map((item) => {
-            return <Feature>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
-          })
-        }
+        { shouldShowMoreFeatures ? getFeatureSubset() : getFeatureFullSet() }
       </FeaturesContainer>
     </div>
   )
