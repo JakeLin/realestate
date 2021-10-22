@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Wind, Bell, Arch, DoorOpen, Water, Dumbbell, PhoneCall, Group } from "@styled-icons/boxicons-regular";
 import styled from "styled-components";
+import { ChevronDown, ChevronUp } from "@styled-icons/boxicons-regular";
 
 const Title = styled.div`
   font-family: "PangeaRegular";
@@ -30,21 +31,24 @@ const FeatureName=styled.span`
   margin-left: 8px;
 `;
 
-const PropertyFeatures = (props) => {
-  const [shouldShowMoreFeatures, setShouldDisplayReadMoreReadMore] = useState(true);
-  
-  const getFeatureSubset = () => {
-    const propertyFeatures = props.propertyFeatures.slice(0, 4);
-    return propertyFeatures.map((item) => {
-      return <Feature>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
-    });
-  };
+const ShowButton = styled.button`
+  font-family: "PangeaRegular";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  background: none;
+  border: none;
+  margin-top: 24px;
+  color: #2B6ED2;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
 
-  const getFeatureFullSet = () => {
-    return props.propertyFeatures.map((item) => {
-      return <Feature>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
-    });
-  };
+const PropertyFeatures = (props) => {
+  const [shouldShowMoreFeatures, setShouldShowMoreFeatures] = useState(true);
 
   const getIcon = (id) => {
     switch (id) {
@@ -64,17 +68,48 @@ const PropertyFeatures = (props) => {
         return <PhoneCall size="24" />
       case 'outdoorEnt':
         return <Group size="24" />
+      default:
+        return null;
     }
   };
+
+  const featureFullSetTotal = props.propertyFeatures.length;
+  const featureSubsetTotal = 4;
+  const shouldDisplayReadMoreButton = featureFullSetTotal > featureSubsetTotal;
+  const getFeatureSubset = () => {
+    const propertyFeatures = props.propertyFeatures.slice(0, featureSubsetTotal);
+    return propertyFeatures.map((item) => {
+      return<Feature key={item.id}>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
+    });
+  };
+
+  const getFeatureFullSet = () => {
+    return props.propertyFeatures.map((item) => {
+      return <Feature key={item.id}>{getIcon(item.id)}<FeatureName>{item.displayLabel}</FeatureName></Feature>
+    });
+  };
+
+  const ButtonText = shouldShowMoreFeatures ? `Show more features (${featureFullSetTotal - featureSubsetTotal})` : 'Show fewer';
+
+  if (featureFullSetTotal === 0) {
+    return null;
+  }
 
   return(
     <div>
       <Title>Property features</Title>
       <FeaturesContainer>
         { shouldShowMoreFeatures ? getFeatureSubset() : getFeatureFullSet() }
+        {
+          shouldDisplayReadMoreButton && <ShowButton onClick={() => setShouldShowMoreFeatures(!shouldShowMoreFeatures)}>
+            {ButtonText}
+            {shouldShowMoreFeatures ? <ChevronDown size="24" /> : <ChevronUp size="24" />}
+          </ShowButton>
+        }
       </FeaturesContainer>
     </div>
-  )
+  );
 };
 
 export default PropertyFeatures;
+
