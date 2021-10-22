@@ -12,7 +12,7 @@ const Title = styled.div`
 `;
 
 const FeaturesContainer = styled.div`
-margin-top: 24px;
+  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
