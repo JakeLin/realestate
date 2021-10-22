@@ -13,7 +13,7 @@ const Title = styled.h2`
   color: #333F48;
 `;
 
-const FloorplanLink = styled.button`
+const FloorplanButton = styled.button`
   font-family: "PangeaRegular";
   font-weight: 400;
   font-size: 16px;
@@ -37,7 +37,7 @@ const FloorplansAndTours = () => {
   return(
     <Container>
       <Title>Floorplans and tours</Title>
-      <FloorplanLink><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanLink>
+      <FloorplanButton><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanButton>
     </Container>
   )
 };
