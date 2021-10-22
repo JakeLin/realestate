@@ -2,13 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ChevronDown, ChevronUp } from "@styled-icons/boxicons-regular";
 
-const Divider = styled.div`
-  margin: 24px 0;
-  height: 1px;
-  background-color: #D2D5DA;
-  margin-top: 24px;
-`;
-
 const Title = styled.h2`
   font-family: "PangeaRegular";
   font-weight: 600;
@@ -68,7 +61,6 @@ const PropertyDiscription = (props) => {
   
   return(
     <div>
-      <Divider />
       <Title>{props.propertyTitle}</Title>
       <Address>{props.address}</Address>
       <DiscriptionText>

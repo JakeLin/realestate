@@ -11,6 +11,7 @@ import AgentFloatingWidget from "./AgentFloatingWidget";
 import Map from "./Map";
 import TravelTime from "./TravelTime";
 import PropertyDiscription from "./PropertyDiscription";
+import PropertyFeatures from "./PropertyFeatures";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -59,7 +60,10 @@ const PropertyDetail = () => {
           <Map mapAddress={listing.listing.address.display} />
           <Divider />
           <TravelTime travelFromAddress={address}/>
+          <Divider />
           <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
+          <Divider />
+          <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
         </PropertyInfoStack>
         <AgentFloatingWidget />
       </PropertyInfo>

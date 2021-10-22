@@ -232,7 +232,7 @@ const TravelItemContainer = (props) => {
   return(
     props.travelItems.map((item, index) => {
       return(
-        <TravelItem item={item} index={index} setTravelItems={props.setTravelItems} from={props.from} travelType={props.travelType} />
+        <TravelItem key={index} item={item} index={index} setTravelItems={props.setTravelItems} from={props.from} travelType={props.travelType} />
       )
     })
   );
