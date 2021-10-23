@@ -13,6 +13,7 @@ import TravelTime from "./TravelTime";
 import PropertyDiscription from "./PropertyDiscription";
 import PropertyFeatures from "./PropertyFeatures";
 import FloorplansAndTours from "./FloorplansAndTours";
+import FullScreenGallery from "./FullScreenGallery";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -35,6 +36,7 @@ const Divider = styled.div`
 `;
 
 const PropertyDetail = () => {
+  const [shouldDisplayFullScreenGallery, setShouldDisplayFullScreenGallery] = useState(true);
   const { propertyId } = useParams();
   
   const [listing, setListing] = useState(null);
@@ -49,28 +51,34 @@ const PropertyDetail = () => {
   }
 
   const address = listing.listing.address.display.fullAddress;
-
+  
   return (
     <Container>
-      <BrandingBar listingCompany={listing.listing.listingCompany} />
-      <Hero listing={listing.listing} />
-      <PropertyInfo>
-        <PropertyInfoStack>
-          <HomeLoanCalculator />
-          <Divider />
-          <Map mapAddress={listing.listing.address.display} />
-          <Divider />
-          <TravelTime travelFromAddress={address}/>
-          <Divider />
-          <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
-          <Divider />
-          <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
-          <Divider />
-          <FloorplansAndTours />
-        </PropertyInfoStack>
-        <AgentFloatingWidget />
-      </PropertyInfo>
-      footer
+      {
+        shouldDisplayFullScreenGallery ? <FullScreenGallery floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} /> :
+        <div>
+          <BrandingBar listingCompany={listing.listing.listingCompany} />
+          <Hero listing={listing.listing} />
+          <PropertyInfo>
+            <PropertyInfoStack>
+              <HomeLoanCalculator />
+              <Divider />
+              <Map mapAddress={listing.listing.address.display} />
+              <Divider />
+              <TravelTime travelFromAddress={address}/>
+              <Divider />
+              <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
+              <Divider />
+              <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
+              <Divider />
+              <FloorplansAndTours />
+            </PropertyInfoStack>
+            <AgentFloatingWidget />
+          </PropertyInfo>
+          footer
+        </div>
+      }
+      
     </Container>
   )
 };
