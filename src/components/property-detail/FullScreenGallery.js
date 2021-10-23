@@ -12,7 +12,6 @@ const Container = styled.div`
   color: #fff;
   font-size: 14px;
   line-height: 44px;
-  opacity: 0.75;
 `;
 
 const TopBar = styled.div`
@@ -20,6 +19,7 @@ const TopBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
+  opacity: 0.75;
 `;
 
 const IconContainer = styled.button`
@@ -28,17 +28,23 @@ const IconContainer = styled.button`
   background: none;
   border: none;
   color: #fff;
-  opacity: 0.75;
 `;
 
 const Icon = styled.div`
   margin-right: 20px;
 `;
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
 const FullScreenGallery = (props) => {
 
   const imageUrls = props.images.map((item) => {
-    return item.templatedUrl.replace('{size}', '640x480')
+    return item.templatedUrl.replace('{size}', '1000x750')
    });
 
    const [imageIndex, setImageIndex] = useState(0);
@@ -46,7 +52,7 @@ const FullScreenGallery = (props) => {
   return(
     <Container>
       <TopBar>
-        <div>1/11</jjhj>
+        <div>1/11</div>
         <IconContainer>
           <Icon><BookContent size="24"/></Icon>
           <Icon><MoviePlay size="24"/></Icon>
@@ -54,8 +60,9 @@ const FullScreenGallery = (props) => {
         </IconContainer>
         <WindowClose size="24"/>
       </TopBar>
-      <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
-     
+      <ImageContainer>
+        <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
+      </ImageContainer>
     </Container>
   )
 };
