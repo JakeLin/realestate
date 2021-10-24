@@ -29,6 +29,10 @@ const IconContainer = styled.button`
   color: #fff;
 `;
 
+const Page = styled.div`
+  opacity: 0.75;
+`;
+
 const Icon = styled.div`
   margin-right: 20px;
   opacity: 0.75;
@@ -65,7 +69,7 @@ const FullScreenGallery = (props) => {
   return(
     <Container>
       <TopBar>
-        <div>1/11</div>
+        <Page>1/11</Page>
         <IconContainer>
           <Icon title="Floorplan"><BookContent size="24"/></Icon>
           <Icon title="Video"><MoviePlay size="24"/></Icon>
