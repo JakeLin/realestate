@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { BookContent, MoviePlay, Cube, WindowClose } from "@styled-icons/boxicons-regular";
+import styled, { css } from "styled-components";
+import { BookContent, MoviePlay, Cube, WindowClose, ChevronLeft, ChevronRight } from "@styled-icons/boxicons-regular";
 
 const Container = styled.div`
   position: absolute;
@@ -56,6 +56,39 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const buttonStyle = css`
+  opacity: 0.6;
+  background-color: #22272E;
+  color: white;
+  border: none;
+  height: 10%;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  };
+`;
+
+const LeftButton = styled.button`
+  ${buttonStyle};
+  border-radius: 0 5% 5% 0;
+`;
+
+const RightButton = styled.button`
+  ${buttonStyle}
+  border-radius: 5% 0 0 5%;
 `;
 
 const FullScreenGallery = (props) => {
@@ -79,6 +112,10 @@ const FullScreenGallery = (props) => {
       </TopBar>
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
+        <ButtonContainer>
+          <LeftButton title="Previous (arrow left)"><ChevronLeft size="88" width="44"/></LeftButton>
+          <RightButton title="Next (arrow right)"><ChevronRight size="88" width="44"/></RightButton>
+        </ButtonContainer>
       </ImageContainer>
     </Container>
   )
