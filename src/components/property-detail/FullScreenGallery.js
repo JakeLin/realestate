@@ -19,7 +19,6 @@ const TopBar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
-  opacity: 0.75;
 `;
 
 const IconContainer = styled.button`
@@ -32,6 +31,20 @@ const IconContainer = styled.button`
 
 const Icon = styled.div`
   margin-right: 20px;
+  opacity: 0.75;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+`;
+
+const WindowCloseContainer = styled.div`
+  opacity: 0.75;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -54,11 +67,11 @@ const FullScreenGallery = (props) => {
       <TopBar>
         <div>1/11</div>
         <IconContainer>
-          <Icon><BookContent size="24"/></Icon>
-          <Icon><MoviePlay size="24"/></Icon>
-          <Icon><Cube size="24"/></Icon>
+          <Icon title="Floorplan"><BookContent size="24"/></Icon>
+          <Icon title="Video"><MoviePlay size="24"/></Icon>
+          <Icon title="3D tour"><Cube size="24"/></Icon>
         </IconContainer>
-        <WindowClose size="24"/>
+        <WindowCloseContainer title="Closed (Esc)"><WindowClose size="24"/></WindowCloseContainer>
       </TopBar>
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
