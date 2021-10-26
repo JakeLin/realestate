@@ -36,7 +36,7 @@ const Divider = styled.div`
 `;
 
 const PropertyDetail = () => {
-  const [shouldDisplayFullScreenGallery, setShouldDisplayFullScreenGallery] = useState(true);
+  const [shouldDisplayFullScreenGallery, setShouldDisplayFullScreenGallery] = useState(false);
   const { propertyId } = useParams();
   
   const [listing, setListing] = useState(null);
@@ -46,16 +46,23 @@ const PropertyDetail = () => {
     });
   }, [propertyId]);
 
+  const openFullScreenGallery = () => {
+    setShouldDisplayFullScreenGallery(true);
+  };
+
+  const closeFullScreenGallery = () => {
+    setShouldDisplayFullScreenGallery(false);
+  };
+
   if (listing === null) {
     return <div>Loading...</div>;
   }
 
   const address = listing.listing.address.display.fullAddress;
-  
   return (
     <Container>
       {
-        shouldDisplayFullScreenGallery ? <FullScreenGallery floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} /> :
+        shouldDisplayFullScreenGallery ? <FullScreenGallery floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
         <div>
           <BrandingBar listingCompany={listing.listing.listingCompany} />
           <Hero listing={listing.listing} />
@@ -71,7 +78,7 @@ const PropertyDetail = () => {
               <Divider />
               <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
               <Divider />
-              <FloorplansAndTours />
+              <FloorplansAndTours openFullScreenImage={openFullScreenGallery}/>
             </PropertyInfoStack>
             <AgentFloatingWidget />
           </PropertyInfo>

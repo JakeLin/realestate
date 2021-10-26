@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BookContent } from "@styled-icons/boxicons-regular";
+import PropertyDiscription from "./PropertyDiscription";
 
 const Container = styled.div`
   margin-top: 24px;
@@ -33,11 +34,11 @@ const Icon = styled.span`
   margin-right: 8px;
 `;
 
-const FloorplansAndTours = () => {
+const FloorplansAndTours = (props) => {
   return(
     <Container>
       <Title>Floorplans and tours</Title>
-      <FloorplanButton><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanButton>
+      <FloorplanButton onClick={props.openFullScreenImage}><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanButton>
     </Container>
   )
 };
