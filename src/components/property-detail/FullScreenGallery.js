@@ -21,21 +21,21 @@ const TopBar = styled.div`
   padding: 0 12px;
 `;
 
-const IconContainer = styled.button`
+const IconContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  background: none;
-  border: none;
-  color: #fff;
 `;
 
 const Page = styled.div`
   opacity: 0.75;
 `;
 
-const Icon = styled.div`
+const Icon = styled.button`
   margin-right: 20px;
   opacity: 0.75;
+  background: none;
+  border: none;
+  color: #fff;
 
   &:hover {
     cursor: pointer;
@@ -124,12 +124,16 @@ const FullScreenGallery = (props) => {
     });
   };
 
+  const floorPlanButtonClicked = () => {
+    setImageIndex(imageUrls.length - 1);
+  };
+
   return(
     <Container>
       <TopBar>
         <Page>{imageIndex + 1}/{imageUrls.length}</Page>
         <IconContainer>
-          <Icon title="Floorplan"><BookContent size="24"/></Icon>
+          <Icon title="Floorplan" onClick={floorPlanButtonClicked}><BookContent size="24"/></Icon>
           <Icon title="Video"><MoviePlay size="24"/></Icon>
           <Icon title="3D tour"><Cube size="24"/></Icon>
         </IconContainer>
