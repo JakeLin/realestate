@@ -97,27 +97,32 @@ const FullScreenGallery = (props) => {
     return item.templatedUrl.replace('{size}', '1000x750')
    });
 
-   const [imageIndex, setImageIndex] = useState(0);
+  if (props.floorPlans.length > 0) {
+     const floorPlanImage = props.floorPlans[0].templatedUrl.replace('{size}', '1000x750');
+     imageUrls.push(floorPlanImage);
+  }
 
-   const previousButtonClicked = (event) => {
-     setImageIndex((originalIndex) => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const previousButtonClicked = (event) => {
+    setImageIndex((originalIndex) => {
       if (originalIndex === 0) {
         return imageUrls.length - 1;
       } else {
         return originalIndex - 1;
       }
-     });
-   };
+    });
+  };
 
-   const nextButtonClicked = (event) => {
-     setImageIndex((originalIndex) => {
-       if (originalIndex === imageUrls.length - 1) {
-         return 0;
-       } else {
-         return originalIndex + 1;
-       }
-     });
-   };
+  const nextButtonClicked = (event) => {
+    setImageIndex((originalIndex) => {
+      if (originalIndex === imageUrls.length - 1) {
+        return 0;
+      } else {
+        return originalIndex + 1;
+      }
+    });
+  };
 
   return(
     <Container>
