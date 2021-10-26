@@ -99,6 +99,26 @@ const FullScreenGallery = (props) => {
 
    const [imageIndex, setImageIndex] = useState(0);
 
+   const previousButtonClicked = (event) => {
+     setImageIndex((originalIndex) => {
+      if (originalIndex === 0) {
+        return imageUrls.length - 1;
+      } else {
+        return originalIndex - 1;
+      }
+     });
+   };
+
+   const nextButtonClicked = (event) => {
+     setImageIndex((originalIndex) => {
+       if (originalIndex === imageUrls.length - 1) {
+         return 0;
+       } else {
+         return originalIndex + 1;
+       }
+     });
+   };
+
   return(
     <Container>
       <TopBar>
@@ -113,8 +133,8 @@ const FullScreenGallery = (props) => {
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
         <ButtonContainer>
-          <LeftButton title="Previous (arrow left)"><ChevronLeft size="88" width="44"/></LeftButton>
-          <RightButton title="Next (arrow right)"><ChevronRight size="88" width="44"/></RightButton>
+          <LeftButton title="Previous (arrow left)" onClick={previousButtonClicked}><ChevronLeft size="88" width="44"/></LeftButton>
+          <RightButton title="Next (arrow right)" onClick={nextButtonClicked}><ChevronRight size="88" width="44"/></RightButton>
         </ButtonContainer>
       </ImageContainer>
     </Container>
