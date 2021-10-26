@@ -127,7 +127,7 @@ const FullScreenGallery = (props) => {
   return(
     <Container>
       <TopBar>
-        <Page>1/11</Page>
+        <Page>{imageIndex + 1}/{imageUrls.length}</Page>
         <IconContainer>
           <Icon title="Floorplan"><BookContent size="24"/></Icon>
           <Icon title="Video"><MoviePlay size="24"/></Icon>
