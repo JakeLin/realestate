@@ -46,7 +46,9 @@ const PropertyDetail = () => {
     });
   }, [propertyId]);
 
-  const openFullScreenGallery = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const openFullScreenGallery = (index) => {
+    setSelectedImageIndex(index);
     setShouldDisplayFullScreenGallery(true);
   };
 
@@ -62,10 +64,10 @@ const PropertyDetail = () => {
   return (
     <Container>
       {
-        shouldDisplayFullScreenGallery ? <FullScreenGallery floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
+        shouldDisplayFullScreenGallery ? <FullScreenGallery selectedIndex={selectedImageIndex} floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
         <div>
           <BrandingBar listingCompany={listing.listing.listingCompany} />
-          <Hero listing={listing.listing} />
+          <Hero listing={listing.listing} openFullScreenImage={openFullScreenGallery}/>
           <PropertyInfo>
             <PropertyInfoStack>
               <HomeLoanCalculator />
@@ -78,7 +80,7 @@ const PropertyDetail = () => {
               <Divider />
               <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
               <Divider />
-              <FloorplansAndTours openFullScreenImage={openFullScreenGallery}/>
+              <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
             </PropertyInfoStack>
             <AgentFloatingWidget />
           </PropertyInfo>

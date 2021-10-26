@@ -105,7 +105,7 @@ const FullScreenGallery = (props) => {
      imageUrls.push(floorPlanImage);
   }
 
-  const [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(props.selectedIndex);
 
   const previousButtonClicked = (event) => {
     setImageIndex((originalIndex) => {

@@ -38,7 +38,7 @@ const FloorplansAndTours = (props) => {
   return(
     <Container>
       <Title>Floorplans and tours</Title>
-      <FloorplanButton onClick={props.openFullScreenImage}><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanButton>
+      <FloorplanButton onClick={() => props.openFullScreenImage(props.floorPlanIndex)}><Icon><BookContent size="20" /></Icon> Floorplan</FloorplanButton>
     </Container>
   )
 };
