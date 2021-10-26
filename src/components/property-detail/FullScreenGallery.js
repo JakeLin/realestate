@@ -43,8 +43,11 @@ const Icon = styled.button`
   }
 `;
 
-const WindowCloseContainer = styled.div`
+const WindowCloseContainer = styled.button`
   opacity: 0.75;
+  background: none;
+  border: none;
+  color: #fff;
   &:hover {
     cursor: pointer;
     opacity: 1;
@@ -137,7 +140,7 @@ const FullScreenGallery = (props) => {
           <Icon title="Video"><MoviePlay size="24"/></Icon>
           <Icon title="3D tour"><Cube size="24"/></Icon>
         </IconContainer>
-        <WindowCloseContainer title="Closed (Esc)"><WindowClose size="24"/></WindowCloseContainer>
+        <WindowCloseContainer title="Closed (Esc)" onClick={props.closeFullScreenImage}><WindowClose size="24" /></WindowCloseContainer>
       </TopBar>
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
