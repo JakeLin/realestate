@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { BookContent } from "@styled-icons/boxicons-regular";
-import PropertyDiscription from "./PropertyDiscription";
 
 const Container = styled.div`
   margin-top: 24px;
