@@ -97,7 +97,7 @@ const RightButton = styled.button`
 const FullScreenGallery = (props) => {
 
   const imageUrls = props.images.map((item) => {
-    return item.templatedUrl.replace('{size}', '1000x750')
+    return item.templatedUrl.replace('{size}', '1000x750');
    });
 
   if (props.floorPlans.length > 0) {

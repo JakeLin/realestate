@@ -23,7 +23,7 @@ const FloorplanButton = styled.button`
   border: none;
   padding: 0;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
     text-decoration: underline;
   }
