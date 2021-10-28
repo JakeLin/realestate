@@ -5,6 +5,16 @@ const SubImages = styled.div`
   justify-content: space-between;
 `;
 
+const ImageButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  };
+`;
+
 const Gallery = (props) => {
   const mainImageUrl = props.images[0].templatedUrl.replace('{size}', '800x480');
   const leftImageUrl = props.images[1].templatedUrl.replace('{size}', '264x128');
@@ -13,13 +23,22 @@ const Gallery = (props) => {
 
   return(
     <div>
-      <img src={mainImageUrl} alt="" />
+      <ImageButton onClick={() => props.openFullScreenImage(0)}>
+        <img src={mainImageUrl} alt="" />
+      </ImageButton>
       <SubImages>
-        <img src={leftImageUrl} alt="" />
-        <img src={middleImageUrl} alt="" />
-        <img src={rightImageUrl} alt="" />
+        <ImageButton onClick={() => props.openFullScreenImage(1)}>
+          <img src={leftImageUrl} alt="" />
+        </ImageButton>
+        <ImageButton onClick={() => props.openFullScreenImage(2)}>
+          <img src={middleImageUrl} alt="" />
+        </ImageButton>
+        <ImageButton onClick={() => props.openFullScreenImage(3)}>
+          <img src={rightImageUrl} alt="" />
+        </ImageButton>
       </SubImages>
     </div>
+    
   );
 }
 

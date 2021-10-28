@@ -13,7 +13,7 @@ const Hero = (props) => {
   return(
     <Container>
       <Summary listing={props.listing}/>
-      <Gallery images={props.listing.media.images} />
+      <Gallery images={props.listing.media.images} openFullScreenImage={props.openFullScreenImage}/>
     </Container>
   );
 };

@@ -12,6 +12,8 @@ import Map from "./Map";
 import TravelTime from "./TravelTime";
 import PropertyDiscription from "./PropertyDiscription";
 import PropertyFeatures from "./PropertyFeatures";
+import FloorplansAndTours from "./FloorplansAndTours";
+import FullScreenGallery from "./FullScreenGallery";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -34,6 +36,7 @@ const Divider = styled.div`
 `;
 
 const PropertyDetail = () => {
+  const [shouldDisplayFullScreenGallery, setShouldDisplayFullScreenGallery] = useState(false);
   const { propertyId } = useParams();
   
   const [listing, setListing] = useState(null);
@@ -43,31 +46,48 @@ const PropertyDetail = () => {
     });
   }, [propertyId]);
 
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const openFullScreenGallery = (index) => {
+    setSelectedImageIndex(index);
+    setShouldDisplayFullScreenGallery(true);
+  };
+
+  const closeFullScreenGallery = () => {
+    setShouldDisplayFullScreenGallery(false);
+  };
+
   if (listing === null) {
     return <div>Loading...</div>;
   }
 
   const address = listing.listing.address.display.fullAddress;
-
   return (
     <Container>
-      <BrandingBar listingCompany={listing.listing.listingCompany} />
-      <Hero listing={listing.listing} />
-      <PropertyInfo>
-        <PropertyInfoStack>
-          <HomeLoanCalculator />
-          <Divider />
-          <Map mapAddress={listing.listing.address.display} />
-          <Divider />
-          <TravelTime travelFromAddress={address}/>
-          <Divider />
-          <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
-          <Divider />
-          <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
-        </PropertyInfoStack>
-        <AgentFloatingWidget />
-      </PropertyInfo>
-      footer
+      {
+        shouldDisplayFullScreenGallery ? <FullScreenGallery selectedIndex={selectedImageIndex} floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
+        <div>
+          <BrandingBar listingCompany={listing.listing.listingCompany} />
+          <Hero listing={listing.listing} openFullScreenImage={openFullScreenGallery}/>
+          <PropertyInfo>
+            <PropertyInfoStack>
+              <HomeLoanCalculator />
+              <Divider />
+              <Map mapAddress={listing.listing.address.display} />
+              <Divider />
+              <TravelTime travelFromAddress={address}/>
+              <Divider />
+              <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
+              <Divider />
+              <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
+              <Divider />
+              <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
+            </PropertyInfoStack>
+            <AgentFloatingWidget />
+          </PropertyInfo>
+          footer
+        </div>
+      }
+      
     </Container>
   )
 };
