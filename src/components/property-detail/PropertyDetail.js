@@ -61,12 +61,14 @@ const PropertyDetail = () => {
   }
 
   const address = listing.listing.address.display.fullAddress;
+  const listingCompany = listing.listing.listingCompany;
+
   return (
     <Container>
       {
         shouldDisplayFullScreenGallery ? <FullScreenGallery selectedIndex={selectedImageIndex} floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
         <div>
-          <BrandingBar listingCompany={listing.listing.listingCompany} />
+          <BrandingBar listingCompany={listingCompany} />
           <Hero listing={listing.listing} openFullScreenImage={openFullScreenGallery}/>
           <PropertyInfo>
             <PropertyInfoStack>
@@ -82,7 +84,7 @@ const PropertyDetail = () => {
               <Divider />
               <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
             </PropertyInfoStack>
-            <AgentFloatingWidget />
+            <AgentFloatingWidget listingCompany={listingCompany}/>
           </PropertyInfo>
           footer
         </div>
