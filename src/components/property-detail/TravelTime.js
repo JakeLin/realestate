@@ -190,15 +190,16 @@ const SelectedIndicator = styled.div`
 const TravelItem = (props) => {
   const [travelTimeDuration, setTravelTimeDuration] = useState('Loading...');
   const [travelDistance, setTravelDistance] = useState('');
+  const { from, item, travelType } = props;
 
   useEffect(() => {
     setTravelTimeDuration('Loading...');
     setTravelDistance('');
-    get(props.from, props.item.address, props.travelType).then((response) => {
+    get(from, item.address, travelType).then((response) => {
       setTravelTimeDuration(response.data.time);
       setTravelDistance(response.data.distance);
     });
-  }, [props.from, props.item.address, props.travelType]);
+  }, [from, item.address, travelType]);
 
   const handleRemoveClick = () => {
     props.setTravelItems((previousTravelItems) => {
