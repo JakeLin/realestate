@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@styled-icons/boxicons-regular": "^10.38.0",
+    "@styled-icons/boxicons-solid": "^10.38.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -31,7 +32,7 @@
   },
   "browserslist": [
     ">0.2%",
-   "not dead",
-   "not op_mini all"
- ]
+    "not dead",
+    "not op_mini all"
+  ]
 }

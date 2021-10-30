@@ -62,7 +62,7 @@ const PropertyDetail = () => {
 
   const address = listing.listing.address.display.fullAddress;
   const listingCompany = listing.listing.listingCompany;
-
+  
   return (
     <Container>
       {
@@ -84,7 +84,7 @@ const PropertyDetail = () => {
               <Divider />
               <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
             </PropertyInfoStack>
-            <AgentFloatingWidget listingCompany={listingCompany}/>
+            <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
           </PropertyInfo>
           footer
         </div>
