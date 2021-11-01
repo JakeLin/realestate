@@ -68,6 +68,13 @@ const ReviewContainer = styled.div`
   margin-left: 4px;
 `;
 
+const Divider = styled.div`
+  margin: 0 auto;
+  width: 90%;
+  height: 1px;
+  background-color: #D2D5DA;
+`;
+
 const ListerRatingsReviews = (props) => {
   if (props.listerRatingsReviews.totalReviews === 0) {
     return <ListerRatingsReviewsContainer>(No reviews yet)</ListerRatingsReviewsContainer>
@@ -90,18 +97,21 @@ const ListerDetails = (props) => {
   const agentName = props.lister.name;
 
   return (
-    <AgentDetailsContainer>
-      <AgentPhotoUrlContainer>
-        <AgentPhotoUrl src={agentPhotoUrl} alt="" />
-      </AgentPhotoUrlContainer>
-      <AgentDetails>
-        <AgentName>
-          <AgentNameLink target="_blank" href={agentNameLink}>{agentName}</AgentNameLink>
-        </AgentName>
-        <ListerRatingsReviews listerRatingsReviews={listerRatingsReviews} />
-        <ListerPhoneNumber>{phoneNumber}</ListerPhoneNumber>
-      </AgentDetails>
-    </AgentDetailsContainer> 
+    <div>
+      <AgentDetailsContainer>
+        <AgentPhotoUrlContainer>
+          <AgentPhotoUrl src={agentPhotoUrl} alt="" />
+        </AgentPhotoUrlContainer>
+        <AgentDetails>
+          <AgentName>
+            <AgentNameLink target="_blank" href={agentNameLink}>{agentName}</AgentNameLink>
+          </AgentName>
+          <ListerRatingsReviews listerRatingsReviews={listerRatingsReviews} />
+          <ListerPhoneNumber>{phoneNumber}</ListerPhoneNumber>
+        </AgentDetails>
+      </AgentDetailsContainer> 
+      {props.shouldDisplayDivider && <Divider />}
+    </div>
   )
 };
 

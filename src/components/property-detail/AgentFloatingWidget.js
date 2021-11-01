@@ -19,7 +19,7 @@ const BrandingBar = styled.div`
 `;
 
 const Divider = styled.div`
-  width: 300px;
+  width: 100%;
   height: 1px;
   background-color: #D2D5DA;
 `;
@@ -35,8 +35,8 @@ const AgentFloatingWidget = (props) => {
         </a>
       </BrandingBar>
       {
-        props.listers.map((item) => {
-          return <ListerDetails lister={item} />
+        props.listers.map((item, index, array) => {
+          return <ListerDetails lister={item} shouldDisplayDivider={index !== array.length - 1} />
         })
       }
       <Divider />
