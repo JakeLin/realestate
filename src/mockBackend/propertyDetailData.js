@@ -3227,7 +3227,29 @@ const data = {
               "avgRating":null,
               "totalReviews":0
            }
-        }
+        },
+        {
+            "name": "Michael Pastrikos",
+            "showInMediaViewer": true,
+            "preferredPhoneNumber": "0404282864",
+            "phoneNumber": {
+            "showDisclaimer": false,
+            "display": "0404282864"
+            },
+            "photo": {
+               "templatedUrl": "https://i2.au.reastatic.net/{size}/37870ca3395a5106bab79b1e95db8b2ec71a9d15ac7f47aa0981e69d5f44f357/main.jpg"
+            },
+            "_links": {
+               "canonical": {
+                  "href": "https://www.realestate.com.au/agent/michael-pastrikos-881691?cid={cid}"
+               }
+            },
+            "id": "881691",
+            "listerRatingsReviews": {
+               "avgRating": 4.957446808510638,
+               "totalReviews": 47
+            }
+       },
      ],
      "title":"City Living at Eporo",
      "description":"Perched on the 33rd floor of one of Melbourne's sleekest buildings, this two bedroom apartment in Eporo Tower embodies lifestyle and convenience to all Melbourne's CBD has to offer. This apartment features:<br/><br/>• Open plan living, kitchen and dining, with floor-ceiling windows offering superb views over Melbourne's CBD. A glass pivot door opens onto the balcony<br/>• Reverse cycle air conditioning located in the open plan living area<br/>• Galley kitchen with inbuilt stainless steel ILVE appliances, including a four-burner gas cooktop and range-hood. A semi-integrated AEG dishwasher completes the package!<br/>• Master bedroom with ample natural light soaking through the large windows, study nook and mirrored built-in wardrobe. <br/> A second bedroom offers space and plenty of storage behind the three mirrored sliding wardrobe doors<br/>• Contemporary bathroom with storage under the vanity and mirrored panels<br/><br/>Eporo Tower offers exclusive lifestyle amenities to its residents, including a library, lounge and dining area, as well as cinema and games room. Trams and trains at the doorstep ensure quick and easy access across the city and to all major tertiary institutions, while Melbourne Central shopping, cafes, bars, restaurants, entertainment and green spaces are all within walking distance.<br/><br/>*Ray White bears no responsibility if you attend a Covid Exposure site when conducting inspections. Please check https://www.coronavirus.vic.gov.au/case-alerts-public-exposure-sites beforehand.",
