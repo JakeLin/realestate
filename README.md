@@ -10,8 +10,8 @@ A simple realestate.com.au clone built with React and Styled Components.
 [https://ashleetan.github.io/realestate](https://ashleetan.github.io/realestate/)
 ## Tech stacks
 * 🐣 create-react-app
-* 👩‍💻 Modern JavaScript/ES6: arrow functions and higher order functions
-* ⚛️ Latest React: funcion components with hooks
+* 👩‍💻 Modern JavaScript/ES6: arrow functions and higher-order functions
+* ⚛️ Latest React: function components with hooks
 * 🧭 React Router
 * 🎨 Styled Components for CSS
 * 🎁 Flexbox for layouts
@@ -22,7 +22,7 @@ A simple realestate.com.au clone built with React and Styled Components.
 After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd like to work on a production-ready project to practise my knowledge. realestate.com.au is a beautiful property website with many components. I choose to rebuild the search results page and property details page to improve my web development skills.
 
 ## Features
-- [x] Property card with carousel component in search results page
+- [x] Property card with carousel component in the search results page
 - [x] Fetch mock data using `useEffect`
 - [x] Navigate from search results to property details page using react Router
 - [x] Hero component in property details page
@@ -35,7 +35,7 @@ After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd l
 - [x] Full-screen gallery component
 - [x] Home loan calculator component
 - [x] Interactive map component
-- [x] Property discription component
+- [x] Property description component
 - [x] Property features component
 - [x] Travel time component
 - [x] Request inspection component
@@ -45,13 +45,13 @@ After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd l
 - [ ] Home loans component
 - [ ] Renovation estimator component
 - [ ] Suburb profile component
-- [ ] Nearby schools & child car component
+- [ ] Nearby schools & child care component
 - [ ] Agent price guide component
 - [ ] Contact agent form component
 - [ ] Footer
 - [ ] Responsive design to support mobile devices
 ## Development 🛠
-To start local development environment:
+To set up a local development environment:
 1. Open Terminal app
 1. Run `git clone https://github.com/AshleeTan/realestate.git`
 1. Run `cd realestate & yarn start`
