@@ -19,13 +19,13 @@ A simple realestate.com.au clone built with React and Styled Components.
 * 🚙 GitHub Actions for CI/CD
 
 ## Why did I build this Clone project? 👩‍💻
-After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd like to work on a production-ready project to practise my knowledge. realestate.com.au is a beautiful property website with many components. I choose to rebuild the search results page and property details page to improve my website development skills.
+After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd like to work on a production-ready project to practise my knowledge. realestate.com.au is a beautiful property website with many components. I choose to rebuild the search results page and property details page to improve my web development skills.
 
 ## Features
 - [x] Property card with carousel component in search results page
 - [x] Fetch mock data using `useEffect`
 - [x] Navigate from search results to property details page using react Router
-- [x] Hero component
+- [x] Hero component in property details page
 - [x] Action bar component
 - [x] Branding bar component
 - [x] Address component
@@ -51,9 +51,11 @@ After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd l
 - [ ] Footer
 - [ ] Responsive design to support mobile devices
 ## Development 🛠
-* `git clone https://github.com/AshleeTan/realestate.git`
-* `cd realestate & yarn start`
-* Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To start local development environment:
+1. Open Terminal app
+1. Run `git clone https://github.com/AshleeTan/realestate.git`
+1. Run `cd realestate & yarn start`
+1. Open [http://localhost:3000](http://localhost:3000) to view the website in the browser.
 
 ## Deployment 🚀
 GitHub Actions will automatically deploy the `main` branch to GitHub Pages, the live website is [https://ashleetan.github.io/realestate](https://ashleetan.github.io/realestate/)
