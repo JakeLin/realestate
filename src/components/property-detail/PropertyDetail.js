@@ -62,7 +62,7 @@ const PropertyDetail = () => {
 
   const address = listing.listing.address.display.fullAddress;
   const listingCompany = listing.listing.listingCompany;
-  
+
   return (
     <Container>
       {
@@ -83,6 +83,8 @@ const PropertyDetail = () => {
               <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
               <Divider />
               <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
+              <Divider />
+              <div id="enquiry-form">Email enquiry</div>
             </PropertyInfoStack>
             <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
           </PropertyInfo>

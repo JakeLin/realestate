@@ -42,6 +42,25 @@ const ListingCompanyAddress = styled.div`
   margin: 4px 16px 12px 16px;
 `;
 
+const EmailEnquiryLink = styled.a`
+  display: inline-flex;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #E4002B;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  border-radius: 3px;
+  width: calc(100% - 32px);
+  padding: 12px 24px;
+  margin: 0 16px 16px 16px;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  };
+`;
+
 const AgentFloatingWidget = (props) => {
   const logoUrl = props.listingCompany.media.logo.templatedUrl.replace('{size}', '170x32');
   const address = props.listingCompany.address.display.fullAddress;
@@ -62,7 +81,7 @@ const AgentFloatingWidget = (props) => {
       <Divider />
       <ListingCompanyName>{agentName}</ListingCompanyName>
       <ListingCompanyAddress>{address}</ListingCompanyAddress>
-      <a href="#enquiry-form">Get in touch</a>
+      <EmailEnquiryLink href="#enquiry-form">Get in touch</EmailEnquiryLink>
     </Container>
   );
 }
