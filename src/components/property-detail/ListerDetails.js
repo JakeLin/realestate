@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Star } from '@styled-icons/boxicons-solid';
 
@@ -41,12 +42,26 @@ const AgentNameLink = styled.a`
   }
 `;
 
-const ListerPhoneNumber = styled.div`
+const ListerPhoneNumber = styled.a`
   font-family: "PangeaRegular";
   font-size: 12px;
   font-weight: 300;
   line-height: 16px;
   color: #333F48;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #D2D5DA;
+  background-color: white;
+  text-decoration: none;
+  padding: 2px 8px;
+  display: inline-block;
+  margin-top: 4px;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(247, 248, 249);
+    border: 0.0625rem solid rgb(51, 63, 72);
+  }
 `;
 
 const ListerRatingsReviewsContainer = styled.div`
@@ -95,6 +110,14 @@ const ListerDetails = (props) => {
   const phoneNumber = props.lister.phoneNumber.display;
   const agentNameLink = props.lister._links.canonical.href;
   const agentName = props.lister.name;
+  const tel = `tel:${phoneNumber}`;
+  const shortPhoneNumber = phoneNumber.substr(0, 8) + '...';
+
+  const [shouldDisplayFullPhoneNumber, setShouldDisplayFullPhoneNumber] = useState(false);
+  const handleDisplayNumber = (event) => {
+    event.preventDefault();
+    setShouldDisplayFullPhoneNumber(true);
+  };
 
   return (
     <div>
@@ -107,7 +130,11 @@ const ListerDetails = (props) => {
             <AgentNameLink target="_blank" href={agentNameLink}>{agentName}</AgentNameLink>
           </AgentName>
           <ListerRatingsReviews listerRatingsReviews={listerRatingsReviews} />
-          <ListerPhoneNumber>{phoneNumber}</ListerPhoneNumber>
+          { 
+            shouldDisplayFullPhoneNumber 
+              ? <ListerPhoneNumber href={tel}>{phoneNumber}</ListerPhoneNumber>
+              : <ListerPhoneNumber title="Click to reveal phone number" onClick={handleDisplayNumber}>{shortPhoneNumber}</ListerPhoneNumber> 
+          }
         </AgentDetails>
       </AgentDetailsContainer> 
       {props.shouldDisplayDivider && <Divider />}
