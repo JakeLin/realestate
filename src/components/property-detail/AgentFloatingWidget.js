@@ -24,8 +24,28 @@ const Divider = styled.div`
   background-color: #D2D5DA;
 `;
 
+const ListingCompanyName = styled.div`
+  font-family: "PangeaRegular";
+  font-size: 16px;
+  line-height: 24px;
+  color: #2B6ED2;
+  margin-top: 12px;
+  margin-left: 16px;
+`;
+
+const ListingCompanyAddress = styled.div`
+  font-family: "PangeaRegular";
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #333F48;
+  margin: 4px 16px 12px 16px;
+`;
+
 const AgentFloatingWidget = (props) => {
   const logoUrl = props.listingCompany.media.logo.templatedUrl.replace('{size}', '170x32');
+  const address = props.listingCompany.address.display.fullAddress;
+  const agentName = props.listingCompany.name;
 
   return(
     <Container>
@@ -36,10 +56,13 @@ const AgentFloatingWidget = (props) => {
       </BrandingBar>
       {
         props.listers.map((item, index, array) => {
-          return <ListerDetails lister={item} shouldDisplayDivider={index !== array.length - 1} />
+          return <ListerDetails key={index} lister={item} shouldDisplayDivider={index !== array.length - 1} />
         })
       }
       <Divider />
+      <ListingCompanyName>{agentName}</ListingCompanyName>
+      <ListingCompanyAddress>{address}</ListingCompanyAddress>
+      <a href="#enquiry-form">Get in touch</a>
     </Container>
   );
 }
