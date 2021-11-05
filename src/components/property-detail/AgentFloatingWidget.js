@@ -3,7 +3,7 @@ import ListerDetails from "./ListerDetails";
 
 const Container = styled.div`
   width: 300px;
-  height: 402px;
+  height: 100%;
   margin-left: 40px;
   border-radius: 3px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
@@ -24,13 +24,19 @@ const Divider = styled.div`
   background-color: #D2D5DA;
 `;
 
-const ListingCompanyName = styled.div`
+const ListingCompanyName = styled.a`
+  display: block;
   font-family: "PangeaRegular";
   font-size: 16px;
   line-height: 24px;
   color: #2B6ED2;
   margin-top: 12px;
   margin-left: 16px;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  };
 `;
 
 const ListingCompanyAddress = styled.div`
@@ -65,11 +71,12 @@ const AgentFloatingWidget = (props) => {
   const logoUrl = props.listingCompany.media.logo.templatedUrl.replace('{size}', '170x32');
   const address = props.listingCompany.address.display.fullAddress;
   const agentName = props.listingCompany.name;
+  const agentCompanyLink = props.listingCompany._links.canonical.href;
 
   return(
     <Container>
       <BrandingBar backgroundColor={props.listingCompany.branding.primaryColour}>
-        <a target="_blank" rel="noreferrer" href={props.listingCompany._links.canonical.href}>
+        <a target="_blank" rel="noreferrer" href={agentCompanyLink}>
           <img src={logoUrl} alt="" />
         </a>
       </BrandingBar>
@@ -79,7 +86,7 @@ const AgentFloatingWidget = (props) => {
         })
       }
       <Divider />
-      <ListingCompanyName>{agentName}</ListingCompanyName>
+      <ListingCompanyName target="_blank" rel="noreferrer" href={agentCompanyLink}>{agentName}</ListingCompanyName>
       <ListingCompanyAddress>{address}</ListingCompanyAddress>
       <EmailEnquiryLink href="#enquiry-form">Get in touch</EmailEnquiryLink>
     </Container>
