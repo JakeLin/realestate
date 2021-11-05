@@ -2,8 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Star } from '@styled-icons/boxicons-solid';
 
-const AgentPhotoUrl = styled.img`
-  border: 1px;
+const AgentImage = styled.img`
+  border-width: 1px;
   border-style: solid;
   border-color: #D2D5DA;
   border-radius: 50%;
@@ -16,7 +16,7 @@ const AgentDetailsContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const AgentPhotoUrlContainer = styled.a`
+const AgentImageContainer = styled.a`
   margin: 18px 16px;
 `;
 
@@ -24,19 +24,13 @@ const AgentDetails = styled.div`
   margin: 16px 0;
 `;
 
-const AgentName = styled.div`
+const AgentNameLink = styled.a`
   font-family: "PangeaRegular";
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   color: #2B6ED2;
-`;
-
-const AgentNameLink = styled.a`
   text-decoration: none;
-  &:visited {
-    color: #2B6ED2
-  };
   &:hover {
     text-decoration: underline;
   }
@@ -85,7 +79,7 @@ const ReviewContainer = styled.div`
 
 const Divider = styled.div`
   margin: 0 auto;
-  width: 90%;
+  width: calc(100% - 32px);
   height: 1px;
   background-color: #D2D5DA;
 `;
@@ -122,13 +116,11 @@ const ListerDetails = (props) => {
   return (
     <div>
       <AgentDetailsContainer>
-        <AgentPhotoUrlContainer target="_blank" rel="noreferrer" href={agentNameLink}>
-          <AgentPhotoUrl src={agentPhotoUrl} alt="" />
-        </AgentPhotoUrlContainer>
+        <AgentImageContainer target="_blank" rel="noreferrer" href={agentNameLink}>
+          <AgentImage src={agentPhotoUrl} alt="" />
+        </AgentImageContainer>
         <AgentDetails>
-          <AgentName>
-            <AgentNameLink target="_blank" rel="noreferrer" href={agentNameLink}>{agentName}</AgentNameLink>
-          </AgentName>
+          <AgentNameLink target="_blank" rel="noreferrer" href={agentNameLink}>{agentName}</AgentNameLink>
           <ListerRatingsReviews listerRatingsReviews={listerRatingsReviews} />
           { 
             shouldDisplayFullPhoneNumber 

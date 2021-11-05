@@ -34,7 +34,6 @@ const ListingCompanyName = styled.a`
   margin-left: 16px;
   text-decoration: none;
   &:hover {
-    cursor: pointer;
     text-decoration: underline;
   };
 `;
@@ -49,7 +48,7 @@ const ListingCompanyAddress = styled.div`
 `;
 
 const EmailEnquiryLink = styled.a`
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   box-sizing: border-box;
   background-color: #E4002B;
@@ -62,9 +61,6 @@ const EmailEnquiryLink = styled.a`
   padding: 12px 24px;
   margin: 0 16px 16px 16px;
   text-decoration: none;
-  &:hover {
-    cursor: pointer;
-  };
 `;
 
 const AgentFloatingWidget = (props) => {
