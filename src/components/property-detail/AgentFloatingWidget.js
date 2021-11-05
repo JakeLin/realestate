@@ -69,7 +69,7 @@ const AgentFloatingWidget = (props) => {
   return(
     <Container>
       <BrandingBar backgroundColor={props.listingCompany.branding.primaryColour}>
-        <a target="_blank" href={props.listingCompany._links.canonical.href}>
+        <a target="_blank" rel="noreferrer" href={props.listingCompany._links.canonical.href}>
           <img src={logoUrl} alt="" />
         </a>
       </BrandingBar>

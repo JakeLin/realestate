@@ -16,7 +16,7 @@ const AgentDetailsContainer = styled.div`
   justify-content: flex-start;
 `;
 
-const AgentPhotoUrlContainer = styled.div`
+const AgentPhotoUrlContainer = styled.a`
   margin: 18px 16px;
 `;
 
@@ -122,12 +122,12 @@ const ListerDetails = (props) => {
   return (
     <div>
       <AgentDetailsContainer>
-        <AgentPhotoUrlContainer>
+        <AgentPhotoUrlContainer target="_blank" rel="noreferrer" href={agentNameLink}>
           <AgentPhotoUrl src={agentPhotoUrl} alt="" />
         </AgentPhotoUrlContainer>
         <AgentDetails>
           <AgentName>
-            <AgentNameLink target="_blank" href={agentNameLink}>{agentName}</AgentNameLink>
+            <AgentNameLink target="_blank" rel="noreferrer" href={agentNameLink}>{agentName}</AgentNameLink>
           </AgentName>
           <ListerRatingsReviews listerRatingsReviews={listerRatingsReviews} />
           { 
