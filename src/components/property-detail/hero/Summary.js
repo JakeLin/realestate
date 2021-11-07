@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import ActionBar from "./ActionBar";
 import Address from "./Address";
-import GeneralFeatures from "../common/GeneralFeatures";
+import GeneralFeatures from "../../common/GeneralFeatures";
 import Price from "./Price";
 import RequestInspection from "./RequestInspection";
 

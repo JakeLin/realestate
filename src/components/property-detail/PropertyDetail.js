@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import styled from "styled-components";
 
 import { getPropertyDetail as get } from '../../mockBackend/fetch';
-import Hero from "./Hero";
+import Hero from "./hero/Hero";
 import BrandingBar from "./BrandingBar";
 import HomeLoanCalculator from "./HomeLoanCalculator";
-import AgentFloatingWidget from "./AgentFloatingWidget";
+import AgentFloatingWidget from "./agent-floating-widget/AgentFloatingWidget";
 import Map from "./Map";
 import TravelTime from "./TravelTime";
 import PropertyDiscription from "./PropertyDiscription";
