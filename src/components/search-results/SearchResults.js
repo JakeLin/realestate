@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import PropertyCard from './PropertyCard';
+import PropertyCard from './property-card/PropertyCard';
 import { getSearchResults as get } from '../../mockBackend/fetch';
 
 const Container = styled.div`
