@@ -25,6 +25,16 @@ const BrandingBarContainer = styled.div`
   z-index: 1001;
 `;
 
+const AgentFloatingWidgetContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const AgentFloatingWidgetSubContainer = styled.div`
+  position: sticky;
+  top: 84px; // 60px (branding bar) + 24px (margin-top)
+`;
+
 const SubContainer = styled.div`
   position: relative;
   top: 60px;
@@ -100,7 +110,11 @@ const PropertyDetail = () => {
                 <Divider />
                 <div id="enquiry-form">Email enquiry</div>
               </PropertyInfoStack>
-              <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
+              <AgentFloatingWidgetContainer>
+                <AgentFloatingWidgetSubContainer>
+                  <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
+                </AgentFloatingWidgetSubContainer>
+              </AgentFloatingWidgetContainer>
             </PropertyInfo>
             footer
           </SubContainer>
