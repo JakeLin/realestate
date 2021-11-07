@@ -19,6 +19,17 @@ const Container = styled.div`
   background-color: #FFF;
 `;
 
+const BrandingBarContainer = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+`;
+
+const SubContainer = styled.div`
+  position: relative;
+  top: 60px;
+`;
+
 const PropertyInfo = styled.div`
   display: flex;
   justify-content: center;
@@ -68,27 +79,31 @@ const PropertyDetail = () => {
       {
         shouldDisplayFullScreenGallery ? <FullScreenGallery selectedIndex={selectedImageIndex} floorPlans={listing.listing.media.floorplans} images={listing.listing.media.images} closeFullScreenImage={closeFullScreenGallery}/> :
         <div>
-          <BrandingBar listingCompany={listingCompany} />
-          <Hero listing={listing.listing} openFullScreenImage={openFullScreenGallery}/>
-          <PropertyInfo>
-            <PropertyInfoStack>
-              <HomeLoanCalculator />
-              <Divider />
-              <Map mapAddress={listing.listing.address.display} />
-              <Divider />
-              <TravelTime travelFromAddress={address}/>
-              <Divider />
-              <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
-              <Divider />
-              <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
-              <Divider />
-              <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
-              <Divider />
-              <div id="enquiry-form">Email enquiry</div>
-            </PropertyInfoStack>
-            <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
-          </PropertyInfo>
-          footer
+          <BrandingBarContainer>
+            <BrandingBar listingCompany={listingCompany} />
+          </BrandingBarContainer>
+          <SubContainer>
+            <Hero listing={listing.listing} openFullScreenImage={openFullScreenGallery}/>
+            <PropertyInfo>
+              <PropertyInfoStack>
+                <HomeLoanCalculator />
+                <Divider />
+                <Map mapAddress={listing.listing.address.display} />
+                <Divider />
+                <TravelTime travelFromAddress={address}/>
+                <Divider />
+                <PropertyDiscription address={address} propertyTitle={listing.listing.title} propertyDiscription={listing.listing.description}/>
+                <Divider />
+                <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
+                <Divider />
+                <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
+                <Divider />
+                <div id="enquiry-form">Email enquiry</div>
+              </PropertyInfoStack>
+              <AgentFloatingWidget listingCompany={listingCompany} listers={listing.listing.listers} />
+            </PropertyInfo>
+            footer
+          </SubContainer>
         </div>
       }
       
