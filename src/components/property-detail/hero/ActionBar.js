@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Share, Star } from '@styled-icons/boxicons-regular';
 import { Star as FilledStar} from "@styled-icons/boxicons-solid"
 import ShareThisListingScreen from "./ShareThisListingScreen";
@@ -10,7 +10,7 @@ const Container = styled.div`
   padding-right: 16px;
 `;
 
-const ShareButton = styled.button`
+const Button = css`
   padding: 10px;
   border: none;
   background: none;
@@ -19,13 +19,12 @@ const ShareButton = styled.button`
   };
 `;
 
+const ShareButton = styled.button`
+  ${Button}
+`;
+
 const StarButton = styled.button`
-  padding: 10px;
-  border: none;
-  background: none;
-  &:hover {
-    cursor: pointer;
-  };
+  ${Button}
 `;
 
 const ActionBar = (props) => {
