@@ -30,7 +30,6 @@ const CloseButtonContainer = styled.div`
   top: 20px;
   right: 20px;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -76,9 +75,6 @@ const SharableLinkText = styled.span`
   font-weight: 300;
   line-height: 48px;  
   color: rgb(43, 110, 210);
-  &:hover {
-    color: rgb(43, 110, 210);
-  };
 `;
 
 const ShareThisListingScreen = (props) => {
