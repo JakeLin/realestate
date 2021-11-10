@@ -20,15 +20,17 @@ const SearchResults = () => {
   }, []);
 
   return (
-    <Container>
-      <div>
-        {
-          listings.map((item) => {
-            return <PropertyCard listing={item} key={item.listing.id} />
-          })
-        }
-      </div>
-    </Container>
+    <div>
+      <Container>
+        <div>
+          {
+            listings.map((item) => {
+              return <PropertyCard listing={item} key={item.listing.id} />
+            })
+          }
+        </div>
+      </Container>
+    </div>
   );
 }
 

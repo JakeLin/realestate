@@ -6,6 +6,7 @@ import {
 
 import SearchResults from "./search-results/SearchResults";
 import PropertyDetail from "./property-detail/PropertyDetail";
+import Footer from "./common/Footer";
 
 const Routing = () => {
   return (
@@ -18,6 +19,7 @@ const Routing = () => {
           <SearchResults />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   )
 };

@@ -37,7 +37,7 @@ const AgentFloatingWidgetSubContainer = styled.div`
 
 const SubContainer = styled.div`
   position: relative;
-  top: 60px;
+  padding-top: 60px;
 `;
 
 const PropertyInfo = styled.div`
@@ -109,6 +109,7 @@ const PropertyDetail = () => {
                 <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
                 <Divider />
                 <div id="enquiry-form">Email enquiry</div>
+                <Divider />
               </PropertyInfoStack>
               <AgentFloatingWidgetContainer>
                 <AgentFloatingWidgetSubContainer>
@@ -116,11 +117,9 @@ const PropertyDetail = () => {
                 </AgentFloatingWidgetSubContainer>
               </AgentFloatingWidgetContainer>
             </PropertyInfo>
-            footer
           </SubContainer>
         </div>
       }
-      
     </Container>
   )
 };
