@@ -19,7 +19,7 @@ const GeneralFeaturesContainer = styled.div`
 const Summary = (props) => {
   return(
     <Container>
-      <ActionBar />
+      <ActionBar sharableUrl={props.listing._links.canonical.href} />
       <Address address={props.listing.address} />
       <GeneralFeaturesContainer>
         <GeneralFeatures generalFeatures={props.listing.generalFeatures} />

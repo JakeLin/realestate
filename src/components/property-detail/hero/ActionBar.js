@@ -18,7 +18,7 @@ const Button = styled.button`
   };
 `;
 
-const ActionBar = () => {
+const ActionBar = (props) => {
   const [shouldDisplayPopUPScreen, setShouldDisplayPopUpScreen] = useState(false);
 
   const handleShareButtonClick = () => {
@@ -37,7 +37,7 @@ const ActionBar = () => {
       <Button>
         <Star size="24" />
       </Button>
-      { shouldDisplayPopUPScreen && <ShareThisListingScreen closeSharePopup={closeSharePopup} /> }
+      { shouldDisplayPopUPScreen && <ShareThisListingScreen closeSharePopup={closeSharePopup} sharableUrl={props.sharableUrl} /> }
     </Container>
   );
 }
