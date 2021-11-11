@@ -1,24 +1,27 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { BookContent, MoviePlay, Cube, WindowClose, ChevronLeft, ChevronRight } from "@styled-icons/boxicons-regular";
+import { BookContent, MoviePlay, Cube, ChevronLeft, ChevronRight } from "@styled-icons/boxicons-regular";
+import { Close } from "@styled-icons/evil";
 
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: fixed;
   background-color: #22272E;
-  color: #fff;
-  font-size: 14px;
-  line-height: 44px;
+  width: 100%;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const TopBar = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  width: 100%;
 `;
 
 const IconContainer = styled.div`
@@ -28,6 +31,7 @@ const IconContainer = styled.div`
 
 const Page = styled.div`
   opacity: 0.75;
+  color: #fff;
 `;
 
 const Icon = styled.button`
@@ -43,7 +47,7 @@ const Icon = styled.button`
   }
 `;
 
-const WindowCloseContainer = styled.button`
+const CloseButton = styled.button`
   opacity: 0.75;
   background: none;
   border: none;
@@ -55,11 +59,11 @@ const WindowCloseContainer = styled.button`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  position: relative;
 `;
 
 const ButtonContainer = styled.div`
@@ -140,7 +144,7 @@ const FullScreenGallery = (props) => {
           <Icon title="Video"><MoviePlay size="24"/></Icon>
           <Icon title="3D tour"><Cube size="24"/></Icon>
         </IconContainer>
-        <WindowCloseContainer title="Closed (Esc)" onClick={props.closeFullScreenImage}><WindowClose size="24" /></WindowCloseContainer>
+        <CloseButton title="Closed (Esc)" onClick={props.closeFullScreenImage}><Close size="24" /></CloseButton>
       </TopBar>
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
