@@ -10,7 +10,6 @@ const Container = styled.div`
   height: 100vh;
   z-index: 10000;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
@@ -48,7 +47,7 @@ const Icon = styled.button`
   }
 `;
 
-const WindowCloseContainer = styled.div`
+const CloseButton = styled.button`
   opacity: 0.75;
   background: none;
   border: none;
@@ -145,7 +144,7 @@ const FullScreenGallery = (props) => {
           <Icon title="Video"><MoviePlay size="24"/></Icon>
           <Icon title="3D tour"><Cube size="24"/></Icon>
         </IconContainer>
-        <WindowCloseContainer title="Closed (Esc)" onClick={props.closeFullScreenImage}><Close size="24" /></WindowCloseContainer>
+        <CloseButton title="Closed (Esc)" onClick={props.closeFullScreenImage}><Close size="24" /></CloseButton>
       </TopBar>
       <ImageContainer>
         <img src={imageUrls[imageIndex]} alt="fullscreengallery"/>
