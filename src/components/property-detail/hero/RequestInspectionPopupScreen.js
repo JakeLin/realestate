@@ -65,6 +65,20 @@ const RemarksTitle = styled.div`
   color: rgb(97, 97, 97);
 `;
 
+const DayAndTimeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const Date = styled.input`
+  width: 48%;
+`;
+
+const Time = styled.input`
+  width: 48%;
+`;
+
 const RequestInspectionPopupScreen = (props) => {
   return (
     <div>
@@ -77,7 +91,9 @@ const RequestInspectionPopupScreen = (props) => {
               <Title>Book an Inspection</Title>
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
-              <input type="date" placeholder="Day" /><span><input type="time" placeholder="Time" /></span>
+              <DayAndTimeContainer>
+                <Date type="date" placeholder="Day" /><Time type="time" placeholder="Time" />
+              </DayAndTimeContainer>
               <div>
                 <input type="checkbox" />
                 <div>

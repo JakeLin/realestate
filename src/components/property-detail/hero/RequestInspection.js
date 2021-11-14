@@ -27,7 +27,7 @@ const RequestInspection = (props) => {
       <Button>
         Request an inspection
       </Button>
-      {/* <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} /> */}
+      <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} />
     </div>
   );
 }
