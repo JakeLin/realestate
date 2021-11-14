@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BrandingBar from "../BrandingBar";
 import ListerDetails from "./ListerDetails";
 
 const Container = styled.div`
@@ -6,15 +7,6 @@ const Container = styled.div`
   margin-left: 40px;
   border-radius: 3px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-`;
-
-const BrandingBar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px 3px 0 0;
-  padding: 6px 0;
-  background-color: ${props => props.backgroundColor};
 `;
 
 const Divider = styled.div`
@@ -70,11 +62,9 @@ const AgentFloatingWidget = (props) => {
 
   return(
     <Container>
-      <BrandingBar backgroundColor={props.listingCompany.branding.primaryColour}>
-        <a target="_blank" rel="noreferrer" href={agentCompanyLink}>
-          <img src={logoUrl} alt="" />
-        </a>
-      </BrandingBar>
+      <a target="_blank" rel="noreferrer" href={agentCompanyLink}>
+        <BrandingBar listingCompany={props.listingCompany} height="44" topBorderRadius="3" />
+      </a>
       {
         props.listers.map((item, index, array) => {
           return <ListerDetails key={index} lister={item} shouldDisplayDivider={index !== array.length - 1} />
