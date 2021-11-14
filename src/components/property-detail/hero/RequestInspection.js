@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import RequestInspectionPopupScreen from "./RequestInspectionPopupScreen";
 
 const Button = styled.button`
   margin-top: 85px;
@@ -20,11 +21,14 @@ const Button = styled.button`
   }
 `;
 
-const RequestInspection = () => {
+const RequestInspection = (props) => {
   return(
-    <Button>
-      Request an inspection
-    </Button>
+    <div>
+      <Button>
+        Request an inspection
+      </Button>
+      <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} />
+    </div>
   );
 }
 

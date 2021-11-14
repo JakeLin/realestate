@@ -25,7 +25,7 @@ const Summary = (props) => {
         <GeneralFeatures generalFeatures={props.listing.generalFeatures} />
       </GeneralFeaturesContainer>
       <Price price={props.listing.price.display} statementUrl={props.listing.media.statementOfInformation.href} />
-      <RequestInspection />
+      <RequestInspection listingCompany={props.listing.listingCompany} address={props.listing.address.display.fullAddress} />
     </Container>
   );
 }
