@@ -55,7 +55,6 @@ const EmailEnquiryLink = styled.a`
 `;
 
 const AgentFloatingWidget = (props) => {
-  const logoUrl = props.listingCompany.media.logo.templatedUrl.replace('{size}', '170x32');
   const address = props.listingCompany.address.display.fullAddress;
   const agentName = props.listingCompany.name;
   const agentCompanyLink = props.listingCompany._links.canonical.href;
