@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import RequestInspectionPopupScreen from "./RequestInspectionPopupScreen";
 
@@ -22,12 +23,22 @@ const Button = styled.button`
 `;
 
 const RequestInspection = (props) => {
+const [shouldDisplayPopUpScreen, setShouldDisplayPopUpScreen] = useState(false);
+
+const handleRequestAnInspectionClick = () => {
+  setShouldDisplayPopUpScreen(true);
+};
+
+const closeRequestAnInspectinPopUp = () => {
+  setShouldDisplayPopUpScreen(false);
+};
+
   return(
     <div>
-      <Button>
+      <Button onClick={handleRequestAnInspectionClick}>
         Request an inspection
       </Button>
-      <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} />
+      {shouldDisplayPopUpScreen && <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} closeRequestAnInspectinPopUp={closeRequestAnInspectinPopUp}/>}
     </div>
   );
 }
