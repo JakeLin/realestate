@@ -40,7 +40,7 @@ After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd l
 - [x] Travel time component
 - [x] Request inspection component
 - [x] Floorplans and tours component
-- [ ] Agent float widget component
+- [x] Agent float widget component
 - [ ] Inspections component
 - [ ] Home loans component
 - [ ] Renovation estimator component
@@ -48,7 +48,7 @@ After I completed HTML, CSS, JavaScript and React courses from Codecademy, I'd l
 - [ ] Nearby schools & child care component
 - [ ] Agent price guide component
 - [ ] Contact agent form component
-- [ ] Footer
+- [x] Footer
 - [ ] Responsive design to support mobile devices
 ## Development 🛠
 To set up a local development environment:

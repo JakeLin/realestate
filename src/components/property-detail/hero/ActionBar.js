@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { Share, Star } from '@styled-icons/boxicons-regular';
-import { Star as FilledStar} from "@styled-icons/boxicons-solid"
+import { ShareApple, Star } from "@styled-icons/evil";
 import ShareThisListingScreen from "./ShareThisListingScreen";
 
 const Container = styled.div`
@@ -38,32 +37,27 @@ const ActionBar = (props) => {
     setShouldDisplayPopUpScreen(false);
   };
 
-  const [shouldSaveProperty, setShouldSaveProperty] = useState(() => {
+  const [hasPropertySaved, setHasPropertySaved] = useState(() => {
     const saved = localStorage.getItem('saved');
     return JSON.parse(saved);
   });
 
   const handleSavePropertyButtonClick = () => {
-    setShouldSaveProperty(!shouldSaveProperty)
+    setHasPropertySaved(!hasPropertySaved)
   };
 
   useEffect(() => {
-    localStorage.setItem('saved', JSON.stringify(shouldSaveProperty));
-  }, [shouldSaveProperty]);
+    localStorage.setItem('saved', JSON.stringify(hasPropertySaved));
+  }, [hasPropertySaved]);
 
   return (
     <Container>
       <ShareButton onClick={handleShareButtonClick}>
-        <Share size="24" title="Share listing" />
+        <ShareApple size="32" title="Share listing" color="#333f48" />
       </ShareButton>
-      {shouldSaveProperty ? 
         <StarButton onClick={handleSavePropertyButtonClick}>
-          <FilledStar size="24" title="Saved property" color="#ffb200"/>
-        </StarButton> :
-        <StarButton onClick={handleSavePropertyButtonClick}>
-        <Star size="24" title="Save property"/>
-        </StarButton>
-      }
+          <Star size="32" title={hasPropertySaved ? "Saved property" : "Save property"} color={hasPropertySaved ? "#ffb200" : "#333f48"} />
+        </StarButton> 
       { shouldDisplayPopUPScreen && <ShareThisListingScreen closeSharePopup={closeSharePopup} sharableUrl={props.sharableUrl} /> }
     </Container>
   );

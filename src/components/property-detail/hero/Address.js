@@ -7,6 +7,7 @@ const Container = styled.div`
   color: #333F48;
   font-weight: 300;
   padding-right: 24px;
+  margin-top: 24px;
 `;
 
 const Address = (props) => {
