@@ -59,7 +59,6 @@ const SubTitle = styled.h3`
   color: rgb(51, 63, 72);
   width: 100%;
   margin: 0;
-
 `;
 
 const RemarksTitle = styled.div`
@@ -77,7 +76,8 @@ const DayAndTimeContainer = styled.div`
 `;
 
 const Date = styled.input`
-  width: 38%;
+  box-sizing: border-box;
+  width: calc(50% - 6px);
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
   border-style: solid;
@@ -91,7 +91,8 @@ const Date = styled.input`
 `;
 
 const Time = styled.input`
-  width: 38%;
+  box-sizing: border-box;
+  width: calc(50% - 6px);
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
   border-style: solid;
@@ -112,7 +113,7 @@ const CheckboxContainer = styled.div`
   margin-top: 17px;
 `;
 
-const Checkbox = styled.input`
+const Checkbox = styled.input.attrs({type: 'checkbox'})`
   margin-left: 0;
 `;
 
@@ -122,7 +123,7 @@ const CheckboxContent = styled.div`
 
 const Divider = styled.div`
   margin: 0 auto;
-  width: 370px;
+  width: 100%;
   height: 1px;
   background-color: #D2D5DA;
   margin: 20px 0;
@@ -135,7 +136,8 @@ const PersonalDetailsInputContainer = styled.div`
 `;
 
 const PersonalDetailsInput = styled.input`
-  width: 38%;
+  box-sizing: border-box;
+  width: calc(50% - 6px);
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
   border-style: solid;
@@ -143,15 +145,18 @@ const PersonalDetailsInput = styled.input`
   padding: 13px 16px;
   font-size: 13px;
   font-weight: 300;
-  color: rgb(155, 155, 155);
+  color: #333f48;
+  &::placeholder {
+    color: #333f4866;
+  };
   letter-spacing: 0.6px;
   text-align: left;
   margin: 10px 0 5px 0;
 `;
 
-const DropdownListContainer = styled.input`
+const DropdownList = styled.input`
   box-sizing: border-box;
-  width:100%;
+  width: 100%;
   margin: 10px 0 5px 0;
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
@@ -160,14 +165,18 @@ const DropdownListContainer = styled.input`
   padding: 13px 16px;
   font-size: 13px;
   font-weight: 300;
-  color: rgb(155, 155, 155);
+  color: #333f48;
+  &::placeholder {
+    color: #333f4866;
+  };
   letter-spacing: 0.6px;
   text-align: left;
 `;
 
-const CommentContainer = styled.input`
+const CommentTextarea = styled.textarea`
   box-sizing: border-box;
   width: 100%;
+  height: 100px;
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
   border-style: solid;
@@ -175,13 +184,16 @@ const CommentContainer = styled.input`
   padding: 13px 16px;
   font-size: 13px;
   font-weight: 300;
-  color: rgb(155, 155, 155);
+  color: #333f48;
+  &::placeholder {
+    color: #333f4866;
+  };
   letter-spacing: 0.6px;
   text-align: left;
   margin: 10px 0 5px 0;
 `;
 
-const SubmitButtonContainer = styled.button`
+const SubmitButton = styled.button`
   width: 200px;
   padding: 12px;
   margin-top: 15px;
@@ -220,10 +232,12 @@ const RequestInspectionPopupScreen = (props) => {
                 <Date type="date" placeholder="Day" /><Time type="time" placeholder="Time" />
               </DayAndTimeContainer>
               <CheckboxContainer>
-                <Checkbox type="checkbox" />
+                <Checkbox id="time-not-suitable-label" />
                 <CheckboxContent>
-                  <SubTitle>I can't find a suitable day or time</SubTitle>
-                  <RemarksTitle>One of our agents will get in touch to arrange another time</RemarksTitle>
+                  <label for="time-not-suitable-label">
+                    <SubTitle>I can't find a suitable day or time</SubTitle>
+                    <RemarksTitle>One of our agents will get in touch to arrange another time</RemarksTitle>
+                  </label>
                 </CheckboxContent>
               </CheckboxContainer>
               <Divider />
@@ -234,10 +248,10 @@ const RequestInspectionPopupScreen = (props) => {
                 <PersonalDetailsInput type="email" placeholder="Email" />
                 <PersonalDetailsInput type="number" placeholder="Mobile" />
               </PersonalDetailsInputContainer>
-              <DropdownListContainer type="text" placeholder="Current Situation" />
-              <DropdownListContainer type="text" placeholder="When Are you Thinking of Buying?" />
-              <CommentContainer type="text" placeholder="Comments" />
-              <SubmitButtonContainer>Submit</SubmitButtonContainer>
+              <DropdownList type="text" placeholder="Current Situation" />
+              <DropdownList type="text" placeholder="When Are you Thinking of Buying?" />
+              <CommentTextarea type="text" placeholder="Comments" />
+              <SubmitButton>Submit</SubmitButton>
               <SubmitRemarksContainer>
                 <RemarksTitle>By submitting you’ll be securing your booking and notified of any changes, updates or future inspections.</RemarksTitle>
               </SubmitRemarksContainer>

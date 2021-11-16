@@ -23,19 +23,20 @@ const Button = styled.button`
 `;
 
 const RequestInspection = (props) => {
-const [shouldDisplayPopUpScreen, setShouldDisplayPopUpScreen] = useState(false);
 
-const handleRequestAnInspectionClick = () => {
-  setShouldDisplayPopUpScreen(true);
-};
+  const [shouldDisplayPopUpScreen, setShouldDisplayPopUpScreen] = useState(false);
 
-const closeRequestAnInspectinPopUp = () => {
-  setShouldDisplayPopUpScreen(false);
-};
+  const openRequestAnInspectionPopup = () => {
+    setShouldDisplayPopUpScreen(true);
+  };
+
+  const closeRequestAnInspectinPopUp = () => {
+    setShouldDisplayPopUpScreen(false);
+  };
 
   return(
     <div>
-      <Button onClick={handleRequestAnInspectionClick}>
+      <Button onClick={openRequestAnInspectionPopup}>
         Request an inspection
       </Button>
       {shouldDisplayPopUpScreen && <RequestInspectionPopupScreen listingCompany={props.listingCompany} address={props.address} closeRequestAnInspectinPopUp={closeRequestAnInspectinPopUp}/>}

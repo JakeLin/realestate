@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div>
-        <FooterDisclaimer>Disclaimer:</FooterDisclaimer> This website is a personal project and have no official affiliation with REA.
+        <FooterDisclaimer>Disclaimer:</FooterDisclaimer> This website is a personal project and has no official affiliation with REA.
         <p><FooterDisclaimer>Source code:</FooterDisclaimer> <SourceCodeLink target="_blank" rel="noreferrer" href="https://github.com/AshleeTan/realestate">https://github.com/AshleeTan/realestate</SourceCodeLink></p>
       </div>
     </FooterContainer>

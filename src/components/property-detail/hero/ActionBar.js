@@ -37,32 +37,27 @@ const ActionBar = (props) => {
     setShouldDisplayPopUpScreen(false);
   };
 
-  const [shouldSaveProperty, setShouldSaveProperty] = useState(() => {
+  const [hasPropertySaved, setHasPropertySaved] = useState(() => {
     const saved = localStorage.getItem('saved');
     return JSON.parse(saved);
   });
 
   const handleSavePropertyButtonClick = () => {
-    setShouldSaveProperty(!shouldSaveProperty)
+    setHasPropertySaved(!hasPropertySaved)
   };
 
   useEffect(() => {
-    localStorage.setItem('saved', JSON.stringify(shouldSaveProperty));
-  }, [shouldSaveProperty]);
+    localStorage.setItem('saved', JSON.stringify(hasPropertySaved));
+  }, [hasPropertySaved]);
 
   return (
     <Container>
       <ShareButton onClick={handleShareButtonClick}>
-        <ShareApple size="32" title="Share listing" />
+        <ShareApple size="32" title="Share listing" color="#333f48" />
       </ShareButton>
-      {shouldSaveProperty ? 
         <StarButton onClick={handleSavePropertyButtonClick}>
-          <Star size="32" title="Saved property" color="#ffb200"/>
-        </StarButton> :
-        <StarButton onClick={handleSavePropertyButtonClick}>
-        <Star size="32" title="Save property"/>
-        </StarButton>
-      }
+          <Star size="32" title={hasPropertySaved ? "Saved property" : "Save property"} color={hasPropertySaved ? "#ffb200" : "#333f48"} />
+        </StarButton> 
       { shouldDisplayPopUPScreen && <ShareThisListingScreen closeSharePopup={closeSharePopup} sharableUrl={props.sharableUrl} /> }
     </Container>
   );
