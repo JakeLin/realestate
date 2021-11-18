@@ -88,6 +88,9 @@ const Date = styled.input`
   color: rgb(155, 155, 155);
   letter-spacing: 0.6px;
   text-align: left;
+  &:focus {
+    outline-color: rgb(195, 200, 206);
+  };
 `;
 
 const Time = styled.input`
@@ -103,6 +106,9 @@ const Time = styled.input`
   color: rgb(155, 155, 155);
   letter-spacing: 0.6px;
   text-align: left;
+  &:focus {
+    outline-color: rgb(195, 200, 206);
+  };
 `;
 
 const CheckboxContainer = styled.div`
@@ -149,6 +155,9 @@ const PersonalDetailsInput = styled.input`
   &::placeholder {
     color: #333f4866;
   };
+  &:focus {
+    outline-color: #000;
+  };
   letter-spacing: 0.6px;
   text-align: left;
   margin: 10px 0 5px 0;
@@ -169,6 +178,9 @@ const DropdownList = styled.input`
   &::placeholder {
     color: #333f4866;
   };
+  &:focus {
+    outline-color: rgb(195, 200, 206);
+  };
   letter-spacing: 0.6px;
   text-align: left;
 `;
@@ -187,6 +199,9 @@ const CommentTextarea = styled.textarea`
   color: #333f48;
   &::placeholder {
     color: #333f4866;
+  };
+  &:focus {
+    outline-color: #000;
   };
   letter-spacing: 0.6px;
   text-align: left;
