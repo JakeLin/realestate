@@ -1,3 +1,5 @@
+import moment from 'moment';
+import Select from 'react-select';
 import styled from "styled-components";
 import BrandingBar from "../BrandingBar";
 
@@ -75,41 +77,28 @@ const DayAndTimeContainer = styled.div`
   margin-top: 8px;
 `;
 
-const Date = styled.input`
+const DateTimeContainer = styled.div`
+  font-family: "PangeaRegular";
   box-sizing: border-box;
   width: calc(50% - 6px);
   border-radius: 4px;
   border-color: rgb(195, 200, 206);
   border-style: solid;
   border-width: 2px;
-  padding: 13px 16px;
   font-size: 13px;
   font-weight: 300;
   color: rgb(155, 155, 155);
   letter-spacing: 0.6px;
-  text-align: left;
   &:focus {
     outline-color: rgb(195, 200, 206);
   };
 `;
 
-const Time = styled.input`
-  box-sizing: border-box;
-  width: calc(50% - 6px);
-  border-radius: 4px;
-  border-color: rgb(195, 200, 206);
-  border-style: solid;
-  border-width: 2px;
-  padding: 13px 16px;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgb(155, 155, 155);
-  letter-spacing: 0.6px;
-  text-align: left;
-  &:focus {
-    outline-color: rgb(195, 200, 206);
-  };
-`;
+const customDateTimeStyles = {
+  control: () => ({
+    display: 'flex'
+  })
+};
 
 const CheckboxContainer = styled.div`
   width: 100%;
@@ -232,6 +221,27 @@ const SubmitRemarksContainer = styled.div`
 `;
 
 const RequestInspectionPopupScreen = (props) => {
+  const dateOptions = [];
+  for (let i = 1; i <= 10; ++i) {
+    const futureDate = moment().add(i, 'days');
+    const value = futureDate.format('L');
+    const label = futureDate.format('ddd DD MMM YYYY');
+    dateOptions.push({value, label});
+  }
+
+  const timeOptions = [
+    {value: '10:00', label: '10:00AM-10:30AM'},
+    {value: '10:30', label: '10:30AM-11:00AM'},
+    {value: '11:00', label: '11:00AM-11:30AM'},
+    {value: '11:30', label: '11:30AM-12:00PM'},
+    {value: '12:00', label: '12:00PM-12:30PM'},
+    {value: '12:30', label: '12:00AM-1:00PM'},
+    {value: '13:00', label: '1:00PM-1:30PM'},
+    {value: '13:30', label: '1:30PM-2:00PM'},
+    {value: '14:00', label: '2:00PM-2:30PM'},
+    {value: '14:30', label: '2:30PM-3:00PM'}
+  ];
+
   return (
     <div>
       <Container>
@@ -244,7 +254,8 @@ const RequestInspectionPopupScreen = (props) => {
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
               <DayAndTimeContainer>
-                <Date type="date" placeholder="Day" /><Time type="time" placeholder="Time" />
+                <DateTimeContainer><Select styles={customDateTimeStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                <DateTimeContainer><Select styles={customDateTimeStyles} placeholder="Time" options={timeOptions} /></DateTimeContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
@@ -261,7 +272,7 @@ const RequestInspectionPopupScreen = (props) => {
                 <PersonalDetailsInput type="text" placeholder="First Name" />
                 <PersonalDetailsInput type="text" placeholder="Last Name" />
                 <PersonalDetailsInput type="email" placeholder="Email" />
-                <PersonalDetailsInput type="number" placeholder="Mobile" />
+                <PersonalDetailsInput type="text" placeholder="Mobile" />
               </PersonalDetailsInputContainer>
               <DropdownList type="text" placeholder="Current Situation" />
               <DropdownList type="text" placeholder="When Are you Thinking of Buying?" />
