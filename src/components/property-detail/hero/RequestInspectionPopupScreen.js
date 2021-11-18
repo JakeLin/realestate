@@ -234,7 +234,7 @@ const RequestInspectionPopupScreen = (props) => {
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
                 <CheckboxContent>
-                  <label for="time-not-suitable-label">
+                  <label htmlFor="time-not-suitable-label">
                     <SubTitle>I can't find a suitable day or time</SubTitle>
                     <RemarksTitle>One of our agents will get in touch to arrange another time</RemarksTitle>
                   </label>
