@@ -1,5 +1,6 @@
 import moment from 'moment';
 import Select from 'react-select';
+import { useState } from 'react';
 import styled from "styled-components";
 import BrandingBar from "../BrandingBar";
 
@@ -250,6 +251,18 @@ const RequestInspectionPopupScreen = (props) => {
     {value: 'I\'m not sure', label: 'I\'m not sure'}
   ];
 
+  const [daySelected, setDaySelected] = useState ('');
+  const [timeSelected, setTimeSelected] = useState ('');
+
+  const handleDaySelected = (selectedOption) => {
+    setDaySelected(selectedOption.value);
+    setTimeSelected(''); 
+  };
+
+  const handleTimeSelected = (selectedOption) => {
+    setTimeSelected(selectedOption.value);
+  };
+
   return (
     <div>
       <Container>
@@ -262,8 +275,8 @@ const RequestInspectionPopupScreen = (props) => {
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
               <DayAndTimeContainer>
-                <DateTimeContainer><Select styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
-                <DateTimeContainer><Select styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={true} /></DateTimeContainer>
+                <DateTimeContainer><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                <DateTimeContainer><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
