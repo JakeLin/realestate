@@ -94,7 +94,7 @@ const DateTimeContainer = styled.div`
   };
 `;
 
-const customDateTimeStyles = {
+const customStyles = {
   control: () => ({
     display: 'flex'
   })
@@ -152,7 +152,8 @@ const PersonalDetailsInput = styled.input`
   margin: 10px 0 5px 0;
 `;
 
-const DropdownList = styled.input`
+const DropdownList = styled.div`
+  font-family: "PangeaRegular";
   box-sizing: border-box;
   width: 100%;
   margin: 10px 0 5px 0;
@@ -160,18 +161,10 @@ const DropdownList = styled.input`
   border-color: rgb(195, 200, 206);
   border-style: solid;
   border-width: 2px;
-  padding: 13px 16px;
   font-size: 13px;
   font-weight: 300;
   color: #333f48;
-  &::placeholder {
-    color: #333f4866;
-  };
-  &:focus {
-    outline-color: rgb(195, 200, 206);
-  };
   letter-spacing: 0.6px;
-  text-align: left;
 `;
 
 const CommentTextarea = styled.textarea`
@@ -242,6 +235,21 @@ const RequestInspectionPopupScreen = (props) => {
     {value: '14:30', label: '2:30PM-3:00PM'}
   ];
 
+  const currentSituationOptions = [
+    {value: 'Owner', label: 'Owner/Occupier'},
+    {value: 'Investor', label: 'Investor'},
+    {value: 'Renter', label: 'Renter'},
+    {value: 'Sharer', label: 'Sharer'}
+  ];
+
+  const expectToBuyPeriodOptions = [
+    {value: '3 months', label: '0-3 months'},
+    {value: '6 months', label: '4-6 months'},
+    {value: '12 months', label: '7-12 months'},
+    {value: '1+ Year ', label: '1+ Year'},
+    {value: 'I\'m not sure', label: 'I\'m not sure'}
+  ];
+
   return (
     <div>
       <Container>
@@ -254,8 +262,8 @@ const RequestInspectionPopupScreen = (props) => {
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
               <DayAndTimeContainer>
-                <DateTimeContainer><Select styles={customDateTimeStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
-                <DateTimeContainer><Select styles={customDateTimeStyles} placeholder="Time" options={timeOptions} /></DateTimeContainer>
+                <DateTimeContainer><Select styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                <DateTimeContainer><Select styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={true} /></DateTimeContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
@@ -274,8 +282,8 @@ const RequestInspectionPopupScreen = (props) => {
                 <PersonalDetailsInput type="email" placeholder="Email" />
                 <PersonalDetailsInput type="text" placeholder="Mobile" />
               </PersonalDetailsInputContainer>
-              <DropdownList type="text" placeholder="Current Situation" />
-              <DropdownList type="text" placeholder="When Are you Thinking of Buying?" />
+              <DropdownList><Select styles={customStyles} placeholder="Current Situation" options={currentSituationOptions} /></DropdownList>
+              <DropdownList><Select styles={customStyles} placeholder="When Are you Thinking of Buying?" options={expectToBuyPeriodOptions} /></DropdownList>
               <CommentTextarea type="text" placeholder="Comments" />
               <SubmitButton>Submit</SubmitButton>
               <SubmitRemarksContainer>
