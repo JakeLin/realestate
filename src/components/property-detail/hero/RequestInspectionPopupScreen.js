@@ -259,6 +259,7 @@ const RequestInspectionPopupScreen = (props) => {
   const [daySelected, setDaySelected] = useState ('');
   const [shouldDisplayDaySelectedError, setShouldDisplayDaySelectedError] = useState(false);
   const [timeSelected, setTimeSelected] = useState ('');
+  const [shouldDisplayTimeSelectedError, setShouldDisplayTimeSelectedError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
     setShouldDisplayDaySelectedError(false);
@@ -268,6 +269,7 @@ const RequestInspectionPopupScreen = (props) => {
 
   const handleTimeSelected = (selectedOption) => {
     setTimeSelected(selectedOption.value);
+    setShouldDisplayTimeSelectedError(false);
   };
 
   const handleSubmitClick = (event) => {
@@ -277,8 +279,10 @@ const RequestInspectionPopupScreen = (props) => {
       return;
     };
 
-    console.log('Submitting to server...');
-    // Submit to server
+    if (timeSelected.length === 0) {
+      setShouldDisplayTimeSelectedError(true);
+      return;
+    };
   };
 
   return (
@@ -297,7 +301,10 @@ const RequestInspectionPopupScreen = (props) => {
                   <DateTimeContainer shouldDisplayError={shouldDisplayDaySelectedError}><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
                   {shouldDisplayDaySelectedError && <ErrorMessage>Please select day</ErrorMessage>}
                 </FieldAndErrorContainer>
-                <DateTimeContainer><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
+                <FieldAndErrorContainer>
+                  <DateTimeContainer shouldDisplayError={shouldDisplayTimeSelectedError}><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
+                  {shouldDisplayTimeSelectedError && <ErrorMessage>Please select time</ErrorMessage>}
+                </FieldAndErrorContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
