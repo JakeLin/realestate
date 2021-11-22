@@ -79,20 +79,11 @@ const DayAndTimeContainer = styled.div`
 `;
 
 const DateTimeContainer = styled.div`
-  font-family: "PangeaRegular";
-  box-sizing: border-box;
-  width: calc(50% - 6px);
   border-radius: 4px;
-  border-color: rgb(195, 200, 206);
+  border-color: ${props => props.shouldDisplayError ? '#d43900' : 'rgb(195, 200, 206)'};
   border-style: solid;
   border-width: 2px;
-  font-size: 13px;
-  font-weight: 300;
   color: rgb(155, 155, 155);
-  letter-spacing: 0.6px;
-  &:focus {
-    outline-color: rgb(195, 200, 206);
-  };
 `;
 
 const customStyles = {
@@ -214,6 +205,20 @@ const SubmitRemarksContainer = styled.div`
   margin-top: 15px;
 `;
 
+const ErrorMessage = styled.div`
+  margin: 4px 0 0;
+  color: #d43900;
+`;
+
+const FieldAndErrorContainer = styled.div`
+  box-sizing: border-box;
+  width: calc(50% - 6px);
+  font-family: "PangeaRegular";
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+`;
+
 const RequestInspectionPopupScreen = (props) => {
   const dateOptions = [];
   for (let i = 1; i <= 10; ++i) {
@@ -252,15 +257,28 @@ const RequestInspectionPopupScreen = (props) => {
   ];
 
   const [daySelected, setDaySelected] = useState ('');
+  const [shouldDisplayDaySelectedError, setShouldDisplayDaySelectedError] = useState(false);
   const [timeSelected, setTimeSelected] = useState ('');
 
   const handleDaySelected = (selectedOption) => {
+    setShouldDisplayDaySelectedError(false);
     setDaySelected(selectedOption.value);
     setTimeSelected(''); 
   };
 
   const handleTimeSelected = (selectedOption) => {
     setTimeSelected(selectedOption.value);
+  };
+
+  const handleSubmitClick = (event) => {
+    event.preventDefault();
+    if (daySelected.length === 0) {
+      setShouldDisplayDaySelectedError(true);
+      return;
+    };
+
+    console.log('Submitting to server...');
+    // Submit to server
   };
 
   return (
@@ -275,7 +293,10 @@ const RequestInspectionPopupScreen = (props) => {
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
               <DayAndTimeContainer>
-                <DateTimeContainer><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                <FieldAndErrorContainer>
+                  <DateTimeContainer shouldDisplayError={shouldDisplayDaySelectedError}><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                  {shouldDisplayDaySelectedError && <ErrorMessage>Please select day</ErrorMessage>}
+                </FieldAndErrorContainer>
                 <DateTimeContainer><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
@@ -298,7 +319,7 @@ const RequestInspectionPopupScreen = (props) => {
               <DropdownList><Select styles={customStyles} placeholder="Current Situation" options={currentSituationOptions} /></DropdownList>
               <DropdownList><Select styles={customStyles} placeholder="When Are you Thinking of Buying?" options={expectToBuyPeriodOptions} /></DropdownList>
               <CommentTextarea type="text" placeholder="Comments" />
-              <SubmitButton>Submit</SubmitButton>
+              <SubmitButton onClick={handleSubmitClick}>Submit</SubmitButton>
               <SubmitRemarksContainer>
                 <RemarksTitle>By submitting you’ll be securing your booking and notified of any changes, updates or future inspections.</RemarksTitle>
               </SubmitRemarksContainer>
