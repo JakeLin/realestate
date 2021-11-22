@@ -123,24 +123,18 @@ const PersonalDetailsInputContainer = styled.div`
 `;
 
 const PersonalDetailsInput = styled.input`
-  box-sizing: border-box;
-  width: calc(50% - 6px);
   border-radius: 4px;
-  border-color: rgb(195, 200, 206);
   border-style: solid;
   border-width: 1px;
+  border-color: ${props => props.shouldDisplayError ? '#d43900' : 'rgb(195, 200, 206)'};
   padding: 13px 16px;
-  font-size: 13px;
-  font-weight: 300;
   color: #333f48;
   &::placeholder {
     color: #333f4866;
   };
   &:focus {
-    outline-color: #000;
+    outline-color: ${props => props.shouldDisplayError ? '#d43900' : '#000'};
   };
-  letter-spacing: 0.6px;
-  text-align: left;
   margin: 10px 0 5px 0;
 `;
 
@@ -260,6 +254,8 @@ const RequestInspectionPopupScreen = (props) => {
   const [shouldDisplayDaySelectedError, setShouldDisplayDaySelectedError] = useState(false);
   const [timeSelected, setTimeSelected] = useState ('');
   const [shouldDisplayTimeSelectedError, setShouldDisplayTimeSelectedError] = useState(false);
+  const [firstNameFilled, setFirstNameFilled] = useState('');
+  const [shouldDisplayFirstNameFilledError, setShouldFirstNameFilledError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
     setShouldDisplayDaySelectedError(false);
@@ -272,6 +268,10 @@ const RequestInspectionPopupScreen = (props) => {
     setShouldDisplayTimeSelectedError(false);
   };
 
+  const handleFirstNameFilled = () => {
+    setShouldFirstNameFilledError(false);
+  };
+
   const handleSubmitClick = (event) => {
     event.preventDefault();
     if (daySelected.length === 0) {
@@ -281,6 +281,11 @@ const RequestInspectionPopupScreen = (props) => {
 
     if (timeSelected.length === 0) {
       setShouldDisplayTimeSelectedError(true);
+      return;
+    };
+
+    if (firstNameFilled.length === 0) {
+      setShouldFirstNameFilledError(true);
       return;
     };
   };
@@ -318,7 +323,10 @@ const RequestInspectionPopupScreen = (props) => {
               <Divider />
               <SubTitle>Your personal details</SubTitle>
               <PersonalDetailsInputContainer>
-                <PersonalDetailsInput type="text" placeholder="First Name" />
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayFirstNameFilledError} type="text" placeholder="First Name" onChange={handleFirstNameFilled}/>
+                  {shouldDisplayFirstNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
                 <PersonalDetailsInput type="text" placeholder="Last Name" />
                 <PersonalDetailsInput type="email" placeholder="Email" />
                 <PersonalDetailsInput type="text" placeholder="Mobile" />
