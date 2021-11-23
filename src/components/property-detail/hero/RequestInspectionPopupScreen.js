@@ -260,6 +260,8 @@ const RequestInspectionPopupScreen = (props) => {
   const [shouldDisplayLastNameFilledError, setShouldDisplayLastNameFilledError] = useState(false);
   const [emailFilled, setEmailFilled] = useState('');
   const [shouldDisplayEmailFilledError, setShouldDisplayEmailFilledError] = useState(false);
+  const [mobileFilled, setMobileFilled] = useState('');
+  const [shouldDisplayMobileFilledError, setShouldDisplayMobileFillError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
     setShouldDisplayDaySelectedError(false);
@@ -287,6 +289,11 @@ const RequestInspectionPopupScreen = (props) => {
     setShouldDisplayEmailFilledError(false)
   };
 
+  const handleMobileFilled = (event) => {
+    setMobileFilled(event.target.value)
+    setShouldDisplayMobileFillError(false)
+  };
+
   const handleSubmitClick = (event) => {
     event.preventDefault();
     if (daySelected.length === 0) {
@@ -311,6 +318,11 @@ const RequestInspectionPopupScreen = (props) => {
 
     if (emailFilled.length === 0) {
       setShouldDisplayEmailFilledError(true);
+      return;
+    };
+
+    if (mobileFilled.length === 0) {
+      setShouldDisplayMobileFillError(true);
       return;
     };
   };
@@ -360,7 +372,10 @@ const RequestInspectionPopupScreen = (props) => {
                   <PersonalDetailsInput shouldDisplayError={shouldDisplayEmailFilledError} type="email" placeholder="Email" onChange={handleEmailFilled} />
                   {shouldDisplayEmailFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
                 </FieldAndErrorContainer>
-                <PersonalDetailsInput type="text" placeholder="Mobile" />
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayMobileFilledError} type="text" placeholder="Mobile" onChange={handleMobileFilled} />
+                  {shouldDisplayMobileFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
               </PersonalDetailsInputContainer>
               <DropdownList><Select styles={customStyles} placeholder="Current Situation" options={currentSituationOptions} /></DropdownList>
               <DropdownList><Select styles={customStyles} placeholder="When Are you Thinking of Buying?" options={expectToBuyPeriodOptions} /></DropdownList>
