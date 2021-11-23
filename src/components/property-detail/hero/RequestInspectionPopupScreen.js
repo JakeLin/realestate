@@ -256,6 +256,8 @@ const RequestInspectionPopupScreen = (props) => {
   const [shouldDisplayTimeSelectedError, setShouldDisplayTimeSelectedError] = useState(false);
   const [firstNameFilled, setFirstNameFilled] = useState('');
   const [shouldDisplayFirstNameFilledError, setShouldFirstNameFilledError] = useState(false);
+  const [lastNameFilled, setLastNameFilled] = useState('');
+  const [shouldDisplayLastNameFilledError, setShouldDisplayLastNameFilledError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
     setShouldDisplayDaySelectedError(false);
@@ -268,8 +270,14 @@ const RequestInspectionPopupScreen = (props) => {
     setShouldDisplayTimeSelectedError(false);
   };
 
-  const handleFirstNameFilled = () => {
+  const handleFirstNameFilled = (event) => {
+    setFirstNameFilled(event.target.value);
     setShouldFirstNameFilledError(false);
+  };
+
+  const handleLastNameFilled = (event) => {
+    setLastNameFilled(event.target.value)
+    setShouldDisplayLastNameFilledError(false);
   };
 
   const handleSubmitClick = (event) => {
@@ -286,6 +294,11 @@ const RequestInspectionPopupScreen = (props) => {
 
     if (firstNameFilled.length === 0) {
       setShouldFirstNameFilledError(true);
+      return;
+    };
+
+    if (lastNameFilled.length === 0) {
+      setShouldDisplayLastNameFilledError(true);
       return;
     };
   };
@@ -327,7 +340,10 @@ const RequestInspectionPopupScreen = (props) => {
                   <PersonalDetailsInput shouldDisplayError={shouldDisplayFirstNameFilledError} type="text" placeholder="First Name" onChange={handleFirstNameFilled}/>
                   {shouldDisplayFirstNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
                 </FieldAndErrorContainer>
-                <PersonalDetailsInput type="text" placeholder="Last Name" />
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayLastNameFilledError} type="text" placeholder="Last Name" onChange={handleLastNameFilled} />
+                  {shouldDisplayLastNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
                 <PersonalDetailsInput type="email" placeholder="Email" />
                 <PersonalDetailsInput type="text" placeholder="Mobile" />
               </PersonalDetailsInputContainer>
