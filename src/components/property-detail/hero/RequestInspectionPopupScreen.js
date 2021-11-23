@@ -258,6 +258,8 @@ const RequestInspectionPopupScreen = (props) => {
   const [shouldDisplayFirstNameFilledError, setShouldFirstNameFilledError] = useState(false);
   const [lastNameFilled, setLastNameFilled] = useState('');
   const [shouldDisplayLastNameFilledError, setShouldDisplayLastNameFilledError] = useState(false);
+  const [emailFilled, setEmailFilled] = useState('');
+  const [shouldDisplayEmailFilledError, setShouldDisplayEmailFilledError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
     setShouldDisplayDaySelectedError(false);
@@ -280,6 +282,11 @@ const RequestInspectionPopupScreen = (props) => {
     setShouldDisplayLastNameFilledError(false);
   };
 
+  const handleEmailFilled = (event) => {
+    setEmailFilled(event.target.value)
+    setShouldDisplayEmailFilledError(false)
+  };
+
   const handleSubmitClick = (event) => {
     event.preventDefault();
     if (daySelected.length === 0) {
@@ -299,6 +306,11 @@ const RequestInspectionPopupScreen = (props) => {
 
     if (lastNameFilled.length === 0) {
       setShouldDisplayLastNameFilledError(true);
+      return;
+    };
+
+    if (emailFilled.length === 0) {
+      setShouldDisplayEmailFilledError(true);
       return;
     };
   };
@@ -344,7 +356,10 @@ const RequestInspectionPopupScreen = (props) => {
                   <PersonalDetailsInput shouldDisplayError={shouldDisplayLastNameFilledError} type="text" placeholder="Last Name" onChange={handleLastNameFilled} />
                   {shouldDisplayLastNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
                 </FieldAndErrorContainer>
-                <PersonalDetailsInput type="email" placeholder="Email" />
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayEmailFilledError} type="email" placeholder="Email" onChange={handleEmailFilled} />
+                  {shouldDisplayEmailFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
                 <PersonalDetailsInput type="text" placeholder="Mobile" />
               </PersonalDetailsInputContainer>
               <DropdownList><Select styles={customStyles} placeholder="Current Situation" options={currentSituationOptions} /></DropdownList>
