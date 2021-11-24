@@ -79,20 +79,11 @@ const DayAndTimeContainer = styled.div`
 `;
 
 const DateTimeContainer = styled.div`
-  font-family: "PangeaRegular";
-  box-sizing: border-box;
-  width: calc(50% - 6px);
   border-radius: 4px;
-  border-color: rgb(195, 200, 206);
+  border-color: ${props => props.shouldDisplayError ? '#d43900' : 'rgb(195, 200, 206)'};
   border-style: solid;
   border-width: 2px;
-  font-size: 13px;
-  font-weight: 300;
   color: rgb(155, 155, 155);
-  letter-spacing: 0.6px;
-  &:focus {
-    outline-color: rgb(195, 200, 206);
-  };
 `;
 
 const customStyles = {
@@ -132,24 +123,18 @@ const PersonalDetailsInputContainer = styled.div`
 `;
 
 const PersonalDetailsInput = styled.input`
-  box-sizing: border-box;
-  width: calc(50% - 6px);
   border-radius: 4px;
-  border-color: rgb(195, 200, 206);
   border-style: solid;
   border-width: 1px;
+  border-color: ${props => props.shouldDisplayError ? '#d43900' : 'rgb(195, 200, 206)'};
   padding: 13px 16px;
-  font-size: 13px;
-  font-weight: 300;
   color: #333f48;
   &::placeholder {
     color: #333f4866;
   };
   &:focus {
-    outline-color: #000;
+    outline-color: ${props => props.shouldDisplayError ? '#d43900' : '#000'};
   };
-  letter-spacing: 0.6px;
-  text-align: left;
   margin: 10px 0 5px 0;
 `;
 
@@ -214,6 +199,20 @@ const SubmitRemarksContainer = styled.div`
   margin-top: 15px;
 `;
 
+const ErrorMessage = styled.div`
+  margin: 4px 0 0;
+  color: #d43900;
+`;
+
+const FieldAndErrorContainer = styled.div`
+  box-sizing: border-box;
+  width: calc(50% - 6px);
+  font-family: "PangeaRegular";
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+`;
+
 const RequestInspectionPopupScreen = (props) => {
   const dateOptions = [];
   for (let i = 1; i <= 10; ++i) {
@@ -252,15 +251,80 @@ const RequestInspectionPopupScreen = (props) => {
   ];
 
   const [daySelected, setDaySelected] = useState ('');
+  const [shouldDisplayDaySelectedError, setShouldDisplayDaySelectedError] = useState(false);
   const [timeSelected, setTimeSelected] = useState ('');
+  const [shouldDisplayTimeSelectedError, setShouldDisplayTimeSelectedError] = useState(false);
+  const [firstNameFilled, setFirstNameFilled] = useState('');
+  const [shouldDisplayFirstNameFilledError, setShouldFirstNameFilledError] = useState(false);
+  const [lastNameFilled, setLastNameFilled] = useState('');
+  const [shouldDisplayLastNameFilledError, setShouldDisplayLastNameFilledError] = useState(false);
+  const [emailFilled, setEmailFilled] = useState('');
+  const [shouldDisplayEmailFilledError, setShouldDisplayEmailFilledError] = useState(false);
+  const [mobileFilled, setMobileFilled] = useState('');
+  const [shouldDisplayMobileFilledError, setShouldDisplayMobileFillError] = useState(false);
 
   const handleDaySelected = (selectedOption) => {
+    setShouldDisplayDaySelectedError(false);
     setDaySelected(selectedOption.value);
     setTimeSelected(''); 
   };
 
   const handleTimeSelected = (selectedOption) => {
     setTimeSelected(selectedOption.value);
+    setShouldDisplayTimeSelectedError(false);
+  };
+
+  const handleFirstNameFilled = (event) => {
+    setFirstNameFilled(event.target.value);
+    setShouldFirstNameFilledError(false);
+  };
+
+  const handleLastNameFilled = (event) => {
+    setLastNameFilled(event.target.value)
+    setShouldDisplayLastNameFilledError(false);
+  };
+
+  const handleEmailFilled = (event) => {
+    setEmailFilled(event.target.value)
+    setShouldDisplayEmailFilledError(false)
+  };
+
+  const handleMobileFilled = (event) => {
+    setMobileFilled(event.target.value)
+    setShouldDisplayMobileFillError(false)
+  };
+
+  const handleSubmitClick = (event) => {
+    event.preventDefault();
+    if (daySelected.length === 0) {
+      setShouldDisplayDaySelectedError(true);
+      return;
+    };
+
+    if (timeSelected.length === 0) {
+      setShouldDisplayTimeSelectedError(true);
+      return;
+    };
+
+    if (firstNameFilled.length === 0) {
+      setShouldFirstNameFilledError(true);
+      return;
+    };
+
+    if (lastNameFilled.length === 0) {
+      setShouldDisplayLastNameFilledError(true);
+      return;
+    };
+
+    if (emailFilled.length === 0) {
+      setShouldDisplayEmailFilledError(true);
+      return;
+    };
+
+    if (mobileFilled.length === 0) {
+      setShouldDisplayMobileFillError(true);
+      return;
+    };
   };
 
   return (
@@ -275,8 +339,14 @@ const RequestInspectionPopupScreen = (props) => {
               <Address>{props.address}</Address>
               <SubTitle>Inspection day and time</SubTitle>
               <DayAndTimeContainer>
-                <DateTimeContainer><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
-                <DateTimeContainer><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
+                <FieldAndErrorContainer>
+                  <DateTimeContainer shouldDisplayError={shouldDisplayDaySelectedError}><Select value={daySelected.value} onChange={handleDaySelected} styles={customStyles} placeholder="Day" options={dateOptions} /></DateTimeContainer>
+                  {shouldDisplayDaySelectedError && <ErrorMessage>Please select day</ErrorMessage>}
+                </FieldAndErrorContainer>
+                <FieldAndErrorContainer>
+                  <DateTimeContainer shouldDisplayError={shouldDisplayTimeSelectedError}><Select value={timeSelected.length > 0 ? timeSelected.value : null } onChange={handleTimeSelected} styles={customStyles} placeholder="Time" options={timeOptions} isDisabled={daySelected === ''} /></DateTimeContainer>
+                  {shouldDisplayTimeSelectedError && <ErrorMessage>Please select time</ErrorMessage>}
+                </FieldAndErrorContainer>
               </DayAndTimeContainer>
               <CheckboxContainer>
                 <Checkbox id="time-not-suitable-label" />
@@ -290,15 +360,27 @@ const RequestInspectionPopupScreen = (props) => {
               <Divider />
               <SubTitle>Your personal details</SubTitle>
               <PersonalDetailsInputContainer>
-                <PersonalDetailsInput type="text" placeholder="First Name" />
-                <PersonalDetailsInput type="text" placeholder="Last Name" />
-                <PersonalDetailsInput type="email" placeholder="Email" />
-                <PersonalDetailsInput type="text" placeholder="Mobile" />
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayFirstNameFilledError} type="text" placeholder="First Name" onChange={handleFirstNameFilled}/>
+                  {shouldDisplayFirstNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayLastNameFilledError} type="text" placeholder="Last Name" onChange={handleLastNameFilled} />
+                  {shouldDisplayLastNameFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayEmailFilledError} type="email" placeholder="Email" onChange={handleEmailFilled} />
+                  {shouldDisplayEmailFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
+                <FieldAndErrorContainer>
+                  <PersonalDetailsInput shouldDisplayError={shouldDisplayMobileFilledError} type="text" placeholder="Mobile" onChange={handleMobileFilled} />
+                  {shouldDisplayMobileFilledError && <ErrorMessage>Please fill in this field</ErrorMessage>}
+                </FieldAndErrorContainer>
               </PersonalDetailsInputContainer>
               <DropdownList><Select styles={customStyles} placeholder="Current Situation" options={currentSituationOptions} /></DropdownList>
               <DropdownList><Select styles={customStyles} placeholder="When Are you Thinking of Buying?" options={expectToBuyPeriodOptions} /></DropdownList>
               <CommentTextarea type="text" placeholder="Comments" />
-              <SubmitButton>Submit</SubmitButton>
+              <SubmitButton onClick={handleSubmitClick}>Submit</SubmitButton>
               <SubmitRemarksContainer>
                 <RemarksTitle>By submitting you’ll be securing your booking and notified of any changes, updates or future inspections.</RemarksTitle>
               </SubmitRemarksContainer>
