@@ -331,6 +331,12 @@ const RequestInspectionPopupScreen = (props) => {
       setShouldDisplayMobileFillError(true);
       return;
     };
+
+    const regexForValidatedMobile = /^[1-9]{1}[0-9]{9}$/;
+    if (regexForValidatedMobile.test(mobileFilled) === false) {
+      setShouldDisplayMobileFillError(true);
+      return;
+    };
   };
 
   return (
