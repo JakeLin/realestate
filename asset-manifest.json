@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/realestate/static/css/main.20e2f5ce.chunk.css",
-    "main.js": "/realestate/static/js/main.780baa5a.chunk.js",
-    "main.js.map": "/realestate/static/js/main.780baa5a.chunk.js.map",
+    "main.js": "/realestate/static/js/main.f21b6c93.chunk.js",
+    "main.js.map": "/realestate/static/js/main.f21b6c93.chunk.js.map",
     "runtime-main.js": "/realestate/static/js/runtime-main.b7ac6fe2.js",
     "runtime-main.js.map": "/realestate/static/js/runtime-main.b7ac6fe2.js.map",
-    "static/js/2.c86305a8.chunk.js": "/realestate/static/js/2.c86305a8.chunk.js",
-    "static/js/2.c86305a8.chunk.js.map": "/realestate/static/js/2.c86305a8.chunk.js.map",
+    "static/js/2.2929c6cd.chunk.js": "/realestate/static/js/2.2929c6cd.chunk.js",
+    "static/js/2.2929c6cd.chunk.js.map": "/realestate/static/js/2.2929c6cd.chunk.js.map",
     "static/js/3.b10e64c2.chunk.js": "/realestate/static/js/3.b10e64c2.chunk.js",
     "static/js/3.b10e64c2.chunk.js.map": "/realestate/static/js/3.b10e64c2.chunk.js.map",
     "index.html": "/realestate/index.html",
     "static/css/main.20e2f5ce.chunk.css.map": "/realestate/static/css/main.20e2f5ce.chunk.css.map",
-    "static/js/2.c86305a8.chunk.js.LICENSE.txt": "/realestate/static/js/2.c86305a8.chunk.js.LICENSE.txt",
+    "static/js/2.2929c6cd.chunk.js.LICENSE.txt": "/realestate/static/js/2.2929c6cd.chunk.js.LICENSE.txt",
     "static/media/index.css": "/realestate/static/media/PangeaTrial-Regular.4edd8627.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b7ac6fe2.js",
-    "static/js/2.c86305a8.chunk.js",
+    "static/js/2.2929c6cd.chunk.js",
     "static/css/main.20e2f5ce.chunk.css",
-    "static/js/main.780baa5a.chunk.js"
+    "static/js/main.f21b6c93.chunk.js"
   ]
 }
