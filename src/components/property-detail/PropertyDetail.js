@@ -14,6 +14,7 @@ import PropertyDiscription from "./PropertyDiscription";
 import PropertyFeatures from "./PropertyFeatures";
 import FloorplansAndTours from "./FloorplansAndTours";
 import FullScreenGallery from "./FullScreenGallery";
+import HomeLoans from "./HomeLoans";
 
 const Container = styled.div`
   background-color: #FFF;
@@ -108,6 +109,8 @@ const PropertyDetail = () => {
               <PropertyFeatures propertyFeatures={listing.listing.propertyFeatures} />
               <Divider />
               <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
+              <Divider />
+              <HomeLoans />
               <Divider />
               <div id="enquiry-form">Email enquiry</div>
               <Divider />
