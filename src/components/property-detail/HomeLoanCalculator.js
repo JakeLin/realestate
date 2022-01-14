@@ -41,7 +41,7 @@ const ButtonContainer = styled.div`
   padding-right: 36px;
 `;
 
-const Button = styled.button`
+const HomeLoansLink = styled.a`
   padding: 6px 16px;
   font-family: "PangeaRegular";
   font-weight: 400;
@@ -52,6 +52,7 @@ const Button = styled.button`
   border-color: #697684;
   background-color: white;
   color: #333F48;
+  text-decoration: none;
 
   &:hover {
     cursor: pointer;
@@ -94,7 +95,7 @@ const HomeLoanCalculator = () => {
           <Remarks>estimated repayment</Remarks>
         </div>
         <ButtonContainer>
-          <Button>Calculate</Button>
+          <HomeLoansLink href="#home-loans">Calculate</HomeLoansLink>
         </ButtonContainer>
       </HomeLoanContainer>
       <HomeLoanScheme>

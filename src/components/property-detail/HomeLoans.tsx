@@ -1,5 +1,7 @@
 const HomeLoans = () => {
-    return <div></div>
+    return (
+    <div>Home Loans</div>
+    );
 };
 
 export default HomeLoans;

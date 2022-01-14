@@ -110,7 +110,7 @@ const PropertyDetail = () => {
               <Divider />
               <FloorplansAndTours openFullScreenImage={openFullScreenGallery} floorPlanIndex={listing.listing.media.images.length} />
               <Divider />
-              <HomeLoans />
+              <div id="home-loans"><HomeLoans /></div> 
               <Divider />
               <div id="enquiry-form">Email enquiry</div>
               <Divider />
