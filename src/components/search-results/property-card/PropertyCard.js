@@ -32,7 +32,10 @@ const PropertyCard = (props) => {
         <Carousel images={props.listing.listing.media.images} />
         <PropertyContainer>
           <Price price={props.listing.listing.price} />
-          <Address address={props.listing.listing.address} />
+          <Address data={{
+              shortAddress: props.listing.listing.address.display.shortAddress,
+              suburb: props.listing.listing.address.suburb
+            }} />
           <GeneralFeatures generalFeatures={props.listing.listing.generalFeatures} />
         </PropertyContainer>
       </StyledLink>
