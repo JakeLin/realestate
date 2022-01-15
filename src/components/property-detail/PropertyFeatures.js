@@ -3,7 +3,7 @@ import { Wind, Bell, Arch, DoorOpen, Water, Dumbbell, PhoneCall, Group } from "@
 import styled from "styled-components";
 import { ChevronDown, ChevronUp } from "@styled-icons/boxicons-regular";
 
-const Title = styled.div`
+const Title = styled.h2`
   font-family: "PangeaRegular";
   font-size: 20px;
   font-weight: 600;
