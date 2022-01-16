@@ -49,11 +49,31 @@ const FindOutLink = styled.a `
   font-size: 14px;
   line-height: 20px;
   color: white;
-  font-family: "PangeaLight";
+  font-family: "PangeaRegular";
   background-color: #E4002B;
   text-decoration: none;
   border-radius: 3px 3px;
   padding: 6px 16px;
+`;
+
+const HomeLoansTabContainer = styled.div `
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+`;
+
+const HomeLoansTab = styled.div `
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  padding: 8px 22px;
+  margin-bottom: 2px;
+`;
+
+const Divider = styled.div `
+  margin-top: 1px;
+  height: 1px;
+  background-color: #D2D5DA;
 `;
 
 const HomeLoans = () => {
@@ -61,7 +81,7 @@ const HomeLoans = () => {
   <Container>
     <HomeLoansTitleContainer>
       <div>
-        <Titlea>Home Loans</Title>
+        <Title>Home Loans</Title>
         <a target="_blank" href="https://www.realestate.com.au/home-loans/">
           <HomeLoansLogo alt="REA HomeLoans Logo" src="https://dam-assets.au.reastatic.net/image/upload/fl_sanitize/v1630457820/site-assets/realestate.com.au/finx/realestate.com.au-homeloans.svg" />
         </a>
@@ -71,6 +91,12 @@ const HomeLoans = () => {
         <FindOutLink target="_blank" href="https://www.realestate.com.au/home-loans/guides/all-about-the-first-home-loan-deposit-scheme?cid=cid:buy:PDP:calculator-lender-panel:offer-fhb-scheme">Find out</FindOutLink>
       </FirstHomeBuyerContainer>
     </HomeLoansTitleContainer>
+    <HomeLoansTabContainer>
+      <HomeLoansTab>Calculator</HomeLoansTab>
+      <HomeLoansTab>Value guide</HomeLoansTab>
+      <HomeLoansTab>My home loan</HomeLoansTab>
+    </HomeLoansTabContainer>
+    <Divider />
 
   </Container>
   
