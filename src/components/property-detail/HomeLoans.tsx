@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Question } from "@styled-icons/evil";
+
 
 const Container = styled.div `
   margin-top: 24px;
@@ -88,9 +90,66 @@ const SelectIndicator = styled.div `
   background-color: rgb(228, 0, 43);
 `;
 
-const HomeLoans = () => {
-  const [selectedIndicator, setSelectedIndicator] = useState<string>('');
+const CalculatorDetails = styled.div `
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+`;
 
+const PropertyPriceContainer = styled.div `
+  padding: 25px 15px 18px 15px;
+  background-color: rgb(247, 248, 249);
+  border-color: rgb(233, 235, 237);
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+`;
+
+const PropertyPriceTitle = styled.div `
+  font-family: "PangeaRegular";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-bottom: 8px;
+`;
+
+const PriceInput = styled.input `
+  padding: 16px 16px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(105, 118, 132);
+  font-family: "PangeaLight";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 26px;
+  &:focus {
+    outline-color: #000;
+  }
+  /* Chrome, Safari, Edge, Opera */
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  };
+
+  /* Firefox */
+  -moz-appearance: textfield;
+`;
+
+const ListedPrice = styled.div `
+  padding-top: 12px;
+  font-family: "PangeaLight";
+  font-size: 14px;
+  font-weight: 500px;
+  line-height: 20px;
+`;
+
+// interface Props {
+//   price: string | number;
+// };
+
+const HomeLoans = (props: {price: string | number}) => {
+  const [selectedIndicator, setSelectedIndicator] = useState<string>('');
   return (
   <Container>
     <HomeLoansTitleContainer>
@@ -120,6 +179,17 @@ const HomeLoans = () => {
       </div>
     </HomeLoansTabContainer>
     <Divider />
+    <CalculatorDetails>
+      <div>
+        <PropertyPriceContainer>
+          <PropertyPriceTitle>What would you pay for this property?</PropertyPriceTitle>
+          <PriceInput type="number" placeholder="$ Enter your price"/>
+          <ListedPrice>Listed price: {props.price} <Question size="24" title="Listed price:this is the price that the agent has listed this property for.  Suburn median: this is the middle of the total number of similar properties sold within this suburb over the past 12 months." /> </ListedPrice>
+        </PropertyPriceContainer>
+      </div>  
+      <div>Estimated repayments</div>
+    </CalculatorDetails>
+    
   </Container>
   
   );
