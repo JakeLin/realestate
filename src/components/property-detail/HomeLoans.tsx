@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div `
   margin-top: 24px;
@@ -62,27 +63,40 @@ const HomeLoansTabContainer = styled.div `
   margin-top: 15px;
 `;
 
-const HomeLoansTab = styled.div `
+const HomeLoansTab = styled.button `
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
   padding: 8px 22px;
   margin-bottom: 2px;
+  border: none;
+  background-color: white;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  };
 `;
 
 const Divider = styled.div `
-  margin-top: 1px;
   height: 1px;
   background-color: #D2D5DA;
 `;
 
+const SelectIndicator = styled.div `
+  height: 2px;
+  width: 100%;
+  background-color: rgb(228, 0, 43);
+`;
+
 const HomeLoans = () => {
+  const [selectedIndicator, setSelectedIndicator] = useState<string>('');
+
   return (
   <Container>
     <HomeLoansTitleContainer>
       <div>
         <Title>Home Loans</Title>
-        <a target="_blank" href="https://www.realestate.com.au/home-loans/">
+        <a target="_blank" rel="noreferrer" href="https://www.realestate.com.au/home-loans/">
           <HomeLoansLogo alt="REA HomeLoans Logo" src="https://dam-assets.au.reastatic.net/image/upload/fl_sanitize/v1630457820/site-assets/realestate.com.au/finx/realestate.com.au-homeloans.svg" />
         </a>
       </div>
@@ -92,12 +106,20 @@ const HomeLoans = () => {
       </FirstHomeBuyerContainer>
     </HomeLoansTitleContainer>
     <HomeLoansTabContainer>
-      <HomeLoansTab>Calculator</HomeLoansTab>
-      <HomeLoansTab>Value guide</HomeLoansTab>
-      <HomeLoansTab>My home loan</HomeLoansTab>
+      <div>
+        <HomeLoansTab onClick={() => {setSelectedIndicator('Calculator')}}>Calculator</HomeLoansTab>
+        {selectedIndicator === 'Calculator' && <SelectIndicator />}
+      </div>
+      <div>
+        <HomeLoansTab onClick={() => {setSelectedIndicator('Value guide')}}>Value guide</HomeLoansTab>
+        {selectedIndicator === 'Value guide' && <SelectIndicator />}
+      </div>
+      <div>
+        <HomeLoansTab onClick={() => {setSelectedIndicator('My home loan')}}>My home loan</HomeLoansTab>
+        {selectedIndicator === 'My home loan' && <SelectIndicator />}
+      </div>
     </HomeLoansTabContainer>
     <Divider />
-
   </Container>
   
   );
