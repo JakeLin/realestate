@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Question } from "@styled-icons/evil";
-import Select from "react-select";
+import DropDown from "../common/DropDown";
 
 const Container = styled.div `
   margin-top: 24px;
@@ -170,11 +170,6 @@ const LoanPreferenceDetails = styled.div `
   display: flex;
 `;
 
-const buyerTpyes = [
-  {value: 'first home buyer', label: 'are a first home buyer'},
-  {value: 'exiting home buyer', label: 'have previously bought'}
-];
-
 interface Props {
   listedPrice: string | number;
 };
@@ -225,10 +220,10 @@ const HomeLoans = (props: Props) => {
         <LoanPreferenceContainer>
           <div>
             <LoanPreferenceDetails>
-              <span>You've told us you </span><span><Select options={buyerTpyes}/></span><span>,</span>
+              <span>You've told us you </span><DropDown /><span>,</span>
             </LoanPreferenceDetails>
             <LoanPreferenceDetails>
-              <span>looking for a property to </span><Select /><span>.</span>
+              <span>looking for a property to </span><span>.</span>
             </LoanPreferenceDetails>
           </div>
         </LoanPreferenceContainer>
