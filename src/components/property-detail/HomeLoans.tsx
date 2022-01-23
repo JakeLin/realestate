@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Question } from "@styled-icons/evil";
-
+import Select from "react-select";
 
 const Container = styled.div `
   margin-top: 24px;
@@ -157,6 +157,24 @@ const ListedPrice = styled.div `
   line-height: 20px;
 `;
 
+const LoanPreferenceContainer = styled.div `
+  padding: 7px 0;
+  font-family: "PangeaLight";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 25px 15px 18px 15px;
+`;
+
+const LoanPreferenceDetails = styled.div `
+  display: flex;
+`;
+
+const buyerTpyes = [
+  {value: 'first home buyer', label: 'are a first home buyer'},
+  {value: 'exiting home buyer', label: 'have previously bought'}
+];
+
 interface Props {
   listedPrice: string | number;
 };
@@ -164,7 +182,7 @@ interface Props {
 const HomeLoans = (props: Props) => {
   const [selectedIndicator, setSelectedIndicator] = useState<string>('');
   const [price, setPrice] = useState<string>('');
-console.log(price)
+
   return (
   <Container>
     <HomeLoansTitleContainer>
@@ -204,7 +222,17 @@ console.log(price)
           </PriceContainer>
           <ListedPrice>Listed price: {props.listedPrice} <Question size="24" title="Listed price:this is the price that the agent has listed this property for.  Suburn median: this is the middle of the total number of similar properties sold within this suburb over the past 12 months." /> </ListedPrice>
         </PropertyPriceContainer>
-      </div>  
+        <LoanPreferenceContainer>
+          <div>
+            <LoanPreferenceDetails>
+              <span>You've told us you </span><span><Select options={buyerTpyes}/></span><span>,</span>
+            </LoanPreferenceDetails>
+            <LoanPreferenceDetails>
+              <span>looking for a property to </span><Select /><span>.</span>
+            </LoanPreferenceDetails>
+          </div>
+        </LoanPreferenceContainer>
+      </div>
       <div>Estimated repayments</div>
     </CalculatorDetails>
     
