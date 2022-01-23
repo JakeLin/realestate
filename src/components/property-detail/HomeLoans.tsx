@@ -158,7 +158,6 @@ const ListedPrice = styled.div `
 `;
 
 const LoanPreferenceContainer = styled.div `
-  padding: 7px 0;
   font-family: "PangeaLight";
   font-size: 16px;
   font-weight: 300;
@@ -168,6 +167,10 @@ const LoanPreferenceContainer = styled.div `
 
 const LoanPreferenceDetails = styled.div `
   display: flex;
+`;
+
+const Discription = styled.span `
+  padding-right: 4px;
 `;
 
 interface Props {
@@ -220,10 +223,10 @@ const HomeLoans = (props: Props) => {
         <LoanPreferenceContainer>
           <div>
             <LoanPreferenceDetails>
-              <span>You've told us you </span><DropDown /><span>,</span>
+              <Discription>You've told us you </Discription><DropDown /><span>,</span>
             </LoanPreferenceDetails>
             <LoanPreferenceDetails>
-              <span>looking for a property to </span><span>.</span>
+              <Discription>looking for a property to </Discription><span>.</span>
             </LoanPreferenceDetails>
           </div>
         </LoanPreferenceContainer>
