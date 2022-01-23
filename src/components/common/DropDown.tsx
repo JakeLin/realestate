@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { ChevronDown, ChevronUp } from "@styled-icons/boxicons-regular";
 
 const DropDownButton = styled.button `
@@ -14,9 +15,22 @@ const DropDownButton = styled.button `
   color: rgb(5, 95, 180);
 `;
 
-const DropDown = () => {
+interface Option {
+  value: string
+  label: string
+  isDefaultSelected: boolean
+};
+
+interface Props {
+  options: Option[]
+};
+
+const DropDown = (props: Props) => {
+  const defaultOption = props.options.find(element => element.isDefaultSelected) || props.options[0];
+  const [selectedOption, setSelectedOption] = useState<Option>(defaultOption);
+  
   return (
-    <DropDownButton>are a first home buyer<ChevronDown size="20" /></DropDownButton>  
+    <DropDownButton>{selectedOption.label}<ChevronDown size="20" /></DropDownButton>  
   );
 };
 

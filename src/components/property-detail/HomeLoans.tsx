@@ -180,7 +180,18 @@ interface Props {
 const HomeLoans = (props: Props) => {
   const [selectedIndicator, setSelectedIndicator] = useState<string>('');
   const [price, setPrice] = useState<string>('');
-
+  const buyerOptions = [
+    {
+      value: 'first-home-buyer',
+      label: 'are a first home buyer',
+      isDefaultSelected: true,
+    },
+    {
+      value: 'buyer',
+      label: 'have previously bought',
+      isDefaultSelected: false,
+    }
+  ];
   return (
   <Container>
     <HomeLoansTitleContainer>
@@ -223,7 +234,7 @@ const HomeLoans = (props: Props) => {
         <LoanPreferenceContainer>
           <div>
             <LoanPreferenceDetails>
-              <Discription>You've told us you </Discription><DropDown /><span>,</span>
+              <Discription>You've told us you </Discription><DropDown options={buyerOptions} /><span>,</span>
             </LoanPreferenceDetails>
             <LoanPreferenceDetails>
               <Discription>looking for a property to </Discription><span>.</span>
