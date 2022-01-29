@@ -182,13 +182,13 @@ const HomeLoans = (props: Props) => {
   const [price, setPrice] = useState<string>('');
   const buyerOptions = [
     {
-      value: 'first-home-buyer',
-      label: 'are a first home buyer',
+      key: 'first-home-buyer',
+      display: 'are a first home buyer',
       isDefaultSelected: true,
     },
     {
-      value: 'buyer',
-      label: 'have previously bought',
+      key: 'buyer',
+      display: 'have previously bought',
       isDefaultSelected: false,
     }
   ];
