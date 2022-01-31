@@ -23,7 +23,7 @@ const PopupContainer = styled.div`
   position: absolute;
   top: -12px;
   left: -12px;
-  right: -12px;
+  right: -16px;
   border-width: 1px;
   border-style: solid;
   border-color: black;
@@ -31,7 +31,7 @@ const PopupContainer = styled.div`
   flex-direction: column;
 `;
 
-const PopupButton = styled.button`
+const SelectedPopupButton = styled.button`
   border: none;
   background-color: white;
   font-family: "PangeaLight";
@@ -50,27 +50,28 @@ interface PopupProps {
   selections: Option[]
   closePopup: Function
   setSelectedOption: React.Dispatch<React.SetStateAction<Option>>
+  selectedOption: Option
 };
 
 const Popup = (props: PopupProps) => {
-  // const popupOptionCliked = (event: React.MouseEvent<HTMLElement>) => {
-  //   const selectedOption = props.selections.find((selection) => selection.key === (event.target as any).key) || props.selections[0]
-  //   props.setSelectedOption(selectedOption);
-  //   props.setIsOptionsOpened(false);
-  // };
-
-  const popupButtonCliked = (key: string) => {
+  const popupButtonClicked = (key: string) => {
     const selectedOption = props.selections.find(element => element.key === key) || props.selections[0];
     props.setSelectedOption(selectedOption);
     props.closePopup();
   };
 
+  const unSelectedOptions = props.selections.filter((element) => {
+    return element.key !== props.selectedOption.key;
+  });
+
   return(
     <PopupContainer>
+      <SelectedPopupButton onClick={() => popupButtonClicked(props.selectedOption.key)}>{props.selectedOption.display}<ChevronUp size="20" /></SelectedPopupButton>
       {
-        // Mapping from Array of Options to Array of Components(PopupButton)
-        props.selections.map((element) => { 
-          return (<PopupButton onClick={() => popupButtonCliked(element.key)}>{element.display}</PopupButton>)
+        unSelectedOptions.map((element) => {
+          return (
+            <button onClick={() => popupButtonClicked(element.key)}>{element.display}</button>
+          )
         })
       }
     </PopupContainer>
@@ -98,7 +99,8 @@ const DropDown = (props: Props) => {
       { isOptionsOpened && 
         <Popup selections={props.options} 
           closePopup={() => setIsOptionsOpened(false)} 
-          setSelectedOption={setSelectedOption} />}
+          setSelectedOption={setSelectedOption}
+          selectedOption={selectedOption} />}
       </Container>
   )
 };
