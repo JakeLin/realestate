@@ -193,6 +193,20 @@ const HomeLoans = (props: Props) => {
       isDefaultSelected: false,
     }
   ];
+
+  const propertyTypes = [
+    {
+      key: 'live-in',
+      display: 'live in',
+      isDefaultSelected: true,
+    },
+    {
+      key: 'invest-in',
+      display: 'invest in',
+      isDefaultSelected: false,
+    }
+  ];
+
   return (
   <Container>
     <HomeLoansTitleContainer>
@@ -238,7 +252,7 @@ const HomeLoans = (props: Props) => {
               <Discription>You've told us you </Discription><DropDown options={buyerOptions} /><span>,</span>
             </LoanPreferenceDetails>
             <LoanPreferenceDetails>
-              <Discription>looking for a property to </Discription><span>.</span>
+              <Discription>looking for a property to </Discription><DropDown options={propertyTypes} /><span>.</span>
             </LoanPreferenceDetails>
           </div>
         </LoanPreferenceContainer>
