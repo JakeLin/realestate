@@ -37,9 +37,9 @@ const SelectedPopupButton = styled.button`
   font-family: "PangeaLight";
   font-size: 16px;
   font-weight: 300;
+  color: rgb(5, 95, 180);
   line-height: 1em;
   padding: 12px;
-  color: rgb(5, 95, 180);
   text-align: start;
   &:hover {
     cursor: pointer;

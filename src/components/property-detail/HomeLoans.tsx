@@ -157,21 +157,48 @@ const ListedPrice = styled.div `
   line-height: 20px;
 `;
 
+const BuyerPropertyContainer = styled.div `
+  margin-bottom: 14px;
+`;
+
 const LoanPreferenceContainer = styled.div `
   font-family: "PangeaLight";
   font-size: 16px;
   font-weight: 300;
-  line-height: 1em;
+  line-height: 1.5em;
   padding: 25px 15px 18px 15px;
 `;
 
 const LoanPreferenceDetails = styled.div `
   display: flex;
+  align-items: baseline;
   color: #333F48;
 `;
 
 const Discription = styled.span `
   padding-right: 4px;
+`;
+
+const InterestRateInputDetails = styled.input `
+  border: none;
+  width: 24px;
+  font-family: "PangeaLight";
+  color: rgb(5, 95, 180);
+`;
+
+const LoanPeriodInputDetails = styled.input `
+  border: none;
+  width: 16px;
+  font-family: "PangeaLight";
+  color: rgb(5, 95, 180);
+`;
+
+const PercetageContainer = styled.span `
+  font-family: "PangeaLight";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1em;
+  color: rgb(5, 95, 180);
 `;
 
 interface Props {
@@ -203,6 +230,19 @@ const HomeLoans = (props: Props) => {
     {
       key: 'invest-in',
       display: 'invest in',
+      isDefaultSelected: false,
+    }
+  ];
+
+  const loanTypes = [
+    {
+      key: 'P&I',
+      display: 'principal & interest',
+      isDefaultSelected: true,
+    },
+    {
+      key: 'IO',
+      display: 'interest only',
       isDefaultSelected: false,
     }
   ];
@@ -248,11 +288,25 @@ const HomeLoans = (props: Props) => {
         </PropertyPriceContainer>
         <LoanPreferenceContainer>
           <div>
+            <BuyerPropertyContainer>
+              <LoanPreferenceDetails>
+                <Discription>You've told us you </Discription><DropDown options={buyerOptions} /><span>,</span>
+              </LoanPreferenceDetails>
+              <LoanPreferenceDetails>
+                <Discription>looking for a property to </Discription><DropDown options={propertyTypes} /><span>.</span>
+              </LoanPreferenceDetails>
+            </BuyerPropertyContainer>
             <LoanPreferenceDetails>
-              <Discription>You've told us you </Discription><DropDown options={buyerOptions} /><span>,</span>
+              <Discription>These calculations are based on a </Discription><DropDown options={loanTypes} />
             </LoanPreferenceDetails>
             <LoanPreferenceDetails>
-              <Discription>looking for a property to </Discription><DropDown options={propertyTypes} /><span>.</span>
+              <Discription>loan with an interest rate of </Discription>
+              <InterestRateInputDetails value="4.35" /><PercetageContainer>%</PercetageContainer>
+            </LoanPreferenceDetails>
+            <LoanPreferenceDetails>
+              <Discription> and a loan term of </Discription>
+              <span><LoanPeriodInputDetails value="30" /></span>
+              <Discription> years.</Discription>
             </LoanPreferenceDetails>
           </div>
         </LoanPreferenceContainer>
