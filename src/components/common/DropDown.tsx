@@ -46,6 +46,24 @@ const SelectedPopupButton = styled.button`
   }
 `;
 
+const UnSelectedPopUpButton = styled.button`
+  border: none;
+  border-top-style: solid;  
+  border-top-color: #D2D5DA;
+  border-top-width: 1px;
+  background-color: white;
+  font-family: "PangeaLight";
+  color: #333F48;;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1em;
+  padding: 12px;
+  text-align: start;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 interface PopupProps {
   selections: Option[]
   closePopup: Function
@@ -70,7 +88,7 @@ const Popup = (props: PopupProps) => {
       {
         unSelectedOptions.map((element) => {
           return (
-            <button onClick={() => popupButtonClicked(element.key)}>{element.display}</button>
+            <UnSelectedPopUpButton onClick={() => popupButtonClicked(element.key)}>{element.display}</UnSelectedPopUpButton>
           )
         })
       }

@@ -167,6 +167,7 @@ const LoanPreferenceContainer = styled.div `
 
 const LoanPreferenceDetails = styled.div `
   display: flex;
+  color: #333F48;
 `;
 
 const Discription = styled.span `
